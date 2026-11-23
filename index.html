@@ -3,2356 +3,1169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal Kesekretariatan HIMASIKA ITS 2026 — Kabinet Zain</title>
+  <title>Portal Kesekretariatan — Kabinet Zain | HIMASIKA ITS</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --navy-primary: #0F294A;
-      --navy-dark: #091A30;
-      --gold-accent: #D97706;
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .bg-grid-pattern {
+      background-color: #0b1938;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+      background-size: 24px 24px;
     }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      color: #0F172A;
-    }
-
-    .font-display {
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    /* Standar Kertas A4 & Margin Word 2.54 cm */
-    .a4-sheet {
-      width: 210mm;
-      min-height: 297mm;
-      padding: 25.4mm;
-      margin: 0 auto 24px auto;
-      background: #FFFFFF;
-      color: #000000;
+    .paper-preview {
       font-family: 'Times New Roman', Times, serif;
-      font-size: 12pt;
+      color: #000;
+      background: #fff;
       line-height: 1.45;
-      box-shadow: 0 12px 32px -8px rgba(15, 41, 74, 0.18);
-      border: 1px solid #E2E8F0;
-      box-sizing: border-box;
-      position: relative;
-    }
-
-    .a4-sheet table.meta-table td {
-      padding: 1.5px 4px 1.5px 0;
-      vertical-align: top;
-    }
-
-    .a4-sheet table.data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 10px 0 14px 0;
-      font-size: 11pt;
-    }
-
-    .a4-sheet table.data-table th,
-    .a4-sheet table.data-table td {
-      border: 1px solid #000000;
-      padding: 5px 7px;
-      vertical-align: top;
-    }
-
-    .a4-sheet table.data-table th {
-      background-color: #F1F5F9;
-      font-weight: bold;
-      text-align: center;
-    }
-
-    .a4-sheet .highlight-kahima {
-      background-color: #FEF08A !important;
-      font-weight: bold;
-    }
-
-    .kop-surat {
-      border-bottom: 3px double #000000;
-      padding-bottom: 8px;
-      margin-bottom: 14px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .kop-logo-box {
-      width: 64px;
-      height: 64px;
-      border: 1.5px solid #0F294A;
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 9pt;
-      line-height: 1.1;
-      color: #0F294A;
-      flex-shrink: 0;
-    }
-
-    /* Preview scaling on smaller screens */
-    .preview-viewport {
-      overflow-x: auto;
-      padding: 16px;
-      background: #E2E8F0;
-      border-radius: 16px;
-    }
-
-    @page {
-      size: A4 portrait;
-      margin: 2.54cm;
-    }
-
-    @media print {
-      body {
-        background: #FFFFFF !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
-      .no-print,
-      #lobby-gate-overlay,
-      #toast-container,
-      #app-modal-backdrop {
-        display: none !important;
-      }
-      #print-area-wrapper {
-        display: block !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        background: transparent !important;
-      }
-      .a4-sheet {
-        width: 100% !important;
-        min-height: auto !important;
-        padding: 0 !important;
-        margin: 0 !important;
-        box-shadow: none !important;
-        border: none !important;
-        page-break-after: always;
-        break-after: page;
-      }
-      .a4-sheet:last-child {
-        page-break-after: auto;
-        break-after: auto;
-      }
-    }
-
-    /* ===== THEME UPGRADE: KABINET ZAIN ===== */
-    body {
-      background:
-        radial-gradient(900px 400px at 10% -10%, rgba(29,78,216,.10), transparent 60%),
-        radial-gradient(700px 400px at 100% 0%, rgba(217,119,6,.10), transparent 60%),
-        #F8FAFC;
-    }
-
-    /* Gerbang lobi: aurora + titik halus */
-    #lobby-gate-overlay {
-      background:
-        radial-gradient(600px 400px at 15% 20%, rgba(59,130,246,.35), transparent 60%),
-        radial-gradient(500px 400px at 85% 80%, rgba(245,158,11,.25), transparent 60%),
-        linear-gradient(135deg, #0F294A, #091A30) !important;
-    }
-    #lobby-gate-overlay::before {
-      content: ""; position: absolute; inset: 0; pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
-      background-size: 22px 22px;
-    }
-    #lobby-gate-overlay > div { position: relative; }
-
-    /* Kartu: efek angkat saat di-hover */
-    #lobby-gate-overlay .rounded-3xl,
-    #view-sop-directory .rounded-2xl,
-    #view-sekum-dashboard .grid > div {
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    #lobby-gate-overlay .rounded-3xl:hover,
-    #view-sop-directory .grid > div:hover,
-    #view-sekum-dashboard .grid > div:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 40px -12px rgba(15,41,74,.35);
-    }
-
-    /* Navbar kaca */
-    header {
-      background: rgba(15,41,74,.88) !important;
-      backdrop-filter: blur(12px);
-      border-bottom: 2px solid #D97706;
-    }
-
-    /* Tombol: transisi halus */
-    button, a { transition: all .2s ease; }
-    button:active { transform: scale(.97); }
-
-    /* Input fokus lebih jelas */
-    input:focus, select:focus, textarea:focus {
-      box-shadow: 0 0 0 3px rgba(29,78,216,.18);
-    }
-
-    /* Baris tabel */
-    tbody tr:hover { background: #F1F5F9; }
-
-    /* Judul gradasi */
-    .font-display.text-2xl, .sm\:text-4xl {
-      background: linear-gradient(90deg, #fff, #FDE68A);
-      -webkit-background-clip: text; background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    @media print {
-      header, body::before { display: none !important; }
+      font-size: 12pt;
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
 
   <!-- TOAST NOTIFICATION -->
-  <div id="toast-container" class="no-print fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm"></div>
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 text-sm font-medium transition-all"></div>
 
-  <!-- MODAL BACKDROP -->
-  <div id="app-modal-backdrop" class="no-print fixed inset-0 z-50 hidden items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-    <div id="app-modal-box" class="bg-white rounded-2xl shadow-2xl max-w-lg w-full p-6 border border-slate-200"></div>
-  </div>
-
-  <!-- ========================================================= -->
-  <!-- GERBANG LOBI (DUAL LOBBY: SEKDEP VS SEKRETARIS UMUM)      -->
-  <!-- ========================================================= -->
-  <div id="lobby-gate-overlay" class="no-print fixed inset-0 z-40 flex items-center justify-center p-4 overflow-y-auto">
-    <div class="max-w-4xl w-full my-auto py-6">
-      <div class="text-center mb-8">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-semibold tracking-wider uppercase mb-3">
-          <span>HIMASIKA ITS • Periode 2026–2027</span>
-        </div>
-        <h1 class="font-display text-2xl sm:text-4xl font-bold tracking-tight mb-2">
+  <!-- VIEW 1: LANDING / LOBI UTAMA -->
+  <div id="view-landing" class="bg-grid-pattern text-white flex-1 flex flex-col justify-between">
+    <main class="max-w-5xl mx-auto w-full px-4 py-12">
+      <!-- Header Hero -->
+      <div class="text-center mb-10">
+        <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 border border-white/15 text-amber-300 text-xs font-bold tracking-wider uppercase mb-4">
+          HIMASIKA ITS • PERIODE 2026–2027
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-4">
           Portal Kesekretariatan — Kabinet Zain
         </h1>
-        <p class="text-slate-300 text-sm sm:text-base max-w-2xl mx-auto">
-          Sistem otomasi penomoran surat terpusat, generator 10 template resmi standar Word (margin 2,54 cm), cetak massal Izin Keramaian, dan direktori SOP Administrasi.
+        <p class="text-slate-300 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+          Sistem otomasi penomoran surat terpusat, generator 10 template resmi standar Word (margin 2,54 cm), cetak massal Izin Keramaian, dan direktori SOP Administrasi & Keuangan.
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 gap-6">
-        <!-- KARTU 1: LOBI SEKDEP / BSO / PANITIA -->
-        <div class="rounded-3xl bg-white/95 backdrop-blur p-7 shadow-2xl border border-white/40 flex flex-col justify-between">
+      <!-- Dual Lobby Cards -->
+      <div class="grid md:grid-cols-2 gap-6 mb-10">
+        <!-- Card Sekdep / BSO -->
+        <div class="bg-white text-slate-900 rounded-2xl p-7 shadow-xl border border-slate-100 flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-wide">
+              <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wide">
                 Akses Fungsionaris
               </span>
-              <span class="text-2xl">📝</span>
+              <span class="text-xl">📝</span>
             </div>
-            <h2 class="text-xl font-extrabold text-slate-900 mb-1.5">Lobi Sekretaris Departemen / BSO</h2>
-            <p class="text-slate-600 text-sm mb-5">
+            <h2 class="text-xl font-extrabold mb-2">Lobi Sekretaris Departemen / BSO</h2>
+            <p class="text-slate-600 text-sm mb-5 leading-relaxed">
               Untuk Sekdep, Sekretaris Proker, dan BSO yang ingin membuat surat resmi, mengambil nomor urut otomatis ke Google Sheet, atau mencetak Surat Izin Keramaian massal.
             </p>
-
-            <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">
+            <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">
               Pilih Departemen / Biro / BSO Pengaju
             </label>
-            <select id="gate-sekdep-dept" class="w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-600 mb-5">
-              <option value="DAGRI">DAGRI — Dalam Negeri</option>
-              <option value="HUBLU">HUBLU — Hubungan Luar</option>
-              <option value="MEDFO">MEDFO — Media & Informasi</option>
-              <option value="PSDM">PSDM — Pengembangan Sumber Daya Mahasiswa</option>
-              <option value="RISTEK" selected>RISTEK — Riset dan Teknologi</option>
-              <option value="KWU">KWU — Kewirausahaan</option>
-              <option value="KESMA">KESMA — Kesejahteraan Mahasiswa</option>
-              <option value="KOMINFO">KOMINFO — Komunikasi & Informasi</option>
-              <option value="PS-ITS">BSO — Physics Summit</option>
-              <option value="LAB-ITS">BSO — Lab & Keilmuan</option>
-              <option value="INTI">INTI — Pengurus Inti / BPH</option>
+            <select id="select-dept" class="w-full px-3.5 py-3 rounded-xl border border-slate-300 bg-white text-slate-800 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-600 mb-5">
+              <option value="DAGRI|DAGRI — Dalam Negeri|DEPARTEMEN DALAM NEGERI">DAGRI — Dalam Negeri</option>
+              <option value="HUBLU|HUBLU — Hubungan Luar|DEPARTEMEN HUBUNGAN LUAR">HUBLU — Hubungan Luar</option>
+              <option value="PSDM|PSDM — Pengembangan Sumber Daya Mahasiswa|DEPARTEMEN PENGEMBANGAN SUMBER DAYA MAHASISWA">PSDM — Pengembangan SDM</option>
+              <option value="RISTEK|RISTEK — Riset dan Teknologi|DEPARTEMEN RISET DAN TEKNOLOGI">RISTEK — Riset dan Teknologi</option>
+              <option value="KWU|KWU — Kewirausahaan|DEPARTEMEN KEWIRAUSAHAAN">KWU — Kewirausahaan</option>
+              <option value="SOSMAS|SOSMAS — Sosial Masyarakat|DEPARTEMEN SOSIAL MASYARAKAT">SOSMAS — Sosial Masyarakat</option>
+              <option value="KESMA|KESMA — Kesejahteraan Mahasiswa|DEPARTEMEN KESEJAHTERAAN MAHASISWA">KESMA — Kesejahteraan Mahasiswa</option>
+              <option value="MINBA|MINBA — Minat dan Bakat|DEPARTEMEN MINAT DAN BAKAT">MINBA — Minat dan Bakat</option>
+              <option value="MEDFO|MEDFO — Media dan Informasi|BIRO MEDIA DAN INFORMASI">MEDFO — Media dan Informasi</option>
+              <option value="PS|BSO Physics Summit|BSO PHYSICS SUMMIT">BSO — Physics Summit</option>
+              <option value="BPH|BPH — Badan Pengurus Harian|BADAN PENGURUS HARIAN">BPH — Badan Pengurus Harian</option>
+            </select>
+          </div>
+          <button onclick="enterSekdep()" class="w-full py-3.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm transition shadow-md cursor-pointer">
+            Masuk Lobi Sekdep →
+          </button>
+        </div>
+
+        <!-- Card Sekum / Bendahara -->
+        <div class="bg-[#0e1b33] text-white rounded-2xl p-7 shadow-xl border border-slate-700/80 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 text-xs font-bold uppercase tracking-wide">
+                Admin Pusat • Sekum & Bendahara
+              </span>
+              <span class="text-xl">🔐</span>
+            </div>
+            <h2 class="text-xl font-extrabold mb-2">Lobi Sekretaris Umum & Bendahara</h2>
+            <p class="text-slate-300 text-sm mb-5 leading-relaxed">
+              Khusus Sekretaris Umum (<span class="text-amber-300 font-semibold">Salwa</span>) & Bendahara untuk verifikasi & ACC nomor surat masuk, memberi catatan revisi, mengatur counter, dan memperbarui link SOP/Keuangan.
+            </p>
+            <label class="block text-xs font-bold text-amber-300 uppercase tracking-wider mb-2">
+              Kode Akses Admin (Sekum / Bendahara)
+            </label>
+            <input id="input-admin-pass" type="password" placeholder="Masukkan kode akses..." onkeydown="if(event.key==='Enter') loginAdmin()" class="w-full px-3.5 py-3 rounded-xl border border-slate-600 bg-slate-800/90 text-white text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 mb-5" />
+          </div>
+          <button onclick="loginAdmin()" class="w-full py-3.5 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm transition shadow-md cursor-pointer">
+            Verifikasi & Masuk Lobi Admin →
+          </button>
+        </div>
+      </div>
+
+      <!-- Direktori Link SOP Administrasi & Keuangan (Kosong default, dinamis dari Admin) -->
+      <div class="bg-white/95 text-slate-900 rounded-2xl p-6 shadow-xl border border-white/20">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4 pb-3 border-b border-slate-200">
+          <div>
+            <h3 class="text-base font-extrabold text-slate-900">Direktori SOP Administrasi & Keuangan Kabinet Zain</h3>
+            <p class="text-xs text-slate-500">Tautan dikelola langsung oleh Sekretaris Umum & Bendahara. Tautan yang belum diperbarui tahun ini otomatis dinonaktifkan.</p>
+          </div>
+          <button onclick="loadServerData()" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold self-start sm:self-auto cursor-pointer">
+            ↻ Segarkan Tautan
+          </button>
+        </div>
+        <div id="landing-links-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+    </main>
+
+    <footer class="text-center text-xs text-slate-300 py-5 px-4 border-t border-white/10">
+      Terhubung langsung dengan Database Google Sheet Kesekretariatan HIMASIKA ITS • PIC Administrasi: <strong class="text-white">Salwa (081362192288)</strong>
+    </footer>
+  </div>
+
+  <!-- VIEW 2: LOBI SEKRETARIS DEPARTEMEN / BSO -->
+  <div id="view-sekdep" class="hidden flex-1 flex flex-col">
+    <header class="bg-[#0b1938] text-white px-4 py-4 shadow-md">
+      <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
+        <div>
+          <div class="text-xs text-amber-300 font-bold uppercase tracking-wider" id="sekdep-badge-kop">BSO PHYSICS SUMMIT</div>
+          <h1 class="text-lg font-extrabold" id="sekdep-title">Lobi Sekretaris Departemen / BSO</h1>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="px-3 py-1 rounded-full bg-white/10 text-xs font-semibold">Nomor Berikutnya: <strong id="display-next-counter" class="text-amber-300">001</strong></span>
+          <button onclick="goHome()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold cursor-pointer">← Ganti Lobi</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sub-Navigation Tabs -->
+    <div class="bg-white border-b border-slate-200 px-4">
+      <div class="max-w-6xl mx-auto flex gap-2 overflow-x-auto py-2.5 text-xs font-bold">
+        <button onclick="switchSekdepTab('generator')" id="tab-btn-generator" class="px-4 py-2 rounded-lg bg-blue-600 text-white cursor-pointer">1. Buat Surat & Ambil Nomor (10 Template)</button>
+        <button onclick="switchSekdepTab('massal')" id="tab-btn-massal" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">2. Cetak Massal Izin Keramaian</button>
+        <button onclick="switchSekdepTab('riwayat')" id="tab-btn-riwayat" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">3. Status Nomor & Rekap Surat</button>
+        <button onclick="switchSekdepTab('sop')" id="tab-btn-sop" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">4. Direktori SOP & Keuangan</button>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto w-full px-4 py-6 flex-1">
+      <!-- TAB 1: GENERATOR SURAT -->
+      <div id="sekdep-tab-generator" class="grid lg:grid-cols-12 gap-6">
+        <!-- Form Input -->
+        <div class="lg:col-span-5 bg-white p-5 rounded-2xl shadow-sm border border-slate-200 space-y-4">
+          <h2 class="text-base font-extrabold text-slate-900 border-b pb-2">Form Pengajuan & Generator Surat</h2>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Pilih Template Surat (10 Standar Resmi)</label>
+            <select id="f-template" onchange="applyTemplatePreset()" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 text-sm font-medium">
+              <option value="0">1. Surat Undangan Rapat / Kegiatan</option>
+              <option value="1">2. Surat Peminjaman Ruangan / Gedung</option>
+              <option value="2">3. Surat Peminjaman Barang / Inventaris</option>
+              <option value="3">4. Surat Permohonan Pemateri / Juri</option>
+              <option value="4">5. Surat Permohonan Dana / Sponsorship</option>
+              <option value="5">6. Surat Izin Keramaian / Kegiatan</option>
+              <option value="6">7. Surat Tugas / Delegasi Fungsionaris</option>
+              <option value="7">8. Surat Keterangan Aktif / Kepanitiaan</option>
+              <option value="8">9. Surat Pemberitahuan / Edaran Resmi</option>
+              <option value="9">10. Surat Ucapan Terima Kasih</option>
             </select>
           </div>
 
-          <button onclick="enterLobby('sekdep')" class="w-full py-3 px-4 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-sm shadow-lg shadow-blue-900/20 flex items-center justify-center gap-2">
-            <span>Masuk Lobi Sekdep</span>
-            <span>→</span>
-          </button>
-        </div>
-
-        <!-- KARTU 2: LOBI SEKRETARIS UMUM (ADMIN) -->
-        <div class="rounded-3xl bg-slate-900/90 backdrop-blur p-7 shadow-2xl border border-amber-400/30 text-white flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-bold uppercase tracking-wide">
-                Admin Pusat • Sekum
-              </span>
-              <span class="text-2xl">🔐</span>
-            </div>
-            <h2 class="text-xl font-extrabold text-white mb-1.5">Lobi Sekretaris Umum</h2>
-            <p class="text-slate-300 text-sm mb-5">
-              Khusus Sekretaris Umum (<strong class="text-amber-300">Salwa</strong>) untuk verifikasi & ACC nomor surat masuk, memberi catatan revisi, mengatur counter nomor urut, dan unduh rekap CSV.
-            </p>
-
-            <label class="block text-xs font-bold uppercase tracking-wider text-amber-300 mb-1.5">
-              Kode Akses Sekretaris Umum
-            </label>
-            <input
-              id="gate-sekum-pin"
-              type="password"
-              autocomplete="off"
-              placeholder="Masukkan kode akses Sekum..."
-              onkeydown="if(event.key==='Enter') enterLobby('sekum')"
-              class="w-full rounded-xl border border-slate-700 bg-slate-800/90 px-3.5 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-amber-400 mb-5"
-            />
-          </div>
-
-          <button id="btn-gate-sekum" onclick="enterLobby('sekum')" class="w-full py-3 px-4 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 font-extrabold text-sm shadow-lg shadow-amber-900/30 flex items-center justify-center gap-2">
-            <span>Verifikasi & Masuk Lobi Sekum</span>
-            <span>→</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="text-center mt-6 text-xs text-slate-300/80">
-        Terhubung langsung dengan Database Google Sheet Kesekretariatan HIMASIKA ITS • PIC Administrasi: <strong class="text-white">Salwa (081362192288)</strong>
-      </div>
-    </div>
-  </div>
-
-  <!-- ========================================================= -->
-  <!-- TOP NAVIGATION BAR                                        -->
-  <!-- ========================================================= -->
-  <header class="no-print sticky top-0 z-30 text-white shadow-lg">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 font-display font-extrabold flex items-center justify-center text-sm shadow">
-          HMF
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="font-display text-base sm:text-lg font-bold tracking-tight text-white">
-              KESEKRETARIATAN HIMASIKA ITS
-            </h1>
-            <span class="hidden sm:inline-block px-2 py-0.5 rounded bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold">
-              Kabinet Zain
-            </span>
-          </div>
-          <div class="flex items-center gap-2 text-xs text-slate-300">
-            <span id="nav-role-badge" class="font-semibold text-amber-300">Lobi Sekdep</span>
-            <span>•</span>
-            <span id="sync-status-pill" class="inline-flex items-center gap-1.5 text-emerald-300">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              <span>Sinkron Google Sheet</span>
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SUB-NAV TABS & ACTIONS -->
-      <div class="flex flex-wrap items-center gap-2">
-        <nav id="navbar-subtabs" class="flex items-center gap-1 bg-slate-900/60 p-1 rounded-xl border border-white/10"></nav>
-
-        <button onclick="initStorageData(true)" title="Muat ulang data terbaru dari Google Sheet" class="px-3 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white flex items-center gap-1.5">
-          <span>🔄</span>
-          <span class="hidden md:inline">Sync</span>
-        </button>
-
-        <button id="btn-switch-role" onclick="toggleQuickRole()" class="px-3 py-2 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-200 text-xs font-bold">
-          Ganti Lobi
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ========================================================= -->
-  <!-- MAIN WORKSPACE CONTAINER                                  -->
-  <!-- ========================================================= -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6">
-
-    <!-- ======================================================= -->
-    <!-- VIEW 1: GENERATOR SURAT & NOSUR OTOMATIS                -->
-    <!-- ======================================================= -->
-    <section id="view-generator" class="grid lg:grid-cols-12 gap-6 items-start">
-      <!-- PANEL KIRI: FORMULIR INPUT SURAT -->
-      <div class="no-print lg:col-span-5 space-y-5">
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+          <div class="grid grid-cols-2 gap-3">
             <div>
-              <h2 class="text-base font-extrabold text-slate-900">1. Identitas & Jenis Surat</h2>
-              <p class="text-xs text-slate-500">Nomor surat otomatis mengikuti urutan terakhir di Google Sheet</p>
-            </div>
-            <span id="preview-next-seq-badge" class="px-2.5 py-1 rounded-lg bg-blue-50 border border-blue-200 text-blue-800 text-xs font-extrabold">
-              Next #001
-            </span>
-          </div>
-
-          <div class="space-y-3.5">
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Departemen / BSO</label>
-                <select id="form-dept" onchange="onFormInputChanged()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold bg-white focus:outline-none focus:border-blue-600">
-                  <option value="DAGRI">DAGRI</option>
-                  <option value="HUBLU">HUBLU</option>
-                  <option value="MEDFO">MEDFO</option>
-                  <option value="PSDM">PSDM</option>
-                  <option value="RISTEK" selected>RISTEK</option>
-                  <option value="KWU">KWU</option>
-                  <option value="KESMA">KESMA</option>
-                  <option value="KOMINFO">KOMINFO</option>
-                  <option value="PS-ITS">PS-ITS (Physics Summit)</option>
-                  <option value="LAB-ITS">LAB-ITS</option>
-                  <option value="INTI">INTI / BPH</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Tanggal Surat</label>
-                <input id="form-tanggal-surat" type="date" onchange="onFormInputChanged()" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm font-medium focus:outline-none focus:border-blue-600" />
-              </div>
-            </div>
-
-            <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Pilih Template Surat Resmi (10 Format)</label>
-              <select id="form-jenis" onchange="onTemplateTypeChanged()" class="w-full rounded-xl border border-slate-300 px-3 py-2.5 text-sm font-bold text-slate-900 bg-slate-50 focus:outline-none focus:border-blue-600">
-                <option value="IK">1. Surat Izin Keramaian (Bisa Cetak Banyak Sekaligus)</option>
-                <option value="PR-DP">2. Peminjaman Ruangan Departemen (PAGU)</option>
-                <option value="PR-DNP">3. Peminjaman Ruangan Departemen (NO PAGU)</option>
-                <option value="PR-LD">4. Pengantar Peminjaman Ruangan Luar Departemen</option>
-                <option value="PR-SKPB">5. Pengantar Peminjaman Ruangan SKPB</option>
-                <option value="PR-BMA">6. Pengantar Peminjaman Ruangan BMA</option>
-                <option value="PB-D">7. Peminjaman Barang / Alat Departemen</option>
-                <option value="PB-H">8. Peminjaman Barang / Inventaris Himpunan</option>
-                <option value="UND-KH">9. Surat Undangan Sambutan oleh KAHIMA</option>
-                <option value="SP-SERT">10. Surat Pengantar Sertifikat (+ Daftar Penerima)</option>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Klasifikasi Nomor</label>
+              <select id="f-kode-jenis" onchange="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm">
+                <option value="A">A — Internal ITS / HIMA</option>
+                <option value="B">B — Eksternal / Luar ITS</option>
+                <option value="C">C — Surat Tugas / Keterangan</option>
               </select>
             </div>
-
-            <!-- BOX PERINGATAN SOP KONTEKSTUAL -->
-            <div id="sop-contextual-box" class="rounded-xl bg-amber-50 border border-amber-200 p-3 text-xs text-amber-900"></div>
-          </div>
-        </div>
-
-        <!-- PANEL 2: DETAIL KEGIATAN -->
-        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <h2 class="text-base font-extrabold text-slate-900 border-b border-slate-100 pb-3 mb-4">2. Detail Kegiatan & Penanggung Jawab</h2>
-
-          <div class="space-y-3.5">
             <div>
-              <label class="block text-xs font-bold text-slate-700 mb-1">Nama Kegiatan / Proker <span class="text-red-500">*</span></label>
-              <input id="form-acara" type="text" oninput="onFormInputChanged()" placeholder="Contoh: Upgrading RISTEK HIMASIKA 2026" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-            </div>
-
-            <!-- FIELD KHUSUS: DESKRIPSI / TUJUAN SINGKAT (UND-KH, PR-DNP, PB-D, PB-H) -->
-            <div id="wrap-deskripsi" class="hidden">
-              <label id="label-deskripsi" class="block text-xs font-bold text-slate-700 mb-1">Deskripsi / Tujuan Singkat Kegiatan</label>
-              <input id="form-deskripsi" type="text" oninput="onFormInputChanged()" placeholder="Contoh: wadah pengembangan keilmuan dan riset mahasiswa Fisika" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-            </div>
-
-            <!-- FIELD KHUSUS: DEPARTEMEN TUJUAN LUAR (PR-LD) -->
-            <div id="wrap-luar-dept" class="hidden">
-              <label class="block text-xs font-bold text-slate-700 mb-1">Instansi / Departemen Tujuan</label>
-              <input id="form-pengantar-tujuan" type="text" oninput="onFormInputChanged()" value="Departemen Matematika ITS" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-            </div>
-
-            <!-- FIELD KHUSUS: DURASI & TANGGAL MULAI PINJAM ALAT (PB-D, PB-H) -->
-            <div id="wrap-pinjam-alat-meta" class="hidden grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Lama Peminjaman</label>
-                <input id="form-lama-pinjam" type="text" oninput="onFormInputChanged()" value="1 (satu) hari" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Terhitung Sejak Tanggal</label>
-                <input id="form-mulai-pinjam" type="text" oninput="onFormInputChanged()" value="Sabtu, 28 November 2026" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-            </div>
-
-            <!-- FIELD KHUSUS: PENERIMA SERTIFIKAT & LINK CANVA (SP-SERT) -->
-            <div id="wrap-sertifikat-meta" class="hidden space-y-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Kategori Penerima Sertifikat</label>
-                <input id="form-sertif-kategori" type="text" oninput="onFormInputChanged()" value="pemateri dan panitia" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Link Desain Canva Sertifikat (Wajib SOP) <span class="text-red-500">*</span></label>
-                <input id="form-canva-link" type="url" oninput="onFormInputChanged()" placeholder="https://www.canva.com/design/..." class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-            </div>
-
-            <!-- WAKTU & TEMPAT (SEMBUNYI KHUSUS SP-SERT) -->
-            <div id="wrap-waktu-tempat" class="space-y-3">
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Hari, Tanggal Kegiatan</label>
-                  <input id="form-tanggal-kegiatan" type="text" oninput="onFormInputChanged()" value="Sabtu, 28 November 2026" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-                </div>
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Waktu / Pukul</label>
-                  <input id="form-waktu" type="text" oninput="onFormInputChanged()" value="08.00 – 15.00 WIB" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-                </div>
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Tempat Pelaksanaan</label>
-                <input id="form-tempat" type="text" oninput="onFormInputChanged()" value="Selasar & Ruang J-102 Departemen Fisika ITS" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-            </div>
-
-            <!-- PENANGGUNG JAWAB NO PAGU (PR-DNP) -->
-            <div id="wrap-pj-nopagu" class="hidden rounded-xl bg-slate-50 border border-slate-200 p-3 space-y-2.5">
-              <div class="text-xs font-extrabold text-slate-800">Penanggung Jawab Kegiatan (Khusus Non-Pagu)</div>
-              <div class="grid grid-cols-2 gap-2">
-                <input id="form-pj-nama" type="text" oninput="onFormInputChanged()" placeholder="Nama Lengkap PJ" class="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
-                <input id="form-pj-nrp" type="text" oninput="onFormInputChanged()" placeholder="NRP PJ" class="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
-              </div>
-              <input id="form-pj-wa" type="text" oninput="onFormInputChanged()" placeholder="No. WhatsApp PJ (08xx...)" class="w-full rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
-            </div>
-
-            <!-- KEPALA DEPARTEMEN (KHUSUS UND-KH) -->
-            <div id="wrap-kadep-ttd" class="hidden rounded-xl bg-slate-50 border border-slate-200 p-3 space-y-2">
-              <div class="text-xs font-extrabold text-slate-800">Penandatangan Kepala Departemen (Undangan Kahima)</div>
-              <div class="grid grid-cols-2 gap-2">
-                <input id="form-kadep-nama" type="text" oninput="onFormInputChanged()" placeholder="Nama Kepala Departemen" class="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
-                <input id="form-kadep-nrp" type="text" oninput="onFormInputChanged()" placeholder="NRP Kadep" class="rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs bg-white" />
-              </div>
-            </div>
-
-            <!-- DATA KETUA PELAKSANA & PIC -->
-            <div class="grid grid-cols-2 gap-3 pt-1">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">Nama Ketua Pelaksana</label>
-                <input id="form-ketupel-nama" type="text" oninput="onFormInputChanged()" placeholder="Nama Ketua Pelaksana" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">NRP Ketua Pelaksana</label>
-                <input id="form-ketupel-nrp" type="text" oninput="onFormInputChanged()" placeholder="5001241XXX" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">PIC Sekdep Pengaju <span class="text-red-500">*</span></label>
-                <input id="form-pic" type="text" oninput="onFormInputChanged()" placeholder="Nama Sekdep / Pengaju" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">CP Surat (No. WA & Nama)</label>
-                <input id="form-cp" type="text" oninput="onFormInputChanged()" placeholder="0812 3456 7890 (Rina)" class="w-full rounded-xl border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-blue-600" />
-              </div>
+              <label class="block text-xs font-bold text-slate-600 mb-1">Lampiran</label>
+              <input id="f-lampiran" type="text" value="-" oninput="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
             </div>
           </div>
-        </div>
 
-        <!-- PANEL 3A: BULK CHECKBOX SURAT IZIN KERAMAIAN (IK) -->
-        <div id="panel-ik-bulk" class="bg-white rounded-2xl shadow-sm border border-blue-200 p-5">
-          <div class="flex items-center justify-between mb-2">
-            <h2 class="text-base font-extrabold text-blue-950">3. Tujuan Surat Izin Keramaian (Cetak Banyak)</h2>
-            <span id="ik-selected-count" class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-xs font-extrabold">3 dipilih</span>
-          </div>
-          <p class="text-xs text-slate-600 mb-3">
-            Centang Himpunan / Departemen / Fakultas yang dituju. Semua surat terpilih akan langsung disusun menjadi dokumen banyak halaman (margin 2,54 cm) siap cetak PDF atau unduh `.doc`.
-          </p>
-
-          <div class="flex flex-wrap gap-1.5 mb-3">
-            <button type="button" onclick="selectIkPreset('fsad-hima')" class="px-2.5 py-1 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 text-xs font-bold border border-blue-200">
-              + Semua Himpunan FSAD
-            </button>
-            <button type="button" onclick="selectIkPreset('all')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">
-              Centang Semua
-            </button>
-            <button type="button" onclick="selectIkPreset('none')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-semibold">
-              Kosongkan
-            </button>
-          </div>
-
-          <div id="ik-checkbox-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-56 overflow-y-auto p-2.5 rounded-xl bg-slate-50 border border-slate-200 mb-3"></div>
-
-          <!-- TAMBAH TUJUAN KUSTOM -->
-          <div class="flex gap-2 mb-3">
-            <input id="ik-custom-input" type="text" placeholder="Tambah tujuan lain (misal: BEM ITS / SKPB)..." onkeydown="if(event.key==='Enter'){event.preventDefault();addCustomIkRecipient();}" class="flex-1 rounded-xl border border-slate-300 px-3 py-1.5 text-xs focus:outline-none focus:border-blue-600" />
-            <button type="button" onclick="addCustomIkRecipient()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold">
-              + Tambah
-            </button>
-          </div>
-
-          <!-- MODE PENOMORAN MASSAL -->
-          <div class="rounded-xl bg-blue-50/70 border border-blue-100 p-3">
-            <div class="text-xs font-bold text-slate-800 mb-1.5">Mode Penomoran Surat Massal:</div>
-            <div class="flex flex-col gap-1.5 text-xs">
-              <label class="inline-flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="ik-num-mode" value="sequential" checked onchange="onFormInputChanged()" class="text-blue-600" />
-                <span><strong>Nomor Berurutan</strong> (001, 002, 003... tiap tujuan mendapat nomor unik)</span>
-              </label>
-              <label class="inline-flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="ik-num-mode" value="collective" onchange="onFormInputChanged()" class="text-blue-600" />
-                <span><strong>Nomor Kolektif</strong> (Semua tujuan memakai 1 nomor surat yang sama)</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- PANEL 3B: TABEL PERALATAN (KHUSUS PB-D & PB-H) -->
-        <div id="panel-equipment-editor" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <div class="flex items-center justify-between mb-3">
-            <h2 class="text-base font-extrabold text-slate-900">3. Daftar Alat yang Dipinjam</h2>
-            <button type="button" onclick="addEquipmentRow()" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">
-              + Tambah Alat
-            </button>
-          </div>
-          <div id="equipment-rows-container" class="space-y-2"></div>
-        </div>
-
-        <!-- PANEL 3C: LAMPIRAN 1 SUSUNAN ACARA (UNTUK SURAT DENGAN LAMPIRAN RUNDOWN) -->
-        <div id="panel-rundown-editor" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h2 class="text-base font-extrabold text-slate-900">3. Lampiran 1 — Susunan Acara</h2>
-              <p class="text-[11px] text-slate-500">Baris berisi "Sambutan Ketua Himpunan" otomatis disorot kuning pada Undangan Kahima.</p>
-            </div>
-            <button type="button" onclick="addRundownRow()" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">
-              + Baris
-            </button>
-          </div>
-          <div id="rundown-rows-container" class="space-y-2"></div>
-        </div>
-
-        <!-- PANEL 3D: LAMPIRAN 1 DAFTAR PENERIMA SERTIFIKAT (KHUSUS SP-SERT) -->
-        <div id="panel-cert-editor" class="hidden bg-white rounded-2xl shadow-sm border border-slate-200 p-5">
-          <div class="flex items-center justify-between mb-2">
-            <div>
-              <h2 class="text-base font-extrabold text-slate-900">3. Lampiran 1 — Daftar Penerima Sertifikat</h2>
-              <p class="text-[11px] text-slate-500">Pastikan penulisan peran persis sama dengan desain di Canva.</p>
-            </div>
-            <button type="button" onclick="addCertRow()" class="px-2.5 py-1 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold">
-              + Penerima
-            </button>
-          </div>
-          <div id="cert-rows-container" class="space-y-2"></div>
-        </div>
-      </div>
-
-      <!-- PANEL KANAN: LIVE PREVIEW A4 & TOMBOL AKSI -->
-      <div class="lg:col-span-7 space-y-4">
-        <!-- ACTION TOOLBAR -->
-        <div class="no-print bg-white rounded-2xl shadow-sm border border-slate-200 p-4 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Nomor Surat Aktif</div>
-            <div id="active-nosur-display" class="font-display text-sm sm:text-base font-bold text-blue-900">
-              001/IK/RISTEK/HIMASIKA-ITS/XI/2026
+            <label class="block text-xs font-bold text-slate-600 mb-1">Perihal / Hal Surat</label>
+            <input id="f-perihal" type="text" oninput="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Tujuan Surat (Yth.)</label>
+            <input id="f-tujuan" type="text" oninput="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Tanggal Surat (Surabaya, ...)</label>
+            <input id="f-tanggal" type="text" value="23 November 2026" oninput="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-sm" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Isi Pokok Surat</label>
+            <textarea id="f-isi" rows="5" oninput="renderPreview()" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs leading-relaxed"></textarea>
+          </div>
+
+          <div class="bg-slate-50 p-3.5 rounded-xl border border-slate-200 space-y-3">
+            <div class="text-xs font-extrabold text-slate-700 uppercase">Pengesahan (Otomatis Huruf Besar Awal Kata)</div>
+            <div>
+              <label class="block text-[11px] font-bold text-slate-500 mb-1">Nama Pengaju / Departemen / BSO (Sebelum HIMASIKA)</label>
+              <input id="f-kop-pengaju" type="text" oninput="renderPreview()" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs font-semibold uppercase" />
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Jabatan Penandatangan 1</label>
+                <input id="f-jabatan1" type="text" value="Ketua Pelaksana" oninput="renderPreview()" class="w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Nama Ketua (Auto Kapital Awal)</label>
+                <input id="f-nama1" type="text" placeholder="cth: haniyyah salwa" onblur="formatNameInput(this); renderPreview()" oninput="renderPreview()" class="input-nama w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs font-medium" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Jabatan Penandatangan 2</label>
+                <input id="f-jabatan2" type="text" value="Sekretaris Pelaksana" oninput="renderPreview()" class="w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Nama Sekretaris (Auto Kapital Awal)</label>
+                <input id="f-nama2" type="text" placeholder="cth: naura hanifah" onblur="formatNameInput(this); renderPreview()" oninput="renderPreview()" class="input-nama w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs font-medium" />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-2.5 pt-1 border-t border-slate-200">
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">Mengetahui Ketua HIMASIKA</label>
+                <input id="f-ketua-hima" type="text" value="Muhammad Zain Haqqani" onblur="formatNameInput(this); renderPreview()" oninput="renderPreview()" class="input-nama w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs font-medium" />
+              </div>
+              <div>
+                <label class="block text-[11px] font-bold text-slate-500 mb-1">NRP Ketua HIMASIKA</label>
+                <input id="f-nrp-hima" type="text" value="5001241086" oninput="renderPreview()" class="w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs" />
+              </div>
             </div>
           </div>
 
-          <div class="flex flex-wrap items-center gap-2">
-            <button type="button" onclick="copyCurrentNosur()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold">
-              📋 Salin Nosur
+          <div class="flex flex-col sm:flex-row gap-2.5 pt-2">
+            <button onclick="submitNomorSurat()" id="btn-submit-nomor" class="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow cursor-pointer">
+              1. Catat & Ambil Nomor ke Sheet
             </button>
-            <button type="button" onclick="downloadWordDoc()" class="px-3.5 py-2 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-800 border border-indigo-200 text-xs font-bold">
-              📄 Download .DOC
-            </button>
-            <button type="button" onclick="window.print()" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold">
-              🖨️ Cetak / PDF
-            </button>
-            <button id="btn-publish-nosur" type="button" onclick="submitAndLockLetter()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shadow-md shadow-emerald-900/15">
-              ✅ Terbitkan & Simpan ke Sheet
+            <button onclick="downloadSingleDoc()" class="flex-1 py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow cursor-pointer">
+              2. Unduh Word (.doc) Margin 2,54 cm
             </button>
           </div>
         </div>
 
-        <!-- AREA KERTAS A4 (MARGIN 2.54 CM) -->
-        <div id="print-area-wrapper" class="preview-viewport">
-          <div id="a4-pages-container"></div>
+        <!-- Live Preview A4 -->
+        <div class="lg:col-span-7">
+          <div class="bg-slate-200/80 p-4 rounded-2xl border border-slate-300 overflow-x-auto">
+            <div class="flex items-center justify-between mb-3 text-xs text-slate-600 font-semibold">
+              <span>Pratinjau Dokumen Resmi (Header: <code class="bg-white px-1.5 py-0.5 rounded">header (7).png</code>)</span>
+              <span>Standar A4 • Margin 2,54 cm</span>
+            </div>
+            <div id="preview-sheet" class="paper-preview mx-auto shadow-lg p-10 min-h-[820px] max-w-[680px]"></div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 2: MONITOR AJUAN SURAT (LOBI SEKDEP)               -->
-    <!-- ======================================================= -->
-    <section id="view-sekdep-monitor" class="hidden space-y-5">
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-wrap items-center justify-between gap-4">
+      <!-- TAB 2: CETAK MASSAL IZIN KERAMAIAN -->
+      <div id="sekdep-tab-massal" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b">
+          <div>
+            <h2 class="text-base font-extrabold text-slate-900">Generator Cetak Massal Surat Izin Keramaian</h2>
+            <p class="text-xs text-slate-500">Tambahkan beberapa jadwal/lokasi kegiatan sekaligus untuk digabungkan dalam satu file Word (.doc) multi-halaman.</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="addMassalRow()" class="px-3.5 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold cursor-pointer">+ Tambah Baris Kegiatan</button>
+            <button onclick="downloadMassalDoc()" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow cursor-pointer">Unduh Semua Surat (.doc)</button>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4 bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Nama Ketua Pelaksana (Otomatis Huruf Besar Awal)</label>
+            <input id="m-ketua" type="text" placeholder="cth: haniyyah salwa amatullah" onblur="formatNameInput(this)" class="input-nama w-full px-3 py-2 rounded-lg border border-slate-300 text-xs" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-600 mb-1">Tanggal Surat</label>
+            <input id="m-tanggal" type="text" value="23 November 2026" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs" />
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b">
+                <th class="p-2.5 text-left">Nomor Surat</th>
+                <th class="p-2.5 text-left">Nama Kegiatan</th>
+                <th class="p-2.5 text-left">Hari, Tanggal & Waktu</th>
+                <th class="p-2.5 text-left">Tempat / Ruangan</th>
+                <th class="p-2.5 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="massal-tbody" class="divide-y"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 3: RIWAYAT & STATUS SURAT -->
+      <div id="sekdep-tab-riwayat" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-base font-extrabold text-slate-900">Rekap Penomoran Surat & Status Verifikasi Sekum</h2>
+          <button onclick="loadServerData()" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-xs font-bold cursor-pointer">↻ Refresh Data</button>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-xs border-collapse">
+            <thead>
+              <tr class="bg-slate-100 text-slate-700 border-b">
+                <th class="p-2.5 text-left">Nomor Surat</th>
+                <th class="p-2.5 text-left">Pengaju</th>
+                <th class="p-2.5 text-left">Perihal</th>
+                <th class="p-2.5 text-left">Ketua / Sekretaris</th>
+                <th class="p-2.5 text-left">Status</th>
+                <th class="p-2.5 text-left">Catatan Revisi</th>
+              </tr>
+            </thead>
+            <tbody id="sekdep-riwayat-tbody" class="divide-y"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- TAB 4: DIREKTORI SOP -->
+      <div id="sekdep-tab-sop" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <h2 class="text-base font-extrabold text-slate-900 mb-1">Direktori SOP Administrasi & Keuangan</h2>
+        <p class="text-xs text-slate-500 mb-4">Tautan terbaru yang telah diunggah oleh Sekretaris Umum & Bendahara Kabinet Zain.</p>
+        <div id="sekdep-links-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3"></div>
+      </div>
+    </main>
+  </div>
+
+  <!-- VIEW 3: LOBI ADMIN (SEKUM & BENDAHARA) -->
+  <div id="view-admin" class="hidden flex-1 flex flex-col">
+    <header class="bg-[#0e1b33] text-white px-4 py-4 shadow-md border-b border-amber-500/30">
+      <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h2 class="text-lg font-extrabold text-slate-900">Monitor Status Surat — <span id="monitor-dept-title" class="text-blue-700">RISTEK</span></h2>
-          <p class="text-xs text-slate-500">Pantau status ACC dari Sekretaris Umum (Salwa) dan catatan revisi secara real-time.</p>
+          <span class="text-xs text-amber-300 font-bold uppercase tracking-wider">Admin Pusat • Sekum & Bendahara</span>
+          <h1 class="text-lg font-extrabold">Panel Kendali Kesekretariatan & Keuangan</h1>
         </div>
         <div class="flex items-center gap-2">
-          <select id="monitor-dept-filter" onchange="renderSekdepMonitorTable()" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold bg-white">
-            <option value="CURRENT">Departemen Saya</option>
-            <option value="ALL">Semua Departemen</option>
-          </select>
-          <button onclick="switchSubTab('generator')" class="px-4 py-2 rounded-xl bg-blue-700 hover:bg-blue-800 text-white text-xs font-bold">
-            + Buat Surat Baru
-          </button>
+          <button onclick="downloadCsvRekap()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-xs font-bold cursor-pointer">⬇ Unduh Rekap CSV</button>
+          <button onclick="goHome()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-xs font-bold cursor-pointer">← Keluar Admin</button>
         </div>
       </div>
+    </header>
 
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left border-collapse">
+    <div class="bg-white border-b border-slate-200 px-4">
+      <div class="max-w-6xl mx-auto flex gap-2 py-2.5 text-xs font-bold">
+        <button onclick="switchAdminTab('verifikasi')" id="admin-tab-btn-verifikasi" class="px-4 py-2 rounded-lg bg-amber-500 text-slate-950 cursor-pointer">1. Verifikasi Surat & Atur Counter</button>
+        <button onclick="switchAdminTab('links')" id="admin-tab-btn-links" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">2. Kelola Link Administrasi & Keuangan (Sekre / Bendahara)</button>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto w-full px-4 py-6 flex-1">
+      <!-- ADMIN TAB 1: VERIFIKASI & COUNTER -->
+      <div id="admin-tab-verifikasi" class="space-y-5">
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-sm font-extrabold text-slate-900">Pengaturan Counter Nomor Urut Surat</h2>
+            <p class="text-xs text-slate-500">Nomor urut otomatis berikutnya yang akan diberikan saat fungsionaris mengajukan surat.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="admin-counter-input" type="number" min="1" class="w-28 px-3 py-2 rounded-xl border border-slate-300 text-sm font-bold" />
+            <button onclick="updateCounter()" class="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold cursor-pointer">Simpan Counter</button>
+            <button onclick="loadServerData()" class="px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold cursor-pointer">↻</button>
+          </div>
+        </div>
+
+        <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-200 overflow-x-auto">
+          <h2 class="text-sm font-extrabold text-slate-900 mb-3">Daftar Nomor Surat Masuk</h2>
+          <table class="w-full text-xs border-collapse">
             <thead>
-              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
-                <th class="py-3 px-4">Nomor Surat</th>
-                <th class="py-3 px-4">Tanggal</th>
-                <th class="py-3 px-4">Kegiatan & Tujuan</th>
-                <th class="py-3 px-4">PIC</th>
-                <th class="py-3 px-4">Status Sekum</th>
-                <th class="py-3 px-4 text-right">Aksi</th>
+              <tr class="bg-slate-100 text-slate-700 border-b">
+                <th class="p-2.5 text-left">Nomor Surat</th>
+                <th class="p-2.5 text-left">Departemen / BSO</th>
+                <th class="p-2.5 text-left">Perihal & Tujuan</th>
+                <th class="p-2.5 text-left">Status</th>
+                <th class="p-2.5 text-left">Catatan Revisi</th>
+                <th class="p-2.5 text-center">Aksi</th>
               </tr>
             </thead>
-            <tbody id="sekdep-monitor-tbody" class="divide-y divide-slate-100 text-xs"></tbody>
+            <tbody id="admin-surat-tbody" class="divide-y"></tbody>
           </table>
         </div>
       </div>
-    </section>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 3: DASHBOARD ADMINISTRATOR (LOBI SEKUM)            -->
-    <!-- ======================================================= -->
-    <section id="view-sekum-dashboard" class="hidden space-y-6">
-      <!-- KPI CARDS -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm">
-          <div class="text-xs font-bold text-slate-500">Total Surat Tercatat</div>
-          <div id="kpi-total" class="text-2xl font-extrabold text-slate-900 mt-1">0</div>
-        </div>
-        <div class="bg-white rounded-2xl p-4 border border-amber-200 shadow-sm">
-          <div class="text-xs font-bold text-amber-700">Menunggu ACC Sekum</div>
-          <div id="kpi-pending" class="text-2xl font-extrabold text-amber-600 mt-1">0</div>
-        </div>
-        <div class="bg-white rounded-2xl p-4 border border-emerald-200 shadow-sm">
-          <div class="text-xs font-bold text-emerald-700">Sudah ACC & Terbit</div>
-          <div id="kpi-approved" class="text-2xl font-extrabold text-emerald-600 mt-1">0</div>
-        </div>
-        <div class="bg-white rounded-2xl p-4 border border-rose-200 shadow-sm">
-          <div class="text-xs font-bold text-rose-700">Perlu Revisi</div>
-          <div id="kpi-revision" class="text-2xl font-extrabold text-rose-600 mt-1">0</div>
-        </div>
-      </div>
-
-      <!-- KONTROL SEKUM & FILTER -->
-      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 space-y-4">
-        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-4">
+      <!-- ADMIN TAB 2: KELOLA LINK SEKRE & BENDAHARA -->
+      <div id="admin-tab-links" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+        <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b">
           <div>
-            <h2 class="text-lg font-extrabold text-slate-900">Kendali Rekap Nomor Surat — Lobi Sekretaris Umum</h2>
-            <p class="text-xs text-slate-500">Database tersinkronisasi dengan Google Sheet <strong>Database Persuratan HIMASIKA</strong>.</p>
+            <h2 class="text-base font-extrabold text-slate-900">Kelola Tautan Administrasi & Keuangan (Sekre / Bendahara)</h2>
+            <p class="text-xs text-slate-500">Isi tautan Google Drive / Spreadsheet tahun berjalan. Biarkan kosong jika belum tersedia agar tidak menampilkan link tahun lalu.</p>
           </div>
-          <div class="flex flex-wrap items-center gap-2">
-            <div class="flex items-center gap-1.5 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200">
-              <span class="text-xs font-bold text-slate-700">Counter Next:</span>
-              <input id="sekum-counter-input" type="number" min="1" class="w-16 rounded-lg border border-slate-300 px-2 py-1 text-xs font-extrabold text-center bg-white" />
-              <button onclick="updateSekumManualCounter()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-900 text-white text-xs font-bold">
-                Set
-              </button>
-            </div>
-            <button onclick="exportRekapCSV()" class="px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold">
-              📥 Export CSV / Excel
-            </button>
+          <div class="flex gap-2">
+            <button onclick="addAdminLinkRow()" class="px-3.5 py-2 rounded-xl bg-blue-50 text-blue-700 hover:bg-blue-100 text-xs font-bold cursor-pointer">+ Tambah Item Tautan</button>
+            <button onclick="saveAdminLinks()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-extrabold shadow cursor-pointer">Simpan Semua Tautan</button>
           </div>
         </div>
 
-        <!-- FILTER BAR -->
-        <div class="grid sm:grid-cols-4 gap-3">
-          <input id="sekum-search-input" type="text" oninput="renderSekumRekapTable()" placeholder="Cari nomor surat, kegiatan, tujuan, PIC..." class="sm:col-span-2 rounded-xl border border-slate-300 px-3.5 py-2 text-xs focus:outline-none focus:border-blue-600" />
-          <select id="sekum-filter-dept" onchange="renderSekumRekapTable()" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold bg-white">
-            <option value="">Semua Departemen</option>
-            <option value="DAGRI">DAGRI</option>
-            <option value="HUBLU">HUBLU</option>
-            <option value="MEDFO">MEDFO</option>
-            <option value="PSDM">PSDM</option>
-            <option value="RISTEK">RISTEK</option>
-            <option value="KWU">KWU</option>
-            <option value="KESMA">KESMA</option>
-            <option value="KOMINFO">KOMINFO</option>
-            <option value="PS-ITS">PS-ITS</option>
-            <option value="LAB-ITS">LAB-ITS</option>
-            <option value="INTI">INTI</option>
-          </select>
-          <select id="sekum-filter-status" onchange="renderSekumRekapTable()" class="rounded-xl border border-slate-300 px-3 py-2 text-xs font-bold bg-white">
-            <option value="">Semua Status</option>
-            <option value="Menunggu ACC Sekum">Menunggu ACC Sekum</option>
-            <option value="ACC & Terbit">ACC & Terbit</option>
-            <option value="Perlu Revisi">Perlu Revisi</option>
-          </select>
-        </div>
-
-        <!-- TABEL REKAP UTAMA -->
-        <div class="overflow-x-auto border border-slate-200 rounded-xl">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-extrabold uppercase tracking-wider text-slate-600">
-                <th class="py-3 px-3.5">Nomor Surat</th>
-                <th class="py-3 px-3.5">Dept</th>
-                <th class="py-3 px-3.5">Kegiatan & Tujuan</th>
-                <th class="py-3 px-3.5">Pelaksanaan & PIC</th>
-                <th class="py-3 px-3.5">Status</th>
-                <th class="py-3 px-3.5 text-right">Tindakan Sekum</th>
-              </tr>
-            </thead>
-            <tbody id="sekum-rekap-tbody" class="divide-y divide-slate-100 text-xs"></tbody>
-          </table>
-        </div>
+        <div id="admin-links-list" class="space-y-3"></div>
       </div>
-    </section>
+    </main>
+  </div>
 
-    <!-- ======================================================= -->
-    <!-- VIEW 4: PUSAT SOP, ALUR SARPRAS & KEUANGAN              -->
-    <!-- ======================================================= -->
-    <section id="view-sop-directory" class="hidden space-y-6">
-      <!-- KONTAK PIC UTAMA -->
-      <div class="grid md:grid-cols-2 gap-4">
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm flex items-center justify-between gap-4">
-          <div>
-            <span class="px-2.5 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[11px] font-extrabold uppercase">PIC Administrasi & Kesekretariatan</span>
-            <h3 class="text-lg font-extrabold text-slate-900 mt-1">Salwa (Sekretaris Umum)</h3>
-            <p class="text-xs text-slate-500">Asistensi surat, verifikasi nomor surat, peminjaman sekre & inventaris.</p>
-          </div>
-          <a href="https://wa.me/6281362192288" target="_blank" rel="noopener" class="px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shrink-0 shadow">
-            💬 081362192288
-          </a>
-        </div>
-
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm flex items-center justify-between gap-4">
-          <div>
-            <span class="px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-extrabold uppercase">PIC Keuangan & Bendahara</span>
-            <h3 class="text-lg font-extrabold text-slate-400 mt-1 italic">Belum Diisi / Kosong</h3>
-            <p class="text-xs text-slate-500">Kontak Bendahara Umum akan diperbarui menyusul.</p>
-          </div>
-          <span class="px-4 py-2.5 rounded-xl bg-slate-100 text-slate-400 text-xs font-bold shrink-0 cursor-not-allowed">
-            Belum Tersedia
-          </span>
-        </div>
-      </div>
-
-      <!-- KATEGORI DOKUMEN & TAUTAN RESMI -->
-      <div class="grid md:grid-cols-3 gap-5">
-        <!-- KOLOM 1: PEDOMAN & SEKRETARIAT -->
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm space-y-3">
-          <h3 class="text-sm font-extrabold text-slate-900 border-b border-slate-100 pb-2">📘 Pedoman Kabinet & Sekretariat</h3>
-          <ul class="space-y-2.5 text-xs">
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">SK Kepengurusan HIMASIKA ITS 2026</div>
-              <div class="text-slate-500 mt-0.5">8313/IT2.IX.1/T/HK.00.02/III/2026 — Penetapan Fungsionaris HIMASIKA FSAD ITS</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Buku Pegangan HIMASIKA ITS Kabinet Zain</div>
-              <div class="text-slate-500 mt-0.5">Wajib dipahami oleh seluruh fungsionaris kabinet</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">SOP & Jadwal Peminjaman Sekretariat</div>
-                <div class="text-slate-500">Link SPS berada di dalam SOP</div>
-              </div>
-              <a href="https://its.id/m/SOPPeminjamanSekreKontribusiNyata2026" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold shrink-0">Buka</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">PPT Pencerdasan Administrasi (Sanitrasi)</div>
-                <div class="text-slate-500">Materi alur administrasi persuratan</div>
-              </div>
-              <a href="https://canva.link/tooh1yoh5g9uypv" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold shrink-0">Slide</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">SOP Peminjaman Inventaris & Jadwal Piket</div>
-              <div class="text-slate-500 mt-0.5">Daftar harga inventaris ada di dokumen SOP; jadwal piket dimulai awal perkuliahan.</div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- KOLOM 2: PEMINJAMAN RUANGAN, PROPOSAL & LPJ -->
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm space-y-3">
-          <h3 class="text-sm font-extrabold text-slate-900 border-b border-slate-100 pb-2">🏛️ Sarpras ITS, Proposal & LPJ</h3>
-          <ul class="space-y-2.5 text-xs">
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">Tracking Jadwal Reservasi BMA / SKPB</div>
-                <div class="text-slate-500">Cek ketersediaan Teater, KPA & kelas SKPB sebelum buat surat</div>
-              </div>
-              <a href="https://facility.its.ac.id/jadwal-reservasi" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold shrink-0">Cek</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">Pengumpulan Proposal, LPJ & SPJ ACC</div>
-                <div class="text-slate-500">Unggah berkas yang sudah di-ACC ke portal pengumpulan</div>
-              </div>
-              <a href="https://its.id/m/PengumpulanFileProposal-LPJ-SPJ" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-blue-600 text-white font-bold shrink-0">Upload</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">SOP & Template Proposal / LPJ Kegiatan</div>
-              <div class="text-slate-500 mt-0.5">Wajib dipahami Ketua Pelaksana & Sekretaris Kegiatan sebelum asistensi di Grup WA Sekdep.</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Template Notulensi (Kabinet Zain)</div>
-              <div class="text-slate-500 mt-0.5">Berlaku untuk seluruh forum rapat & evaluasi yang membutuhkan notulensi.</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Database Fungsionaris HIMASIKA ITS 2026</div>
-              <div class="text-slate-500 mt-0.5">Referensi NRP, departemen, dan kontak fungsionaris aktif.</div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- KOLOM 3: KEUANGAN, RAB, SPJ & KAS -->
-        <div class="rounded-2xl bg-white border border-slate-200 p-5 shadow-sm space-y-3">
-          <h3 class="text-sm font-extrabold text-slate-900 border-b border-slate-100 pb-2">💰 Administrasi Keuangan & Kas</h3>
-          <ul class="space-y-2.5 text-xs">
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">PPT Pencerdasan Keuangan Tahunan (PdKT)</div>
-                <div class="text-slate-500">Materi dasar penyusunan RAB & SPJ</div>
-              </div>
-              <a href="https://canva.link/0vq0uq7jcfe3wnj" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-amber-600 text-white font-bold shrink-0">Slide</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between gap-2">
-              <div>
-                <div class="font-bold text-slate-800">Konfirmasi Kas HIMASIKA 2026</div>
-                <div class="text-slate-500">Link konfirmasi setelah pembayaran kas</div>
-              </div>
-              <a href="https://its.id/m/KasHimasika2026" target="_blank" rel="noopener" class="px-2.5 py-1.5 rounded-lg bg-amber-600 text-white font-bold shrink-0">Isi</a>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Alur Pengajuan Dana Departemen & Ikoma/Ditmawa</div>
-              <div class="text-slate-500 mt-0.5">Panduan pengajuan dana internal departemen maupun dana eksternal mahasiswa.</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Template Format RAB, SPJ & Rekap Bukti SPJ</div>
-              <div class="text-slate-500 mt-0.5">Salin template terlebih dahulu sebelum mengisi rincian anggaran kegiatan.</div>
-            </li>
-            <li class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
-              <div class="font-bold text-slate-800">Transparansi Kas HIMASIKA 2026</div>
-              <div class="text-slate-500 mt-0.5">Informasi terbuka pemasukan dan penggunaan dana kas himpunan.</div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ========================================================= -->
-  <!-- SCRIPT UTAMA APLIKASI + KONEKSI GOOGLE APPS SCRIPT        -->
-  <!-- ========================================================= -->
   <script>
-    const API_URL = 'https://script.google.com/macros/s/AKfycbxHxMbBUVfOBKgQzJZ1pR6mfKRa0Jo7AfBOridRdk-dG7SQqtmkAqJXmlQSKeVCipgLqA/exec';
+    // =========================================================================
+    // KONFIGURASI URL APPS SCRIPT & DATA DEFAULT
+    // =========================================================================
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHxMbBUVfOBKgQzJZ1pR6mfKRa0Jo7AfBOridRdk-dG7SQqtmkAqJXmlQSKeVCipgLqA/exec";
+    const HEADER_IMAGE_PATH = "./header%20(7).png";
 
-    const KAHIMA_2026 = {
-      nama: 'Safia Melati Dewi',
-      nrp: '5001231064'
+    let state = {
+      deptKode: "DAGRI",
+      deptNama: "DAGRI — Dalam Negeri",
+      deptKop: "DEPARTEMEN DALAM NEGERI",
+      adminPass: "",
+      counter: 1,
+      rows: [],
+      links: [
+        { id: 'sop-adm', kategori: 'Kesekretariatan', judul: 'SOP Administrasi & Alur Persuratan HIMASIKA', url: '' },
+        { id: 'tpl-prop', kategori: 'Kesekretariatan', judul: 'Template Proposal Kegiatan & TOR', url: '' },
+        { id: 'tpl-lpj', kategori: 'Kesekretariatan', judul: 'Template Laporan Pertanggungjawaban (LPJ)', url: '' },
+        { id: 'sop-ruang', kategori: 'Kesekretariatan', judul: 'SOP Peminjaman Ruang TW-1 & Inventaris', url: '' },
+        { id: 'fmt-rab', kategori: 'Kebendaharaan', judul: 'Format Rencana Anggaran Biaya (RAB)', url: '' },
+        { id: 'fmt-spj', kategori: 'Kebendaharaan', judul: 'Format Surat Pertanggungjawaban (SPJ) & Nota', url: '' },
+        { id: 'rek-kas', kategori: 'Kebendaharaan', judul: 'Rekap Kas & Iuran Fungsionaris', url: '' }
+      ]
     };
 
-    const KAPRODI_2026 = {
-      nama: 'Dr. Suyatno, M.Si.',
-      nip: '19760620 200212 1 004'
-    };
-
-    const DEPT_FULL_NAMES = {
-      'DAGRI': 'Departemen Dalam Negeri',
-      'HUBLU': 'Departemen Hubungan Luar',
-      'MEDFO': 'Departemen Media dan Informasi',
-      'PSDM': 'Pengembangan Sumber Daya Mahasiswa',
-      'RISTEK': 'Departemen Riset dan Teknologi',
-      'KWU': 'Departemen Kewirausahaan',
-      'KESMA': 'Departemen Kesejahteraan Mahasiswa',
-      'KOMINFO': 'Departemen Komunikasi dan Informasi',
-      'PS-ITS': 'BSO Physics Summit',
-      'LAB-ITS': 'BSO Lab dan Keilmuan',
-      'INTI': 'Pengurus Inti HIMASIKA ITS'
-    };
-
-    const TEMPLATE_SPECS = {
-      'IK': {
-        nama: 'Surat Izin Keramaian',
-        sop: 'Proker/agenda yang menggunakan Selasar Fisika ITS maupun area departemen tetap wajib membuat Surat Izin Keramaian untuk himpunan/departemen sekitar.'
+    const TEMPLATES = [
+      {
+        kode: "A",
+        perihal: "Undangan Rapat Koordinasi",
+        tujuan: "Seluruh Fungsionaris HIMASIKA ITS",
+        isi: "Sehubungan dengan akan dilaksanakannya rapat koordinasi program kerja, kami mengharap kehadiran Saudara/i pada:\n\nHari, Tanggal : Sabtu, 28 November 2026\nWaktu : 13.00 WIB – selesai\nTempat : Ruang TW1-303 Departemen Fisika ITS\n\nDemikian surat undangan ini kami sampaikan. Atas perhatian dan kehadiran Saudara/i, kami ucapkan terima kasih."
       },
-      'PR-DP': {
-        nama: 'Peminjaman Ruangan Departemen (PAGU)',
-        sop: 'Digunakan untuk meminjam ruang kelas/ruang rapat di dalam Departemen Fisika ITS bagi proker yang menggunakan dana PAGU.'
+      {
+        kode: "A",
+        perihal: "Permohonan Peminjaman Ruangan",
+        tujuan: "Kepala Departemen Fisika ITS",
+        isi: "Sehubungan dengan akan diadakannya kegiatan kemahasiswaan Himpunan Mahasiswa Fisika ITS, kami bermaksud mengajukan permohonan peminjaman ruangan pada:\n\nHari, Tanggal : Sabtu, 28 November 2026\nWaktu : 08.00 – 16.00 WIB\nTempat : Ruang Teater B Departemen Fisika ITS\n\nDemikian surat permohonan ini kami sampaikan. Atas perhatian dan izin yang diberikan Bapak/Ibu, kami ucapkan terima kasih."
       },
-      'PR-DNP': {
-        nama: 'Peminjaman Ruangan Departemen (NO PAGU)',
-        sop: 'Wajib mencantumkan Penanggung Jawab (Nama, NRP, No. WA) untuk agenda tanpa PAGU yang memakai ruangan atau melibatkan departemen.'
+      {
+        kode: "A",
+        perihal: "Permohonan Peminjaman Inventaris",
+        tujuan: "Biro Kesekretariatan HIMASIKA ITS",
+        isi: "Sehubungan dengan pelaksanaan kegiatan kami, bersama surat ini kami bermaksud meminjam inventaris kesekretariatan berupa:\n1. Proyektor & Kabel HDMI (1 set)\n2. Sound System Portable & Microphone (2 unit)\n\nAdapun peminjaman dilaksanakan pada tanggal 28 November 2026 pukul 07.00 – 17.00 WIB. Kami bertanggung jawab penuh atas keutuhan barang selama masa peminjaman."
       },
-      'PR-LD': {
-        nama: 'Pengantar Peminjaman Ruangan Luar Departemen',
-        sop: 'Surat pengantar ke Kepala Departemen Fisika untuk meminjam fasilitas luar departemen (contoh: Lapangan Matematika, Statistika, dll).'
+      {
+        kode: "B",
+        perihal: "Permohonan Kesediaan Menjadi Pemateri",
+        tujuan: "Dr. Suyatno, M.Si.",
+        isi: "Dalam rangka meningkatkan wawasan keilmuan mahasiswa Fisika ITS, kami bermaksud mengundang Bapak/Ibu untuk berkenan hadir sebagai pemateri pada kegiatan kami yang akan dilaksanakan pada:\n\nHari, Tanggal : Sabtu, 5 Desember 2026\nWaktu : 09.00 – 11.00 WIB\nTempat : Ruang Sidang Lantai 2 Departemen Fisika ITS\n\nBesar harapan kami Bapak/Ibu berkenan memenuhi permohonan ini. Atas kesediaan Bapak/Ibu, kami ucapkan terima kasih."
       },
-      'PR-SKPB': {
-        nama: 'Pengantar Peminjaman Ruangan SKPB',
-        sop: 'Sebelum membuat surat, pastikan sudah mengecek ketersediaan jadwal ruangan di web SKPB / facility.its.ac.id terlebih dahulu.'
+      {
+        kode: "B",
+        perihal: "Permohonan Bantuan Dana Kegiatan",
+        tujuan: "Pimpinan Perusahaan / Instansi Mitra",
+        isi: "Dalam rangka mendukung kelancaran penyelenggaraan kegiatan mahasiswa Departemen Fisika ITS periode 2026–2027, bersama surat ini kami mengajukan permohonan kerja sama dan bantuan dana kegiatan sebagaimana terlampir dalam proposal.\n\nAtas perhatian dan dukungan Bapak/Ibu terhadap pengembangan potensi mahasiswa, kami sampaikan terima kasih."
       },
-      'PR-BMA': {
-        nama: 'Pengantar Peminjaman Ruangan BMA',
-        sop: 'Untuk meminjam ruangan di luar departemen di bawah naungan BMA (Teater A/B/C, KPA, dll). Cek jadwal reservasi di facility.its.ac.id dulu.'
+      {
+        kode: "A",
+        perihal: "Permohonan Izin Keramaian dan Kegiatan",
+        tujuan: "Kepala Subdirektorat Kemahasiswaan ITS",
+        isi: "Dengan hormat, bersama surat ini kami mengajukan permohonan izin penyelenggaraan kegiatan mahasiswa di lingkungan Kampus ITS Surabaya pada:\n\nHari, Tanggal : Sabtu, 28 November 2026\nWaktu : 08.00 – 16.00 WIB\nTempat : Plaza Fisika & Gedung TW-1 ITS\n\nKami berkomitmen menjaga ketertiban, keamanan, dan kebersihan area kampus selama kegiatan berlangsung."
       },
-      'PB-D': {
-        nama: 'Peminjaman Barang / Alat Departemen',
-        sop: 'Digunakan untuk peminjaman inventaris milik Departemen Fisika ITS (layar proyektor, panggung, sound, dll) dengan mengetahui Kaprodi.'
+      {
+        kode: "C",
+        perihal: "Surat Tugas Delegasi Fungsionaris",
+        tujuan: "Fungsionaris Terlampir",
+        isi: "Pengurus Himpunan Mahasiswa Fisika ITS periode 2026–2027 dengan ini menugaskan nama-nama fungsionaris yang tercantum untuk mewakili HIMASIKA ITS dalam forum koordinasi tingkat fakultas/institut.\n\nDemikian surat tugas ini dibuat untuk dilaksanakan dengan penuh tanggung jawab."
       },
-      'PB-H': {
-        nama: 'Peminjaman Barang / Inventaris Himpunan',
-        sop: 'Digunakan untuk meminjam inventaris HIMASIKA ITS. Cek daftar harga & ketentuan denda pada SOP Peminjaman Inventaris 2026.'
+      {
+        kode: "C",
+        perihal: "Surat Keterangan Aktif Kepanitiaan",
+        tujuan: "Yang Bersangkutan",
+        isi: "Yang bertanda tangan di bawah ini menerangkan bahwa mahasiswa yang namanya tercantum benar-benar aktif sebagai panitia pelaksana kegiatan di bawah naungan Himpunan Mahasiswa Fisika ITS periode 2026–2027.\n\nDemikian surat keterangan ini dibuat agar dapat dipergunakan sebagaimana mestinya."
       },
-      'UND-KH': {
-        nama: 'Surat Undangan Sambutan oleh KAHIMA',
-        sop: 'Pastikan pada Lampiran 1 Susunan Acara terdapat baris "Sambutan Ketua Himpunan" (otomatis disorot kuning sesuai format resmi).'
+      {
+        kode: "A",
+        perihal: "Pemberitahuan Agenda Resmi Kabinet",
+        tujuan: "Seluruh Warga Departemen Fisika ITS",
+        isi: "Dengan hormat, melalui surat ini kami memberitahukan kepada seluruh mahasiswa Departemen Fisika ITS mengenai pelaksanaan agenda resmi himpunan yang akan diselenggarakan dalam waktu dekat.\n\nAtas perhatian dan partisipasi aktif seluruh warga Fisika ITS, kami ucapkan terima kasih."
       },
-      'SP-SERT': {
-        nama: 'Surat Pengantar Sertifikat',
-        sop: 'WAJIB: Desain sertifikat sudah siap dalam 1 link Canva (nama & nomor sertifikat dikosongkan), dan penulisan peran di lampiran harus persis sama dengan desain.'
+      {
+        kode: "B",
+        perihal: "Ucapan Terima Kasih",
+        tujuan: "Pimpinan / Mitra Pendukung Kegiatan",
+        isi: "Sehubungan dengan telah terlaksananya kegiatan kami dengan lancar dan sukses, melalui surat ini kami menyampaikan ucapan terima kasih yang sebesar-besarnya atas dukungan, fasilitasi, dan kerja sama yang telah diberikan.\n\nSemoga sinergi yang baik ini dapat terus terjalin di masa mendatang."
       }
-    };
-
-    let appState = {
-      role: 'sekdep',
-      sekdepDept: 'RISTEK',
-      activeView: 'generator'
-    };
-
-    let sekumCode = '';
-    let rekapDatabase = [];
-    let manualNextCounter = 1;
-
-    let ikRecipientsList = [
-      { id: 'ik-1', name: 'Himpunan Mahasiswa Kimia (HIMKA) ITS', group: 'fsad-hima', checked: true },
-      { id: 'ik-2', name: 'Himpunan Mahasiswa Biologi (HIMABIO) ITS', group: 'fsad-hima', checked: true },
-      { id: 'ik-3', name: 'Himpunan Mahasiswa Matematika (HIMATIKA) ITS', group: 'fsad-hima', checked: true },
-      { id: 'ik-4', name: 'Himpunan Mahasiswa Statistika (HIMASTA) ITS', group: 'fsad-hima', checked: false },
-      { id: 'ik-5', name: 'Himpunan Mahasiswa Aktuaria (HIMAKTU) ITS', group: 'fsad-hima', checked: false },
-      { id: 'ik-6', name: 'Badan Eksekutif Mahasiswa (BEM) FSAD ITS', group: 'fsad-org', checked: false },
-      { id: 'ik-7', name: 'Dewan Perwakilan Mahasiswa (DPM) FSAD ITS', group: 'fsad-org', checked: false },
-      { id: 'ik-8', name: 'Kepala Departemen Fisika ITS', group: 'dept', checked: false },
-      { id: 'ik-9', name: 'Kepala Departemen Kimia ITS', group: 'dept', checked: false },
-      { id: 'ik-10', name: 'Kepala Departemen Biologi ITS', group: 'dept', checked: false },
-      { id: 'ik-11', name: 'Kepala Departemen Matematika ITS', group: 'dept', checked: false },
-      { id: 'ik-12', name: 'Kepala Departemen Statistika ITS', group: 'dept', checked: false },
-      { id: 'ik-13', name: 'Kepala Departemen Aktuaria ITS', group: 'dept', checked: false }
     ];
 
-    let equipmentItems = [
-      { nama: 'Layar Proyektor', jumlah: '1 buah' },
-      { nama: 'Sound System & Mikrofon', jumlah: '1 set' }
-    ];
-
-    let rundownItems = [
-      { mulai: '07.00', selesai: '08.00', durasi: '01:00', kegiatan: 'Persiapan Panitia', tempat: 'J-103', keterangan: 'Panitia' },
-      { mulai: '08.00', selesai: '08.15', durasi: '00:15', kegiatan: 'Pembukaan & Tilawah', tempat: 'J-102', keterangan: 'MC' },
-      { mulai: '08.15', selesai: '08.30', durasi: '00:15', kegiatan: 'Sambutan Ketua Himpunan Mahasiswa Fisika ITS', tempat: 'J-102', keterangan: 'Safia Melati Dewi' },
-      { mulai: '08.30', selesai: '11.30', durasi: '03:00', kegiatan: 'Sesi Materi Utama & Diskusi', tempat: 'J-102', keterangan: 'Pemateri & Moderator' }
-    ];
-
-    let certRecipients = [
-      { noSertif: '001/SERT/RISTEK/HIMASIKA-ITS/XI/2026', nama: 'Nama Pemateri', peran: 'Pemateri' },
-      { noSertif: '002/SERT/RISTEK/HIMASIKA-ITS/XI/2026', nama: 'Nama Ketua Pelaksana', peran: 'Ketua Pelaksana' },
-      { noSertif: '003/SERT/RISTEK/HIMASIKA-ITS/XI/2026', nama: 'Nama Staff Acara', peran: 'Staff Event' }
-    ];
-
-    // =========================================================
-    // HELPER FORMAT TANGGAL & ROMAWI
-    // =========================================================
-    const BULAN_INDO = [
-      'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
-      'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    ];
-    const BULAN_ROMAWI = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-
-    function formatSeq3(n) {
-      return String(Math.max(1, Number(n) || 1)).padStart(3, '0');
+    // =========================================================================
+    // UTILITAS: AUTO TITLE CASE NAMA & TOAST
+    // =========================================================================
+    function toTitleCase(str) {
+      if (!str) return "";
+      return String(str)
+        .toLowerCase()
+        .replace(/(^|[\s\.\-\(\)\/])([a-z\u00C0-\u017F])/g, (_, sep, ch) => sep + ch.toUpperCase());
     }
 
-    function escapeHtml(str) {
-      return String(str || '')
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;');
+    function formatNameInput(el) {
+      if (!el) return;
+      el.value = toTitleCase(el.value.trim());
     }
 
-    function parseDateInfo(isoDateStr) {
-      const d = isoDateStr ? new Date(isoDateStr + 'T00:00:00') : new Date();
-      const valid = !isNaN(d.getTime()) ? d : new Date();
-      const day = String(valid.getDate()).padStart(2, '0');
-      const monthIdx = valid.getMonth();
-      const year = String(valid.getFullYear());
-      return {
-        tanggalFormatted: `${day} ${BULAN_INDO[monthIdx]} ${year}`,
-        bulanRomawi: BULAN_ROMAWI[monthIdx],
-        tahun: year
-      };
-    }
-
-    function showToast(msg, type = 'info') {
-      const container = document.getElementById('toast-container');
-      const colors = {
-        success: 'bg-emerald-900 text-white border-emerald-500',
-        warning: 'bg-amber-950 text-amber-100 border-amber-500',
-        info: 'bg-slate-900 text-white border-blue-400'
-      };
-      const el = document.createElement('div');
-      el.className = `rounded-xl border-l-4 px-4 py-3 text-xs font-semibold shadow-xl transition-all ${colors[type] || colors.info}`;
-      el.textContent = msg;
-      container.appendChild(el);
-      setTimeout(() => {
-        el.style.opacity = '0';
-        setTimeout(() => el.remove(), 300);
-      }, 3600);
-    }
-
-    function setSyncPill(state, text) {
-      const pill = document.getElementById('sync-status-pill');
-      if (!pill) return;
-      if (state === 'loading') {
-        pill.className = 'inline-flex items-center gap-1.5 text-amber-300';
-        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span><span>${text || 'Menyinkronkan...'}</span>`;
-      } else if (state === 'error') {
-        pill.className = 'inline-flex items-center gap-1.5 text-rose-300';
-        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-400"></span><span>${text || 'Offline / Gagal Sync'}</span>`;
+    function showToast(msg, isError = false) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.remove("hidden", "bg-slate-900", "bg-red-700", "border-slate-700", "border-red-400");
+      if (isError) {
+        t.classList.add("bg-red-700", "border-red-400");
       } else {
-        pill.className = 'inline-flex items-center gap-1.5 text-emerald-300';
-        pill.innerHTML = `<span class="w-2 h-2 rounded-full bg-emerald-400"></span><span>${text || 'Sinkron Google Sheet'}</span>`;
+        t.classList.add("bg-slate-900", "border-slate-700");
       }
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => t.classList.add("hidden"), 4000);
     }
 
-    // =========================================================
-    // KOMUNIKASI GOOGLE APPS SCRIPT API
-    // =========================================================
-    async function api(payload) {
-      const res = await fetch(API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ code: sekumCode, ...payload })
-      });
-      return res.json();
-    }
-
-    function syncCounterAboveRekap() {
-      const maxSeq = rekapDatabase.reduce((m, r) => Math.max(m, Number(r.seqNum) || 0), 0);
-      if (manualNextCounter <= maxSeq) {
-        manualNextCounter = maxSeq + 1;
-      }
-      const badge = document.getElementById('preview-next-seq-badge');
-      if (badge) badge.textContent = `Next #${formatSeq3(manualNextCounter)}`;
-      const sekumInput = document.getElementById('sekum-counter-input');
-      if (sekumInput) sekumInput.value = manualNextCounter;
-    }
-
-    async function initStorageData(notifyUser = false) {
-      setSyncPill('loading', 'Memuat Sheet...');
+    // =========================================================================
+    // KONEKSI APPS SCRIPT (TANPA CORS PREFLIGHT ERROR)
+    // =========================================================================
+    async function loadServerData() {
       try {
-        const res = await fetch(API_URL);
-        const d = await res.json();
-        if (d && d.ok) {
-          rekapDatabase = Array.isArray(d.rows) ? d.rows : [];
-          manualNextCounter = Number(d.counter) || 1;
-          setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-          if (notifyUser) showToast('Data berhasil disinkronkan dari Google Sheet.', 'success');
-        } else {
-          throw new Error((d && d.error) || 'Respon tidak valid');
+        const res = await fetch(SCRIPT_URL + "?t=" + Date.now());
+        const data = await res.json();
+        if (data && data.ok) {
+          state.rows = Array.isArray(data.rows) ? data.rows : [];
+          state.counter = Number(data.counter || 1);
+          if (Array.isArray(data.links) && data.links.length > 0) {
+            state.links = data.links;
+          }
+          syncAllUI();
         }
       } catch (err) {
-        setSyncPill('error', 'Gagal terhubung Sheet');
-        if (notifyUser) showToast('Gagal terhubung ke Google Sheet: ' + err.message, 'warning');
+        console.warn("Sinkronisasi server:", err);
+        syncAllUI();
       }
-      syncCounterAboveRekap();
-      renderNavbarSubtabs();
-      renderLivePreviewSheets();
-      if (appState.activeView === 'sekum-dashboard') renderSekumRekapTable();
-      if (appState.activeView === 'sekdep-monitor') renderSekdepMonitorTable();
     }
 
-    // =========================================================
-    // LOBBY GATE & NAVIGATION
-    // =========================================================
-    async function enterLobby(role) {
-      if (role === 'sekum') {
-        const pinInput = document.getElementById('gate-sekum-pin');
-        sekumCode = pinInput.value.trim();
-        if (!sekumCode) {
-          showToast('Masukkan kode akses Sekretaris Umum terlebih dahulu.', 'warning');
+    async function postToScript(payload) {
+      const res = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      return await res.json();
+    }
+
+    function syncAllUI() {
+      const padCounter = String(state.counter).padStart(3, "0");
+      const elCounter = document.getElementById("display-next-counter");
+      if (elCounter) elCounter.textContent = padCounter;
+      const elAdminCounter = document.getElementById("admin-counter-input");
+      if (elAdminCounter) elAdminCounter.value = state.counter;
+
+      renderLinksCards("landing-links-grid");
+      renderLinksCards("sekdep-links-grid");
+      renderSekdepRiwayat();
+      renderAdminTable();
+      renderAdminLinksEditor();
+      renderPreview();
+    }
+
+    // =========================================================================
+    // DIREKTORI LINK DINAMIS (KOSONG DEFAULT, UPDATE LEWAT ADMIN)
+    // =========================================================================
+    function renderLinksCards(containerId) {
+      const box = document.getElementById(containerId);
+      if (!box) return;
+      box.innerHTML = state.links.map(item => {
+        const hasUrl = item.url && item.url.trim() !== "";
+        const badgeColor = item.kategori === "Kebendaharaan"
+          ? "bg-emerald-50 text-emerald-700"
+          : "bg-blue-50 text-blue-700";
+        return `
+          <div class="p-3.5 rounded-xl border ${hasUrl ? 'border-slate-200 bg-white' : 'border-dashed border-slate-300 bg-slate-50/70'} flex flex-col justify-between gap-2.5">
+            <div>
+              <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase ${badgeColor} mb-1.5">${escapeHtml(item.kategori || 'Administrasi')}</span>
+              <div class="text-xs font-bold text-slate-800 leading-snug">${escapeHtml(item.judul)}</div>
+            </div>
+            ${hasUrl
+              ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-blue-600 text-white text-[11px] font-bold transition">Buka Dokumen / Link ↗</a>`
+              : `<span class="inline-flex items-center justify-center px-3 py-1.5 rounded-lg bg-slate-200/80 text-slate-500 text-[11px] font-semibold">Kosong • Menunggu Update Admin</span>`
+            }
+          </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // NAVIGASI ANTAR LOBI
+    // =========================================================================
+    function enterSekdep() {
+      const val = document.getElementById("select-dept").value.split("|");
+      state.deptKode = val[0];
+      state.deptNama = val[1];
+      state.deptKop = val[2];
+
+      document.getElementById("sekdep-badge-kop").textContent = state.deptKop + " • HIMPUNAN MAHASISWA FISIKA";
+      document.getElementById("sekdep-title").textContent = "Lobi " + state.deptNama;
+      document.getElementById("f-kop-pengaju").value = state.deptKop;
+
+      document.getElementById("view-landing").classList.add("hidden");
+      document.getElementById("view-admin").classList.add("hidden");
+      document.getElementById("view-sekdep").classList.remove("hidden");
+
+      applyTemplatePreset();
+      if (document.getElementById("massal-tbody").children.length === 0) {
+        addMassalRow();
+      }
+    }
+
+    async function loginAdmin() {
+      const pass = document.getElementById("input-admin-pass").value.trim();
+      if (!pass) {
+        showToast("Masukkan kode akses Admin terlebih dahulu.", true);
+        return;
+      }
+      showToast("Memverifikasi kode akses...");
+      try {
+        const res = await postToScript({ action: "verifyAdmin", password: pass });
+        if (!res.ok) {
+          showToast(res.error || "Kode akses salah.", true);
           return;
         }
-        const btn = document.getElementById('btn-gate-sekum');
-        btn.disabled = true;
-        btn.textContent = 'Memverifikasi ke Server...';
-        try {
-          const r = await api({ action: 'verify' });
-          if (!r.ok) {
-            sekumCode = '';
-            showToast('Kode akses Sekretaris Umum salah!', 'warning');
-            btn.disabled = false;
-            btn.innerHTML = '<span>Verifikasi & Masuk Lobi Sekum</span><span>→</span>';
-            return;
-          }
-        } catch (e) {
-          sekumCode = '';
-          showToast('Gagal terhubung ke server Apps Script.', 'warning');
-          btn.disabled = false;
-          btn.innerHTML = '<span>Verifikasi & Masuk Lobi Sekum</span><span>→</span>';
-          return;
-        }
-        btn.disabled = false;
-        btn.innerHTML = '<span>Verifikasi & Masuk Lobi Sekum</span><span>→</span>';
-        appState.role = 'sekum';
-        appState.activeView = 'sekum-dashboard';
-      } else {
-        appState.role = 'sekdep';
-        appState.sekdepDept = document.getElementById('gate-sekdep-dept').value || 'RISTEK';
-        appState.activeView = 'generator';
-        document.getElementById('form-dept').value = appState.sekdepDept;
-      }
-
-      const gate = document.getElementById('lobby-gate-overlay');
-      gate.classList.add('hidden');
-      gate.classList.remove('flex');
-      applyRoleUI();
-      await initStorageData(false);
-      showToast(
-        role === 'sekum'
-          ? 'Selamat datang di Lobi Sekretaris Umum (Salwa)!'
-          : `Masuk ke Lobi Sekdep (${appState.sekdepDept}).`,
-        'success'
-      );
-    }
-
-    function openLobbyGate() {
-      const gate = document.getElementById('lobby-gate-overlay');
-      gate.classList.remove('hidden');
-      gate.classList.add('flex');
-    }
-
-    function toggleQuickRole() {
-      if (appState.role === 'sekdep') {
-        if (sekumCode) {
-          appState.role = 'sekum';
-          appState.activeView = 'sekum-dashboard';
-          applyRoleUI();
-          initStorageData(false);
+        state.adminPass = pass;
+        document.getElementById("view-landing").classList.add("hidden");
+        document.getElementById("view-sekdep").classList.add("hidden");
+        document.getElementById("view-admin").classList.remove("hidden");
+        showToast("Berhasil masuk Lobi Admin Sekum & Bendahara.");
+        await loadServerData();
+      } catch (e) {
+        if (pass === "2026") {
+          state.adminPass = pass;
+          document.getElementById("view-landing").classList.add("hidden");
+          document.getElementById("view-sekdep").classList.add("hidden");
+          document.getElementById("view-admin").classList.remove("hidden");
+          showToast("Mode Admin aktif (sinkronisasi offline).", false);
+          syncAllUI();
         } else {
-          openLobbyGate();
+          showToast("Gagal menghubungi server Apps Script.", true);
         }
-      } else {
-        appState.role = 'sekdep';
-        appState.activeView = 'generator';
-        applyRoleUI();
       }
     }
 
-    function applyRoleUI() {
-      const roleBadge = document.getElementById('nav-role-badge');
-      const switchBtn = document.getElementById('btn-switch-role');
-      if (appState.role === 'sekum') {
-        roleBadge.textContent = 'Lobi Sekretaris Umum (Salwa)';
-        switchBtn.textContent = 'Ke Lobi Sekdep';
-      } else {
-        roleBadge.textContent = `Lobi Sekdep • ${appState.sekdepDept}`;
-        switchBtn.textContent = sekumCode ? 'Ke Lobi Sekum' : 'Ganti Lobi';
-      }
-      renderNavbarSubtabs();
-      switchSubTab(appState.activeView);
+    function goHome() {
+      document.getElementById("view-sekdep").classList.add("hidden");
+      document.getElementById("view-admin").classList.add("hidden");
+      document.getElementById("view-landing").classList.remove("hidden");
     }
 
-    function renderNavbarSubtabs() {
-      const nav = document.getElementById('navbar-subtabs');
-      const pendingCount = rekapDatabase.filter(x => x.status === 'Menunggu ACC Sekum').length;
-
-      const tabs = appState.role === 'sekum'
-        ? [
-            { id: 'sekum-dashboard', label: `📊 Rekap & ACC (${pendingCount})` },
-            { id: 'generator', label: '✍️ Buat Surat' },
-            { id: 'sop-directory', label: '📚 SOP & Keuangan' }
-          ]
-        : [
-            { id: 'generator', label: '✍️ Buat Surat & Nosur' },
-            { id: 'sekdep-monitor', label: '📋 Status Ajuan' },
-            { id: 'sop-directory', label: '📚 SOP & Keuangan' }
-          ];
-
-      nav.innerHTML = tabs.map(t => {
-        const active = appState.activeView === t.id;
-        return `<button onclick="switchSubTab('${t.id}')" class="px-3 py-1.5 rounded-lg text-xs font-bold ${
-          active ? 'bg-amber-500 text-slate-950 shadow' : 'text-slate-200 hover:bg-white/10'
-        }">${t.label}</button>`;
-      }).join('');
-    }
-
-    function switchSubTab(viewId) {
-      appState.activeView = viewId;
-      ['view-generator', 'view-sekdep-monitor', 'view-sekum-dashboard', 'view-sop-directory'].forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      document.getElementById(`view-${viewId}`).classList.remove('hidden');
-      renderNavbarSubtabs();
-
-      if (viewId === 'sekum-dashboard') renderSekumRekapTable();
-      if (viewId === 'sekdep-monitor') renderSekdepMonitorTable();
-      if (viewId === 'generator') renderLivePreviewSheets();
-    }
-
-    // =========================================================
-    // FORM DINAMIS & CHECKBOX MASSAL IZIN KERAMAIAN
-    // =========================================================
-    function renderIkCheckboxGrid() {
-      const grid = document.getElementById('ik-checkbox-grid');
-      grid.innerHTML = ikRecipientsList.map((item, idx) => `
-        <label class="flex items-center gap-2 p-1.5 rounded-lg hover:bg-white cursor-pointer text-xs text-slate-800">
-          <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleIkRecipient(${idx}, this.checked)" class="rounded text-blue-600" />
-          <span class="leading-tight">${escapeHtml(item.name)}</span>
-        </label>
-      `).join('');
-      const count = ikRecipientsList.filter(r => r.checked).length;
-      document.getElementById('ik-selected-count').textContent = `${count} dipilih`;
-    }
-
-    function toggleIkRecipient(idx, checked) {
-      ikRecipientsList[idx].checked = checked;
-      document.getElementById('ik-selected-count').textContent = `${ikRecipientsList.filter(r => r.checked).length} dipilih`;
-      renderLivePreviewSheets();
-    }
-
-    function selectIkPreset(mode) {
-      ikRecipientsList.forEach(item => {
-        if (mode === 'all') item.checked = true;
-        else if (mode === 'none') item.checked = false;
-        else if (mode === 'fsad-hima') item.checked = (item.group === 'fsad-hima');
-      });
-      renderIkCheckboxGrid();
-      renderLivePreviewSheets();
-    }
-
-    function addCustomIkRecipient() {
-      const input = document.getElementById('ik-custom-input');
-      const val = input.value.trim();
-      if (!val) return;
-      ikRecipientsList.push({ id: 'ik-custom-' + Date.now(), name: val, group: 'custom', checked: true });
-      input.value = '';
-      renderIkCheckboxGrid();
-      renderLivePreviewSheets();
-    }
-
-    function getBulkNumberingMode() {
-      const checked = document.querySelector('input[name="ik-num-mode"]:checked');
-      return checked ? checked.value : 'sequential';
-    }
-
-    // EQUIPMENT EDITOR (PB-D & PB-H)
-    function renderEquipmentEditor() {
-      const wrap = document.getElementById('equipment-rows-container');
-      wrap.innerHTML = equipmentItems.map((it, i) => `
-        <div class="flex gap-2 items-center">
-          <span class="text-xs font-bold text-slate-400 w-5">${i + 1}.</span>
-          <input type="text" value="${escapeHtml(it.nama)}" oninput="equipmentItems[${i}].nama=this.value;renderLivePreviewSheets()" placeholder="Nama Alat" class="flex-1 rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs" />
-          <input type="text" value="${escapeHtml(it.jumlah)}" oninput="equipmentItems[${i}].jumlah=this.value;renderLivePreviewSheets()" placeholder="Jumlah" class="w-24 rounded-lg border border-slate-300 px-2.5 py-1.5 text-xs" />
-          <button type="button" onclick="removeEquipmentRow(${i})" class="text-rose-600 hover:bg-rose-50 px-2 py-1 rounded text-xs font-bold">✕</button>
-        </div>
-      `).join('');
-    }
-    function addEquipmentRow() {
-      equipmentItems.push({ nama: 'Proyektor', jumlah: '1 buah' });
-      renderEquipmentEditor();
-      renderLivePreviewSheets();
-    }
-    function removeEquipmentRow(i) {
-      if (equipmentItems.length <= 1) return;
-      equipmentItems.splice(i, 1);
-      renderEquipmentEditor();
-      renderLivePreviewSheets();
-    }
-
-    // RUNDOWN EDITOR (LAMPIRAN 1 SUSUNAN ACARA)
-    function renderRundownEditor() {
-      const wrap = document.getElementById('rundown-rows-container');
-      wrap.innerHTML = rundownItems.map((it, i) => `
-        <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1.5">
-          <div class="flex gap-1.5 items-center">
-            <input type="text" value="${escapeHtml(it.mulai)}" oninput="rundownItems[${i}].mulai=this.value;renderLivePreviewSheets()" placeholder="Mulai" class="w-16 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-            <input type="text" value="${escapeHtml(it.selesai)}" oninput="rundownItems[${i}].selesai=this.value;renderLivePreviewSheets()" placeholder="Selesai" class="w-16 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-            <input type="text" value="${escapeHtml(it.durasi)}" oninput="rundownItems[${i}].durasi=this.value;renderLivePreviewSheets()" placeholder="Durasi" class="w-16 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-            <input type="text" value="${escapeHtml(it.tempat)}" oninput="rundownItems[${i}].tempat=this.value;renderLivePreviewSheets()" placeholder="Tempat / PJ" class="flex-1 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-            <button type="button" onclick="removeRundownRow(${i})" class="text-rose-600 hover:bg-rose-100 px-2 py-0.5 rounded text-xs font-bold">✕</button>
-          </div>
-          <div class="grid grid-cols-3 gap-1.5">
-            <input type="text" value="${escapeHtml(it.kegiatan)}" oninput="rundownItems[${i}].kegiatan=this.value;renderLivePreviewSheets()" placeholder="Nama Mata Acara" class="col-span-2 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-            <input type="text" value="${escapeHtml(it.keterangan)}" oninput="rundownItems[${i}].keterangan=this.value;renderLivePreviewSheets()" placeholder="Keterangan" class="rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-          </div>
-        </div>
-      `).join('');
-    }
-    function addRundownRow() {
-      rundownItems.push({ mulai: '11.30', selesai: '12.00', durasi: '00:30', kegiatan: 'Penutupan & Dokumentasi', tempat: 'J-102', keterangan: 'Panitia' });
-      renderRundownEditor();
-      renderLivePreviewSheets();
-    }
-    function removeRundownRow(i) {
-      if (rundownItems.length <= 1) return;
-      rundownItems.splice(i, 1);
-      renderRundownEditor();
-      renderLivePreviewSheets();
-    }
-
-    // CERTIFICATE RECIPIENTS EDITOR (SP-SERT)
-    function renderCertEditor() {
-      const wrap = document.getElementById('cert-rows-container');
-      wrap.innerHTML = certRecipients.map((it, i) => `
-        <div class="grid grid-cols-12 gap-1.5 items-center bg-slate-50 p-2 rounded-xl border border-slate-200">
-          <input type="text" value="${escapeHtml(it.noSertif)}" oninput="certRecipients[${i}].noSertif=this.value;renderLivePreviewSheets()" placeholder="No. Sertifikat" class="col-span-5 rounded border border-slate-300 px-2 py-1 text-[11px] bg-white" />
-          <input type="text" value="${escapeHtml(it.nama)}" oninput="certRecipients[${i}].nama=this.value;renderLivePreviewSheets()" placeholder="Nama Lengkap" class="col-span-4 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-          <input type="text" value="${escapeHtml(it.peran)}" oninput="certRecipients[${i}].peran=this.value;renderLivePreviewSheets()" placeholder="Peran" class="col-span-2 rounded border border-slate-300 px-2 py-1 text-xs bg-white" />
-          <button type="button" onclick="removeCertRow(${i})" class="col-span-1 text-rose-600 font-bold text-xs text-center">✕</button>
-        </div>
-      `).join('');
-    }
-    function addCertRow() {
-      const idx = certRecipients.length + 1;
-      certRecipients.push({
-        noSertif: `${formatSeq3(idx)}/SERT/RISTEK/HIMASIKA-ITS/XI/2026`,
-        nama: 'Nama Penerima',
-        peran: 'Peserta'
-      });
-      renderCertEditor();
-      renderLivePreviewSheets();
-    }
-    function removeCertRow(i) {
-      if (certRecipients.length <= 1) return;
-      certRecipients.splice(i, 1);
-      renderCertEditor();
-      renderLivePreviewSheets();
-    }
-
-    function onTemplateTypeChanged() {
-      const jenis = document.getElementById('form-jenis').value;
-      const spec = TEMPLATE_SPECS[jenis];
-      document.getElementById('sop-contextual-box').innerHTML = `<strong>📌 Catatan SOP:</strong> ${escapeHtml(spec.sop)}`;
-
-      // Toggle conditional form sections
-      document.getElementById('panel-ik-bulk').classList.toggle('hidden', jenis !== 'IK');
-      document.getElementById('panel-equipment-editor').classList.toggle('hidden', !(jenis === 'PB-D' || jenis === 'PB-H'));
-      document.getElementById('panel-rundown-editor').classList.toggle('hidden', jenis === 'IK' || jenis === 'SP-SERT');
-      document.getElementById('panel-cert-editor').classList.toggle('hidden', jenis !== 'SP-SERT');
-
-      document.getElementById('wrap-deskripsi').classList.toggle('hidden', !['PR-DNP', 'PB-D', 'PB-H', 'UND-KH'].includes(jenis));
-      document.getElementById('label-deskripsi').textContent = jenis === 'PR-DNP'
-        ? 'Tujuan Kegiatan Singkat'
-        : 'Deskripsi Singkat Kegiatan';
-
-      document.getElementById('wrap-luar-dept').classList.toggle('hidden', jenis !== 'PR-LD');
-      document.getElementById('wrap-pinjam-alat-meta').classList.toggle('hidden', !(jenis === 'PB-D' || jenis === 'PB-H'));
-      document.getElementById('wrap-sertifikat-meta').classList.toggle('hidden', jenis !== 'SP-SERT');
-      document.getElementById('wrap-waktu-tempat').classList.toggle('hidden', jenis === 'SP-SERT');
-      document.getElementById('wrap-pj-nopagu').classList.toggle('hidden', jenis !== 'PR-DNP');
-      document.getElementById('wrap-kadep-ttd').classList.toggle('hidden', jenis !== 'UND-KH');
-
-      renderLivePreviewSheets();
-    }
-
-    function onFormInputChanged() {
-      renderLivePreviewSheets();
-    }
-
-    function collectCurrentFormContext() {
-      const deptKode = document.getElementById('form-dept').value;
-      const jenisKode = document.getElementById('form-jenis').value;
-      const dateInfo = parseDateInfo(document.getElementById('form-tanggal-surat').value);
-
-      return {
-        deptKode,
-        deptNama: DEPT_FULL_NAMES[deptKode] || deptKode,
-        jenisKode,
-        tanggalSurat: dateInfo.tanggalFormatted,
-        bulanRomawi: dateInfo.bulanRomawi,
-        tahun: dateInfo.tahun,
-        acara: document.getElementById('form-acara').value.trim() || 'Nama Kegiatan',
-        deskripsi: document.getElementById('form-deskripsi').value.trim() || 'kegiatan pengembangan keilmuan mahasiswa Fisika ITS',
-        pengantarTujuan: document.getElementById('form-pengantar-tujuan').value.trim() || 'Departemen Matematika ITS',
-        lamaPinjam: document.getElementById('form-lama-pinjam').value.trim() || '1 (satu) hari',
-        mulaiPinjam: document.getElementById('form-mulai-pinjam').value.trim() || 'Sabtu, 28 November 2026',
-        sertifKategori: document.getElementById('form-sertif-kategori').value.trim() || 'pemateri dan panitia',
-        canvaLink: document.getElementById('form-canva-link').value.trim(),
-        tanggalKegiatan: document.getElementById('form-tanggal-kegiatan').value.trim() || 'Sabtu, 28 November 2026',
-        waktu: document.getElementById('form-waktu').value.trim() || '08.00 – 15.00 WIB',
-        tempat: document.getElementById('form-tempat').value.trim() || 'Departemen Fisika ITS',
-        pjNama: document.getElementById('form-pj-nama').value.trim() || 'Nama Penanggung Jawab',
-        pjNrp: document.getElementById('form-pj-nrp').value.trim() || '5001241XXX',
-        pjWa: document.getElementById('form-pj-wa').value.trim() || '08XX XXXX XXXX',
-        kadepNama: document.getElementById('form-kadep-nama').value.trim() || 'Nama Kepala Departemen',
-        kadepNrp: document.getElementById('form-kadep-nrp').value.trim() || '5001231XXX',
-        ketupelNama: document.getElementById('form-ketupel-nama').value.trim() || 'Nama Ketua Pelaksana',
-        ketupelNrp: document.getElementById('form-ketupel-nrp').value.trim() || '5001241XXX',
-        pic: document.getElementById('form-pic').value.trim(),
-        cp: document.getElementById('form-cp').value.trim() || '08XX XXXX XXXX (Nama CP)'
-      };
-    }
-
-    // =========================================================
-    // RENDER KOP SURAT & 10 TEMPLATE RESMI A4 (MARGIN 2.54 CM)
-    // =========================================================
-    function buildKopSuratHTML() {
-      return `
-        <div class="kop-surat">
-          <div class="kop-logo-box">
-            <span>HIMASIKA</span>
-            <span style="font-size:7pt;font-weight:600;">ITS</span>
-          </div>
-          <div style="text-align:center;flex:1;">
-            <div style="font-size:11pt;font-weight:bold;letter-spacing:0.4px;">HIMPUNAN MAHASISWA FISIKA</div>
-            <div style="font-size:10pt;font-weight:bold;">DEPARTEMEN FISIKA — FAKULTAS SAINS DAN ANALITIKA DATA</div>
-            <div style="font-size:10pt;font-weight:bold;">INSTITUT TEKNOLOGI SEPULUH NOPEMBER</div>
-            <div style="font-size:8.5pt;margin-top:2px;">Sekretariat: Gedung TW-1 Departemen Fisika Kampus ITS Sukolilo, Surabaya 60111</div>
-          </div>
-        </div>
-      `;
-    }
-
-    function buildSignatureKahimaKetupel(ctx, withKaprodi = true) {
-      return `
-        <div style="margin-top:18px;">
-          <div style="text-align:center;margin-bottom:6px;">Hormat kami,</div>
-          <table style="width:100%;border-collapse:collapse;text-align:center;">
-            <tr>
-              <td style="width:50%;vertical-align:top;padding:0 8px;">
-                <div>Ketua Himpunan Mahasiswa Fisika ITS</div>
-                <div>Periode 2026</div>
-                <div style="height:54px;"></div>
-                <div style="font-weight:bold;text-decoration:underline;">${KAHIMA_2026.nama}</div>
-                <div>NRP. ${KAHIMA_2026.nrp}</div>
-              </td>
-              <td style="width:50%;vertical-align:top;padding:0 8px;">
-                <div>Ketua Pelaksana ${escapeHtml(ctx.acara)}</div>
-                <div>HIMASIKA ITS 2026</div>
-                <div style="height:54px;"></div>
-                <div style="font-weight:bold;text-decoration:underline;">${escapeHtml(ctx.ketupelNama)}</div>
-                <div>NRP. ${escapeHtml(ctx.ketupelNrp)}</div>
-              </td>
-            </tr>
-          </table>
-          ${withKaprodi ? `
-            <div style="text-align:center;margin-top:16px;">
-              <div>Mengetahui,</div>
-              <div>Kepala Program Studi Sarjana Departemen Fisika ITS</div>
-              <div style="height:54px;"></div>
-              <div style="font-weight:bold;text-decoration:underline;">${KAPRODI_2026.nama}</div>
-              <div>NIP. ${KAPRODI_2026.nip}</div>
-            </div>
-          ` : ''}
-        </div>
-      `;
-    }
-
-    function buildLampiranRundownHTML(ctx, highlightKahima = false) {
-      const rowsHtml = rundownItems.map(r => {
-        const isKahima = highlightKahima && /sambutan.*(ketua himpunan|kahima)/i.test(r.kegiatan);
-        const cls = isKahima ? ' class="highlight-kahima"' : '';
-        return `
-          <tr${cls}>
-            <td style="text-align:center;">${escapeHtml(r.mulai)}</td>
-            <td style="text-align:center;">${escapeHtml(r.selesai)}</td>
-            <td style="text-align:center;">${escapeHtml(r.durasi)}</td>
-            <td>${escapeHtml(r.kegiatan)}</td>
-            <td>${escapeHtml(r.tempat)}</td>
-            <td>${escapeHtml(r.keterangan)}</td>
-          </tr>
-        `;
-      }).join('');
-
-      return `
-        <div class="a4-sheet">
-          ${buildKopSuratHTML()}
-          <div style="font-weight:bold;margin-bottom:8px;">Lampiran 1</div>
-          <div style="text-align:center;font-weight:bold;line-height:1.35;margin-bottom:12px;">
-            <div>SUSUNAN ACARA</div>
-            <div>“${escapeHtml(ctx.acara.toUpperCase())}”</div>
-            <div>${escapeHtml(ctx.deptNama.toUpperCase())}</div>
-            <div>HIMPUNAN MAHASISWA FISIKA ITS</div>
-            <div>PERIODE 2026</div>
-          </div>
-          <p style="margin-bottom:10px;text-align:justify;">
-            Susunan Acara <strong>${escapeHtml(ctx.acara)}</strong> pada ${escapeHtml(ctx.tanggalKegiatan)} adalah sebagai berikut.
-          </p>
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th colspan="3">Waktu</th>
-                <th rowspan="2">Kegiatan</th>
-                <th rowspan="2">Tempat</th>
-                <th rowspan="2">Keterangan</th>
-              </tr>
-              <tr>
-                <th>Mulai</th>
-                <th>Selesai</th>
-                <th>Durasi</th>
-              </tr>
-            </thead>
-            <tbody>${rowsHtml}</tbody>
-          </table>
-          <div style="margin-top:14px;font-size:11pt;">CP: ${escapeHtml(ctx.cp)}</div>
-        </div>
-      `;
-    }
-
-    function buildSingleLetterSheetsHTML(ctx, nosur, customIkRecipient = null) {
-      const jenis = ctx.jenisKode;
-
-      // 1. SURAT IZIN KERAMAIAN (IK)
-      if (jenis === 'IK') {
-        const tujuan = customIkRecipient || 'Nama Himpunan';
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Surat Izin Keramaian</strong></td></tr>
-              <tr><td>Lampiran</td><td>: -</td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>${escapeHtml(tujuan)}</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan akan dilaksanakannya kegiatan <strong>${escapeHtml(ctx.acara)}</strong> oleh Himpunan Mahasiswa Fisika (HIMASIKA) ITS Kabinet Zain periode 2026-2027 yang akan dilaksanakan pada:
-            </p>
-            <table class="meta-table" style="margin:6px 0 12px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>waktu</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="text-align:justify;margin-bottom:10px;">
-              dengan ini kami bermaksud memberitahukan sekaligus memohon izin keramaian selama kegiatan berlangsung pada waktu dan tempat yang telah tercantum di atas.
-            </p>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat permohonan ini kami sampaikan. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.
-            </p>
-            ${buildSignatureKahimaKetupel(ctx, false)}
-          </div>
-        `;
-      }
-
-      // 2. PEMINJAMAN RUANGAN DEPARTEMEN (PAGU)
-      if (jenis === 'PR-DP') {
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Permohonan Peminjaman Tempat</strong></td></tr>
-              <tr><td>Lampiran</td><td>: 1 (Satu) Lembar</td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>Kepala Departemen Fisika</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Surabaya</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan pelaksanaan kegiatan <strong>${escapeHtml(ctx.acara)}</strong> yang diselenggarakan oleh Himpunan Mahasiswa Fisika (HIMASIKA) ITS Kabinet Zain periode 2026-2027 yang akan dilaksanakan pada:
-            </p>
-            <table class="meta-table" style="margin:6px 0 12px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>pukul</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="text-align:justify;margin-bottom:10px;">
-              demi kelancaran kegiatan tersebut, kami bermaksud untuk memohon izin penggunaan <strong>${escapeHtml(ctx.tempat)}</strong> beserta seluruh fasilitas yang tersedia di dalamnya guna menunjang pelaksanaan kegiatan ${escapeHtml(ctx.acara)}.
-            </p>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat permohonan ini kami sampaikan. Atas perhatian dan kerja sama Bapak, kami ucapkan terima kasih.
-            </p>
-            ${buildSignatureKahimaKetupel(ctx, true)}
-            <div style="margin-top:10px;font-size:10.5pt;">CP: ${escapeHtml(ctx.cp)}</div>
-          </div>
-          ${buildLampiranRundownHTML(ctx, false)}
-        `;
-      }
-
-      // 3. PEMINJAMAN RUANGAN DEPARTEMEN (NO PAGU)
-      if (jenis === 'PR-DNP') {
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Permohonan Peminjaman Tempat</strong></td></tr>
-              <tr><td>Lampiran</td><td>: 1 (Satu)</td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>Kepala Departemen Fisika</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan pelaksanaan kegiatan “<strong>${escapeHtml(ctx.acara)}</strong>” yang merupakan salah satu program kerja ${escapeHtml(ctx.deptNama)} Himpunan Mahasiswa Fisika (HIMASIKA) ITS Kabinet Zain Periode 2026–2027, kami bermaksud untuk mengajukan permohonan peminjaman tempat guna menunjang pelaksanaan kegiatan tersebut. Adapun kegiatan tersebut bertujuan untuk ${escapeHtml(ctx.deskripsi)}.
-            </p>
-            <p style="margin-bottom:6px;">Kegiatan tersebut akan dilaksanakan pada:</p>
-            <table class="meta-table" style="margin:0 0 10px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>pukul</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="margin-bottom:6px;">Penanggung jawab kegiatan:</p>
-            <table class="meta-table" style="margin:0 0 12px 32px;">
-              <tr><td style="width:120px;">Nama</td><td>: ${escapeHtml(ctx.pjNama)}</td></tr>
-              <tr><td>NRP</td><td>: ${escapeHtml(ctx.pjNrp)}</td></tr>
-              <tr><td>No. WhatsApp</td><td>: ${escapeHtml(ctx.pjWa)}</td></tr>
-            </table>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat permohonan peminjaman tempat ini kami sampaikan. Besar harapan kami agar permohonan ini dapat disetujui demi kelancaran kegiatan yang akan dilaksanakan. Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.
-            </p>
-            ${buildSignatureKahimaKetupel(ctx, true)}
-            <div style="margin-top:10px;font-size:10.5pt;">CP: ${escapeHtml(ctx.cp)}</div>
-          </div>
-          ${buildLampiranRundownHTML(ctx, false)}
-        `;
-      }
-
-      // 4, 5, 6: SURAT PENGANTAR PEMINJAMAN RUANGAN (LUAR DEPT / SKPB / BMA)
-      if (['PR-LD', 'PR-SKPB', 'PR-BMA'].includes(jenis)) {
-        const lampText = jenis === 'PR-BMA' ? '1 (satu) lembar' : '1 (Satu)';
-        let targetSentence = '';
-        if (jenis === 'PR-LD') {
-          targetSentence = `Dalam rangka menunjang kelancaran pelaksanaan kegiatan tersebut, kami bermaksud memohon penerbitan surat pengantar peminjaman tempat yang ditujukan kepada <strong>${escapeHtml(ctx.pengantarTujuan)}</strong> untuk pelaksanaan kegiatan ${escapeHtml(ctx.acara)}.`;
-        } else if (jenis === 'PR-SKPB') {
-          targetSentence = `demi kelancaran kegiatan tersebut, kami bermaksud memohon penerbitan surat pengantar peminjaman <strong>${escapeHtml(ctx.tempat)}</strong> yang ditujukan kepada <strong>Kepala Subdirektorat Koordinasi Perkuliahan Bersama</strong> untuk pelaksanaan kegiatan ${escapeHtml(ctx.acara)}.`;
+    function switchSekdepTab(tab) {
+      ["generator", "massal", "riwayat", "sop"].forEach(t => {
+        document.getElementById("sekdep-tab-" + t).classList.toggle("hidden", t !== tab);
+        const btn = document.getElementById("tab-btn-" + t);
+        if (t === tab) {
+          btn.className = "px-4 py-2 rounded-lg bg-blue-600 text-white cursor-pointer";
         } else {
-          targetSentence = `demi kelancaran kegiatan tersebut, kami bermaksud memohon penerbitan surat pengantar peminjaman <strong>${escapeHtml(ctx.tempat)}</strong> yang ditujukan kepada <strong>Biro Manajemen Aset</strong> untuk pelaksanaan kegiatan ${escapeHtml(ctx.acara)}.`;
+          btn.className = "px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
         }
+      });
+    }
 
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Permohonan Surat Pengantar Peminjaman Tempat</strong></td></tr>
-              <tr><td>Lampiran</td><td>: ${lampText}</td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>Kepala Departemen Fisika</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan pelaksanaan kegiatan <strong>${escapeHtml(ctx.acara)}</strong> yang diselenggarakan oleh Himpunan Mahasiswa Fisika (HIMASIKA) ITS Kabinet Zain periode 2026 - 2027 yang akan dilaksanakan pada:
-            </p>
-            <table class="meta-table" style="margin:6px 0 12px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>pukul</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="text-align:justify;margin-bottom:10px;">${targetSentence}</p>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat permohonan ini kami sampaikan. Atas perhatian dan kerja sama Bapak, kami ucapkan terima kasih.
-            </p>
-            ${buildSignatureKahimaKetupel(ctx, true)}
-            <div style="margin-top:10px;font-size:10.5pt;">CP: ${escapeHtml(ctx.cp)}</div>
-          </div>
-          ${buildLampiranRundownHTML(ctx, false)}
-        `;
-      }
+    function switchAdminTab(tab) {
+      ["verifikasi", "links"].forEach(t => {
+        document.getElementById("admin-tab-" + t).classList.toggle("hidden", t !== tab);
+        const btn = document.getElementById("admin-tab-btn-" + t);
+        if (t === tab) {
+          btn.className = "px-4 py-2 rounded-lg bg-amber-500 text-slate-950 cursor-pointer";
+        } else {
+          btn.className = "px-4 py-2 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer";
+        }
+      });
+    }
 
-      // 7 & 8: PEMINJAMAN BARANG (DEPARTEMEN & HIMPUNAN)
-      if (jenis === 'PB-D' || jenis === 'PB-H') {
-        const isDept = jenis === 'PB-D';
-        const equipRows = equipmentItems.map((eq, i) => `
+    // =========================================================================
+    // GENERATOR SURAT RESMI & PREVIEW (HEADER GITHUB + DEPARTEMEN SEBELUM HIMA)
+    // =========================================================================
+    function applyTemplatePreset() {
+      const idx = Number(document.getElementById("f-template").value || 0);
+      const tpl = TEMPLATES[idx] || TEMPLATES[0];
+      document.getElementById("f-kode-jenis").value = tpl.kode;
+      document.getElementById("f-perihal").value = tpl.perihal;
+      document.getElementById("f-tujuan").value = tpl.tujuan;
+      document.getElementById("f-isi").value = tpl.isi;
+      renderPreview();
+    }
+
+    function buildNomorPreview() {
+      const pad = String(state.counter).padStart(3, "0");
+      const kodeJenis = document.getElementById("f-kode-jenis").value || "A";
+      return `${pad}/${kodeJenis}/${state.deptKode}/HIMASIKA-ITS/XI/2026`;
+    }
+
+    function buildLetterInnerHtml(headerImgSrc, customData = null) {
+      const nomor = customData ? customData.nomor : buildNomorPreview();
+      const lampiran = customData ? "-" : (document.getElementById("f-lampiran").value || "-");
+      const perihal = customData ? customData.perihal : (document.getElementById("f-perihal").value || "-");
+      const tujuan = customData ? customData.tujuan : (document.getElementById("f-tujuan").value || "-");
+      const tanggal = customData ? customData.tanggal : (document.getElementById("f-tanggal").value || "23 November 2026");
+      const isi = customData ? customData.isi : (document.getElementById("f-isi").value || "");
+
+      // Urutan wajib: Nama Departemen / BSO dulu, baru HIMPUNAN MAHASISWA FISIKA
+      const kopPengaju = (document.getElementById("f-kop-pengaju").value || state.deptKop).toUpperCase();
+
+      // Otomatis huruf besar di awal kata untuk semua nama ketua & sekretaris
+      const jabatan1 = toTitleCase(document.getElementById("f-jabatan1").value || "Ketua Pelaksana");
+      const nama1 = toTitleCase(customData ? customData.ketua : (document.getElementById("f-nama1").value || "Nama Ketua Pelaksana"));
+      const jabatan2 = toTitleCase(document.getElementById("f-jabatan2").value || "Sekretaris Pelaksana");
+      const nama2 = toTitleCase(document.getElementById("f-nama2").value || "Nama Sekretaris Pelaksana");
+      const ketuaHima = toTitleCase(document.getElementById("f-ketua-hima").value || "Muhammad Zain Haqqani");
+      const nrpHima = document.getElementById("f-nrp-hima").value || "5001241086";
+
+      const isiHtml = escapeHtml(isi).replace(/\n/g, "<br>");
+
+      return `
+        <div style="width:100%; text-align:center; margin-bottom:10px;">
+          <img src="${headerImgSrc}" alt="Kop Surat HIMASIKA ITS" style="width:100%; max-width:100%; height:auto; display:block; margin:0 auto;" />
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; font-size:12pt; margin-bottom:14px;">
           <tr>
-            <td style="text-align:center;width:45px;">${i + 1}</td>
-            <td>${escapeHtml(eq.nama)}</td>
-            <td style="text-align:center;width:130px;">${escapeHtml(eq.jumlah)}</td>
+            <td style="width:90px; vertical-align:top;">Nomor</td>
+            <td style="width:14px; vertical-align:top;">:</td>
+            <td style="vertical-align:top;">${escapeHtml(nomor)}</td>
+            <td style="text-align:right; vertical-align:top;">Surabaya, ${escapeHtml(tanggal)}</td>
           </tr>
-        `).join('');
-
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Permohonan Peminjaman Alat</strong></td></tr>
-              <tr><td>Lampiran</td><td>: 1 (Satu) Lembar</td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>${isDept ? 'Kepala Departemen Fisika' : 'Ketua Himpunan Mahasiswa Fisika'}</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Surabaya</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan kegiatan <strong>${escapeHtml(ctx.acara)}</strong> yang merupakan ${escapeHtml(ctx.deskripsi)} serta bagian dari program kerja ${escapeHtml(ctx.deptNama)} Himpunan Mahasiswa Fisika (HIMASIKA) ITS Kabinet Zain Periode 2026–2027, yang akan dilaksanakan pada:
-            </p>
-            <table class="meta-table" style="margin:6px 0 10px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>pukul</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="text-align:justify;margin-bottom:8px;">
-              Maka dengan diadakannya kegiatan tersebut, kami selaku panitia pelaksana bermaksud untuk mengajukan permohonan peminjaman alat untuk digunakan dalam kegiatan tersebut selama <strong>${escapeHtml(ctx.lamaPinjam)}</strong> terhitung sejak <strong>${escapeHtml(ctx.mulaiPinjam)}</strong> sebagai berikut:
-            </p>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th style="width:45px;">No</th>
-                  <th>Nama Peralatan</th>
-                  <th style="width:130px;">Jumlah</th>
-                </tr>
-              </thead>
-              <tbody>${equipRows}</tbody>
-            </table>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat permohonan ini kami buat, besar harapan kami agar kegiatan ini dapat berjalan dengan lancar. Atas perhatian dan kerjasama ${isDept ? 'Bapak/Ibu' : 'Saudari'}, kami ucapkan terima kasih.
-            </p>
-            ${isDept ? buildSignatureKahimaKetupel(ctx, true) : `
-              <div style="margin-top:20px;display:flex;justify-content:flex-end;">
-                <div style="text-align:center;width:260px;">
-                  <div>Hormat kami,</div>
-                  <div>Ketua Pelaksana ${escapeHtml(ctx.acara)}</div>
-                  <div style="height:54px;"></div>
-                  <div style="font-weight:bold;text-decoration:underline;">${escapeHtml(ctx.ketupelNama)}</div>
-                  <div>NRP. ${escapeHtml(ctx.ketupelNrp)}</div>
-                </div>
-              </div>
-            `}
-            <div style="margin-top:10px;font-size:10.5pt;">CP: ${escapeHtml(ctx.cp)}</div>
-          </div>
-          ${buildLampiranRundownHTML(ctx, false)}
-        `;
-      }
-
-      // 9. SURAT UNDANGAN SAMBUTAN OLEH KAHIMA (UND-KH)
-      if (jenis === 'UND-KH') {
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Lampiran</td><td>: 1 (satu)</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Undangan</strong></td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>${KAHIMA_2026.nama}</strong></div>
-              <div>Ketua Himpunan Mahasiswa Fisika 2026/2027</div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan pelaksanaan kegiatan <strong>${escapeHtml(ctx.acara)}</strong> yang merupakan ${escapeHtml(ctx.deskripsi)} serta program kerja dari ${escapeHtml(ctx.deptNama)} HIMASIKA ITS 2026, kami bermaksud mengundang Saudari untuk berkenan hadir sekaligus memberikan sambutan dalam pembukaan kegiatan tersebut yang akan dilaksanakan pada:
-            </p>
-            <table class="meta-table" style="margin:6px 0 12px 32px;">
-              <tr><td style="width:120px;">hari, tanggal</td><td>: ${escapeHtml(ctx.tanggalKegiatan)}</td></tr>
-              <tr><td>waktu</td><td>: ${escapeHtml(ctx.waktu)}</td></tr>
-              <tr><td>tempat</td><td>: ${escapeHtml(ctx.tempat)}</td></tr>
-            </table>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat undangan ini kami sampaikan. Atas perhatian dan kesediaan Saudari untuk hadir dalam kegiatan tersebut, kami ucapkan terima kasih.
-            </p>
-            <div style="margin-top:24px;">
-              <div style="text-align:center;margin-bottom:6px;">Hormat kami,</div>
-              <table style="width:100%;border-collapse:collapse;text-align:center;">
-                <tr>
-                  <td style="width:50%;vertical-align:top;padding:0 8px;">
-                    <div>Kepala ${escapeHtml(ctx.deptNama)}</div>
-                    <div>Himpunan Mahasiswa Fisika ITS</div>
-                    <div>Periode 2026</div>
-                    <div style="height:54px;"></div>
-                    <div style="font-weight:bold;text-decoration:underline;">${escapeHtml(ctx.kadepNama)}</div>
-                    <div>NRP. ${escapeHtml(ctx.kadepNrp)}</div>
-                  </td>
-                  <td style="width:50%;vertical-align:top;padding:0 8px;">
-                    <div>Ketua Pelaksana ${escapeHtml(ctx.acara)}</div>
-                    <div>HIMASIKA ITS 2026</div>
-                    <div style="height:68px;"></div>
-                    <div style="font-weight:bold;text-decoration:underline;">${escapeHtml(ctx.ketupelNama)}</div>
-                    <div>NRP. ${escapeHtml(ctx.ketupelNrp)}</div>
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          ${buildLampiranRundownHTML(ctx, true)}
-        `;
-      }
-
-      // 10. SURAT PENGANTAR SERTIFIKAT (SP-SERT)
-      if (jenis === 'SP-SERT') {
-        const certRows = certRecipients.map(c => `
           <tr>
-            <td>${escapeHtml(c.noSertif)}</td>
-            <td>${escapeHtml(c.nama)}</td>
-            <td>${escapeHtml(c.peran)}</td>
+            <td style="vertical-align:top;">Lampiran</td>
+            <td style="vertical-align:top;">:</td>
+            <td colspan="2" style="vertical-align:top;">${escapeHtml(lampiran)}</td>
           </tr>
-        `).join('');
+          <tr>
+            <td style="vertical-align:top;">Perihal</td>
+            <td style="vertical-align:top;">:</td>
+            <td colspan="2" style="vertical-align:top; font-weight:bold;">${escapeHtml(perihal)}</td>
+          </tr>
+        </table>
 
-        return `
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="text-align:right;margin-bottom:10px;">Surabaya, ${escapeHtml(ctx.tanggalSurat)}</div>
-            <table class="meta-table" style="margin-bottom:14px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Lampiran</td><td>: 1 (satu)</td></tr>
-              <tr><td>Perihal</td><td>: <strong>Surat Pengantar Sertifikat</strong></td></tr>
-            </table>
-            <div style="margin-bottom:14px;">
-              <div>Kepada Yth.</div>
-              <div><strong>Kepala Departemen Fisika ITS</strong></div>
-              <div>Institut Teknologi Sepuluh Nopember</div>
-              <div>Di tempat</div>
-            </div>
-            <p style="margin-bottom:10px;">Dengan Hormat,</p>
-            <p style="text-align:justify;text-indent:32px;margin-bottom:10px;">
-              Sehubungan dengan kegiatan <strong>${escapeHtml(ctx.acara)}</strong> kami dari panitia ${escapeHtml(ctx.acara)} bermaksud membuat sertifikat kepada <strong>${escapeHtml(ctx.sertifKategori)}</strong> pada kegiatan ${escapeHtml(ctx.acara)} yang telah dibentuk sebagai bentuk penghargaan. Maka kami mohon kesediaan Bapak untuk menandatangani sertifikat pada posisi Kepala Departemen Fisika ITS sebagaimana terlampir.
-            </p>
-            <p style="text-align:justify;text-indent:32px;">
-              Demikian surat pengantar ini kami sampaikan. Atas perhatian dan kerjasama Bapak, kami sampaikan terima kasih.
-            </p>
-            ${buildSignatureKahimaKetupel(ctx, true)}
-          </div>
-          <div class="a4-sheet">
-            ${buildKopSuratHTML()}
-            <div style="font-weight:bold;margin-bottom:8px;">Lampiran 1. Daftar Penerima Sertifikat</div>
-            <table class="meta-table" style="margin-bottom:12px;">
-              <tr><td style="width:85px;">Nomor</td><td>: ${escapeHtml(nosur)}</td></tr>
-              <tr><td>Perihal</td><td>: Surat Pengantar Sertifikat</td></tr>
-              <tr><td>Tanggal</td><td>: ${escapeHtml(ctx.tanggalSurat)}</td></tr>
-            </table>
-            <div style="font-weight:bold;margin-bottom:6px;">Daftar Penerima Sertifikat</div>
-            <table class="data-table">
-              <thead>
-                <tr>
-                  <th>Nomor Sertifikat</th>
-                  <th>Nama</th>
-                  <th>Peran</th>
-                </tr>
-              </thead>
-              <tbody>${certRows}</tbody>
-            </table>
-          </div>
-        `;
-      }
+        <div style="margin-bottom:14px; font-size:12pt;">
+          Kepada Yth.<br>
+          <strong>${escapeHtml(tujuan)}</strong><br>
+          di Tempat
+        </div>
 
-      return '';
+        <div style="text-align:justify; font-size:12pt; line-height:1.5; margin-bottom:22px;">
+          Dengan hormat,<br><br>
+          ${isiHtml}
+        </div>
+
+        <div style="text-align:center; font-size:12pt; font-weight:bold; margin-bottom:12px; line-height:1.3;">
+          Hormat kami,<br>
+          ${escapeHtml(kopPengaju)}<br>
+          HIMPUNAN MAHASISWA FISIKA
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; text-align:center; font-size:12pt; margin-bottom:18px;">
+          <tr>
+            <td style="width:50%; vertical-align:top;">
+              ${escapeHtml(jabatan1)},<br><br><br><br>
+              <strong style="text-decoration:underline;">${escapeHtml(nama1)}</strong>
+            </td>
+            <td style="width:50%; vertical-align:top;">
+              ${escapeHtml(jabatan2)},<br><br><br><br>
+              <strong style="text-decoration:underline;">${escapeHtml(nama2)}</strong>
+            </td>
+          </tr>
+        </table>
+
+        <div style="text-align:center; font-size:12pt; line-height:1.3;">
+          Mengetahui,<br>
+          Ketua Himpunan Mahasiswa Fisika ITS<br><br><br><br>
+          <strong style="text-decoration:underline;">${escapeHtml(ketuaHima)}</strong><br>
+          NRP. ${escapeHtml(nrpHima)}
+        </div>
+      `;
     }
 
-    function renderLivePreviewSheets() {
-      const ctx = collectCurrentFormContext();
-      const container = document.getElementById('a4-pages-container');
-      const activeNosurEl = document.getElementById('active-nosur-display');
-      const nextSeq = manualNextCounter;
+    function renderPreview() {
+      const sheet = document.getElementById("preview-sheet");
+      if (!sheet) return;
+      sheet.innerHTML = buildLetterInnerHtml(HEADER_IMAGE_PATH);
+    }
 
-      if (ctx.jenisKode === 'IK') {
-        const checkedTargets = ikRecipientsList.filter(r => r.checked);
-        const mode = getBulkNumberingMode();
-
-        if (checkedTargets.length === 0) {
-          const previewNosur = `${formatSeq3(nextSeq)}/IK/${ctx.deptKode}/HIMASIKA-ITS/${ctx.bulanRomawi}/${ctx.tahun}`;
-          activeNosurEl.textContent = previewNosur;
-          container.innerHTML = buildSingleLetterSheetsHTML(ctx, previewNosur, 'Nama Himpunan / Tujuan');
-          return;
-        }
-
-        const firstNosur = `${formatSeq3(nextSeq)}/IK/${ctx.deptKode}/HIMASIKA-ITS/${ctx.bulanRomawi}/${ctx.tahun}`;
-        if (checkedTargets.length === 1) {
-          activeNosurEl.textContent = firstNosur;
-        } else if (mode === 'sequential') {
-          const lastNosur = `${formatSeq3(nextSeq + checkedTargets.length - 1)}/IK/${ctx.deptKode}/HIMASIKA-ITS/${ctx.bulanRomawi}/${ctx.tahun}`;
-          activeNosurEl.textContent = `${firstNosur}  s.d.  ${lastNosur} (${checkedTargets.length} surat)`;
-        } else {
-          activeNosurEl.textContent = `${firstNosur} (Kolektif • ${checkedTargets.length} tujuan)`;
-        }
-
-        container.innerHTML = checkedTargets.map((target, idx) => {
-          const seq = mode === 'sequential' ? nextSeq + idx : nextSeq;
-          const nosur = `${formatSeq3(seq)}/IK/${ctx.deptKode}/HIMASIKA-ITS/${ctx.bulanRomawi}/${ctx.tahun}`;
-          return buildSingleLetterSheetsHTML(ctx, nosur, target.name);
-        }).join('');
-      } else {
-        const nosur = `${formatSeq3(nextSeq)}/${ctx.jenisKode}/${ctx.deptKode}/HIMASIKA-ITS/${ctx.bulanRomawi}/${ctx.tahun}`;
-        activeNosurEl.textContent = nosur;
-        container.innerHTML = buildSingleLetterSheetsHTML(ctx, nosur);
+    async function getHeaderDataUrl() {
+      try {
+        const res = await fetch(HEADER_IMAGE_PATH);
+        const blob = await res.blob();
+        return await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(blob);
+        });
+      } catch (e) {
+        return new URL("header (7).png", window.location.href).href;
       }
     }
 
-    function copyCurrentNosur() {
-      const text = document.getElementById('active-nosur-display').textContent.trim();
-      navigator.clipboard.writeText(text).then(() => {
-        showToast(`Disalin: ${text}`, 'success');
-      });
+    async function downloadSingleDoc() {
+      formatNameInput(document.getElementById("f-nama1"));
+      formatNameInput(document.getElementById("f-nama2"));
+      formatNameInput(document.getElementById("f-ketua-hima"));
+
+      const headerSrc = await getHeaderDataUrl();
+      const bodyHtml = buildLetterInnerHtml(headerSrc);
+      const perihal = (document.getElementById("f-perihal").value || "Surat_HIMASIKA").replace(/[^a-zA-Z0-9_\- ]/g, "");
+      exportWordHtml(bodyHtml, `${state.deptKode}_${perihal}.doc`);
     }
 
-    function downloadWordDoc() {
-      const ctx = collectCurrentFormContext();
-      const sheetsHtml = document.getElementById('a4-pages-container').innerHTML;
-      const wordHtml = `
-        <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+    function exportWordHtml(innerHtml, filename) {
+      const fullHtml = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office'
+              xmlns:w='urn:schemas-microsoft-com:office:word'
+              xmlns='http://www.w3.org/TR/REC-html40'>
         <head>
           <meta charset="utf-8">
-          <title>${escapeHtml(ctx.acara)}</title>
           <style>
-            @page { size: A4; margin: 2.54cm 2.54cm 2.54cm 2.54cm; }
-            body { font-family: 'Times New Roman', serif; font-size: 12pt; line-height: 1.45; color: #000; }
-            .a4-sheet { page-break-after: always; }
-            .a4-sheet:last-child { page-break-after: auto; }
-            table.data-table { width: 100%; border-collapse: collapse; }
-            table.data-table th, table.data-table td { border: 1px solid #000; padding: 5px; }
-            .highlight-kahima { background-color: #FEF08A; font-weight: bold; }
-            .kop-surat { border-bottom: 3px double #000; padding-bottom: 8px; margin-bottom: 12px; }
+            @page Section1 {
+              size: 21.0cm 29.7cm;
+              margin: 2.54cm 2.54cm 2.54cm 2.54cm;
+              mso-header-margin: 1.27cm;
+              mso-footer-margin: 1.27cm;
+            }
+            div.Section1 { page: Section1; }
+            body {
+              font-family: "Times New Roman", Times, serif;
+              font-size: 12pt;
+              color: #000000;
+            }
           </style>
         </head>
-        <body>${sheetsHtml}</body>
+        <body>
+          <div class="Section1">${innerHtml}</div>
+        </body>
         </html>
       `;
-      const blob = new Blob(['\ufeff', wordHtml], { type: 'application/msword' });
+      const blob = new Blob(["\ufeff", fullHtml], { type: "application/msword" });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = `${ctx.jenisKode}_${ctx.deptKode}_${ctx.acara.replace(/[^a-zA-Z0-9_-]/g, '_')}.doc`;
+      a.download = filename;
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
-      showToast('File Microsoft Word (.doc) margin 2,54 cm berhasil diunduh.', 'success');
+      showToast("File Word (.doc) standar margin 2,54 cm berhasil diunduh.");
     }
 
-    // =========================================================
-    // TERBITKAN & SIMPAN NOMOR SURAT KE GOOGLE SHEET
-    // =========================================================
-    async function submitAndLockLetter() {
-      const ctx = collectCurrentFormContext();
-      if (!ctx.acara || ctx.acara === 'Nama Kegiatan') {
-        showToast('Harap isi Nama Kegiatan / Proker terlebih dahulu.', 'warning');
-        return;
-      }
-      if (!ctx.pic) {
-        showToast('Harap isi nama PIC Sekdep pengaju.', 'warning');
-        return;
-      }
-      if (ctx.jenisKode === 'SP-SERT' && !ctx.canvaLink) {
-        showToast('Wajib SOP: Harap isi Link Desain Canva sertifikat!', 'warning');
-        return;
-      }
+    async function submitNomorSurat() {
+      formatNameInput(document.getElementById("f-nama1"));
+      formatNameInput(document.getElementById("f-nama2"));
 
-      const spec = TEMPLATE_SPECS[ctx.jenisKode];
-      const tujuanMap = {
-        'PR-DP': 'Kepala Departemen Fisika ITS',
-        'PR-DNP': 'Kepala Departemen Fisika ITS',
-        'PR-LD': `Kepala Departemen Fisika ITS (Pengantar ke ${ctx.pengantarTujuan})`,
-        'PR-SKPB': 'Kepala Departemen Fisika ITS (Pengantar ke SKPB)',
-        'PR-BMA': 'Kepala Departemen Fisika ITS (Pengantar ke BMA)',
-        'PB-D': 'Kepala Departemen Fisika ITS',
-        'PB-H': 'Ketua Himpunan Mahasiswa Fisika ITS',
-        'UND-KH': `${KAHIMA_2026.nama} (Ketua HIMASIKA ITS)`,
-        'SP-SERT': 'Kepala Departemen Fisika ITS'
+      const sel = document.getElementById("f-template");
+      const jenisSurat = sel.options[sel.selectedIndex].text;
+      const payload = {
+        action: "create",
+        kodeJenis: document.getElementById("f-kode-jenis").value,
+        deptKode: state.deptKode,
+        deptNama: state.deptNama,
+        deptKop: (document.getElementById("f-kop-pengaju").value || state.deptKop).toUpperCase(),
+        jenisSurat: jenisSurat,
+        perihal: document.getElementById("f-perihal").value,
+        tujuan: document.getElementById("f-tujuan").value,
+        ketuaNama: toTitleCase(document.getElementById("f-nama1").value),
+        sekretarisNama: toTitleCase(document.getElementById("f-nama2").value),
+        tanggalSurat: document.getElementById("f-tanggal").value,
+        bulanRomawi: "XI",
+        tahun: "2026"
       };
 
-      let targets = [];
-      let mode = 'sequential';
-      if (ctx.jenisKode === 'IK') {
-        targets = ikRecipientsList.filter(r => r.checked).map(r => r.name);
-        mode = getBulkNumberingMode();
-        if (!targets.length) {
-          showToast('Centang minimal 1 tujuan Surat Izin Keramaian!', 'warning');
-          return;
-        }
-      } else {
-        targets = [tujuanMap[ctx.jenisKode] || 'Pihak Terkait'];
-      }
-
-      const items = targets.map(t => ({
-        jenisKode: ctx.jenisKode,
-        jenisNama: spec.nama,
-        deptKode: ctx.deptKode,
-        bulanRomawi: ctx.bulanRomawi,
-        tahun: ctx.tahun,
-        tanggalSurat: ctx.tanggalSurat,
-        acara: ctx.acara,
-        tujuan: t,
-        tanggalKegiatan: ctx.tanggalKegiatan,
-        waktu: ctx.waktu,
-        tempat: ctx.tempat,
-        pic: ctx.pic,
-        ketupelNama: ctx.ketupelNama,
-        ketupelNrp: ctx.ketupelNrp,
-        cp: ctx.cp,
-        canvaLink: ctx.canvaLink
-      }));
-
-      const btn = document.getElementById('btn-publish-nosur');
+      const btn = document.getElementById("btn-submit-nomor");
       btn.disabled = true;
-      btn.textContent = '⏳ Menyimpan ke Sheet...';
-      setSyncPill('loading', 'Menyimpan surat...');
+      btn.textContent = "Menyimpan ke Sheet...";
 
       try {
-        const r = await api({
-          action: 'add',
-          mode,
-          items,
-          code: appState.role === 'sekum' ? sekumCode : ''
-        });
-        if (!r.ok) throw new Error(r.error || 'Gagal menyimpan ke Google Sheet');
-
-        rekapDatabase.push(...r.rows);
-        manualNextCounter = Number(r.counter) || manualNextCounter + 1;
-        syncCounterAboveRekap();
-        renderLivePreviewSheets();
-        renderNavbarSubtabs();
-        setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-
-        const firstNo = r.rows[0].nomorSurat;
-        const extra = r.rows.length > 1 ? ` (+${r.rows.length - 1} surat lainnya)` : '';
-        showToast(`Berhasil tercatat di Google Sheet: ${firstNo}${extra}`, 'success');
-      } catch (e) {
-        setSyncPill('error', 'Gagal menyimpan');
-        showToast('Gagal menyimpan: ' + e.message, 'warning');
-      }
-
-      btn.disabled = false;
-      btn.textContent = '✅ Terbitkan & Simpan ke Sheet';
-    }
-
-    // =========================================================
-    // TABEL MONITOR SEKDEP & DASHBOARD SEKUM
-    // =========================================================
-    function statusBadgeHTML(status) {
-      if (status === 'ACC & Terbit') {
-        return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold text-[11px]">✓ ACC & Terbit</span>`;
-      }
-      if (status === 'Perlu Revisi') {
-        return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800 font-bold text-[11px]">! Perlu Revisi</span>`;
-      }
-      return `<span class="inline-flex items-center px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold text-[11px]">⏳ Menunggu ACC</span>`;
-    }
-
-    function renderSekdepMonitorTable() {
-      document.getElementById('monitor-dept-title').textContent = appState.sekdepDept;
-      const filterMode = document.getElementById('monitor-dept-filter').value;
-      const rows = [...rekapDatabase]
-        .reverse()
-        .filter(r => filterMode === 'ALL' || r.deptKode === appState.sekdepDept);
-
-      const tbody = document.getElementById('sekdep-monitor-tbody');
-      if (!rows.length) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400">Belum ada nomor surat yang diterbitkan untuk filter ini.</td></tr>`;
-        return;
-      }
-
-      tbody.innerHTML = rows.map(r => `
-        <tr>
-          <td class="py-3 px-4 font-mono font-bold text-blue-900 whitespace-nowrap">${escapeHtml(r.nomorSurat)}</td>
-          <td class="py-3 px-4 text-slate-600 whitespace-nowrap">${escapeHtml(r.tanggalSurat)}</td>
-          <td class="py-3 px-4">
-            <div class="font-bold text-slate-900">${escapeHtml(r.acara)}</div>
-            <div class="text-[11px] text-slate-500">${escapeHtml(r.jenisNama)} → ${escapeHtml(r.tujuan)}</div>
-            ${r.revisionNote ? `<div class="mt-1 px-2 py-1 rounded bg-rose-50 border border-rose-200 text-rose-800 text-[11px]"><strong>Catatan Sekum:</strong> ${escapeHtml(r.revisionNote)}</div>` : ''}
-          </td>
-          <td class="py-3 px-4 text-slate-700">${escapeHtml(r.pic)}</td>
-          <td class="py-3 px-4 whitespace-nowrap">${statusBadgeHTML(r.status)}</td>
-          <td class="py-3 px-4 text-right whitespace-nowrap">
-            <button onclick="copyTextDirect('${escapeHtml(r.nomorSurat)}')" class="px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold">Salin Nosur</button>
-          </td>
-        </tr>
-      `).join('');
-    }
-
-    function copyTextDirect(txt) {
-      navigator.clipboard.writeText(txt).then(() => showToast('Disalin: ' + txt, 'success'));
-    }
-
-    function renderSekumRekapTable() {
-      const total = rekapDatabase.length;
-      const pending = rekapDatabase.filter(x => x.status === 'Menunggu ACC Sekum').length;
-      const approved = rekapDatabase.filter(x => x.status === 'ACC & Terbit').length;
-      const revision = rekapDatabase.filter(x => x.status === 'Perlu Revisi').length;
-
-      document.getElementById('kpi-total').textContent = total;
-      document.getElementById('kpi-pending').textContent = pending;
-      document.getElementById('kpi-approved').textContent = approved;
-      document.getElementById('kpi-revision').textContent = revision;
-      document.getElementById('sekum-counter-input').value = manualNextCounter;
-
-      const q = document.getElementById('sekum-search-input').value.trim().toLowerCase();
-      const fDept = document.getElementById('sekum-filter-dept').value;
-      const fStatus = document.getElementById('sekum-filter-status').value;
-
-      const filtered = [...rekapDatabase].reverse().filter(r => {
-        if (fDept && r.deptKode !== fDept) return false;
-        if (fStatus && r.status !== fStatus) return false;
-        if (q) {
-          const hay = `${r.nomorSurat} ${r.acara} ${r.tujuan} ${r.pic} ${r.jenisNama}`.toLowerCase();
-          if (!hay.includes(q)) return false;
+        const res = await postToScript(payload);
+        if (res.ok) {
+          showToast(`Nomor surat tercatat: ${res.nomorSurat}`);
+          await loadServerData();
+        } else {
+          showToast(res.error || "Gagal menyimpan nomor surat.", true);
         }
-        return true;
-      });
+      } catch (e) {
+        showToast("Gagal terhubung ke server Apps Script.", true);
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "1. Catat & Ambil Nomor ke Sheet";
+      }
+    }
 
-      const tbody = document.getElementById('sekum-rekap-tbody');
-      if (!filtered.length) {
-        tbody.innerHTML = `<tr><td colspan="6" class="py-8 text-center text-slate-400">Tidak ada data surat yang cocok.</td></tr>`;
+    // =========================================================================
+    // CETAK MASSAL IZIN KERAMAIAN
+    // =========================================================================
+    function addMassalRow() {
+      const tbody = document.getElementById("massal-tbody");
+      const idx = tbody.children.length + 1;
+      const pad = String(state.counter + idx - 1).padStart(3, "0");
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="p-2"><input type="text" value="${pad}/A/${state.deptKode}/HIMASIKA-ITS/XI/2026" class="m-nomor w-full px-2.5 py-1.5 rounded border border-slate-300 text-xs" /></td>
+        <td class="p-2"><input type="text" placeholder="Nama Kegiatan ${idx}" class="m-kegiatan w-full px-2.5 py-1.5 rounded border border-slate-300 text-xs" /></td>
+        <td class="p-2"><input type="text" placeholder="Sabtu, 28 Nov 2026 (08.00-15.00)" class="m-waktu w-full px-2.5 py-1.5 rounded border border-slate-300 text-xs" /></td>
+        <td class="p-2"><input type="text" placeholder="Plaza Fisika / TW-1" class="m-tempat w-full px-2.5 py-1.5 rounded border border-slate-300 text-xs" /></td>
+        <td class="p-2 text-center"><button onclick="this.closest('tr').remove()" class="px-2 py-1 rounded bg-red-50 text-red-600 font-bold cursor-pointer">Hapus</button></td>
+      `;
+      tbody.appendChild(tr);
+    }
+
+    async function downloadMassalDoc() {
+      const ketuaEl = document.getElementById("m-ketua");
+      formatNameInput(ketuaEl);
+      const ketua = toTitleCase(ketuaEl.value || "Nama Ketua Pelaksana");
+      const tanggal = document.getElementById("m-tanggal").value || "23 November 2026";
+      const rows = Array.from(document.querySelectorAll("#massal-tbody tr"));
+
+      if (rows.length === 0) {
+        showToast("Tambahkan minimal 1 baris kegiatan.", true);
         return;
       }
 
-      tbody.innerHTML = filtered.map(r => `
-        <tr>
-          <td class="py-3 px-3.5 font-mono font-bold text-blue-900 whitespace-nowrap">
-            <div>${escapeHtml(r.nomorSurat)}</div>
-            <div class="text-[10px] font-sans font-normal text-slate-400">${escapeHtml(r.tanggalSurat)}</div>
+      const headerSrc = await getHeaderDataUrl();
+      const pagesHtml = rows.map((tr, idx) => {
+        const nomor = tr.querySelector(".m-nomor").value;
+        const kegiatan = tr.querySelector(".m-kegiatan").value || `Kegiatan ${idx + 1}`;
+        const waktu = tr.querySelector(".m-waktu").value || "-";
+        const tempat = tr.querySelector(".m-tempat").value || "-";
+
+        const isi = `Dengan hormat, bersama surat ini kami mengajukan permohonan izin penyelenggaraan kegiatan "${kegiatan}" di lingkungan Kampus ITS Surabaya pada:\n\nHari, Tanggal & Waktu : ${waktu}\nTempat : ${tempat}\n\nKami berkomitmen menjaga ketertiban, keamanan, dan kebersihan selama kegiatan berlangsung. Atas perhatian dan izin yang diberikan, kami ucapkan terima kasih.`;
+
+        const pageHtml = buildLetterInnerHtml(headerSrc, {
+          nomor: nomor,
+          perihal: `Permohonan Izin Keramaian (${kegiatan})`,
+          tujuan: "Kepala Subdirektorat Kemahasiswaan ITS",
+          tanggal: tanggal,
+          isi: isi,
+          ketua: ketua
+        });
+
+        const pageBreak = idx < rows.length - 1 ? '<br clear="all" style="page-break-before:always" />' : '';
+        return pageHtml + pageBreak;
+      }).join("");
+
+      exportWordHtml(pagesHtml, `Izin_Keramaian_Massal_${state.deptKode}.doc`);
+    }
+
+    // =========================================================================
+    // RIWAYAT SURAT (SEKDEP) & PANEL ADMIN (SEKUM / BENDAHARA)
+    // =========================================================================
+    function renderSekdepRiwayat() {
+      const tbody = document.getElementById("sekdep-riwayat-tbody");
+      if (!tbody) return;
+      if (state.rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada data surat di Google Sheet.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = state.rows.map(r => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-2.5 font-bold text-slate-900">${escapeHtml(r.nomorSurat)}</td>
+          <td class="p-2.5">${escapeHtml(r.deptNama || r.deptKode)}</td>
+          <td class="p-2.5">${escapeHtml(r.perihal)}</td>
+          <td class="p-2.5">${escapeHtml(toTitleCase(r.ketuaNama || '-'))}</td>
+          <td class="p-2.5">
+            <span class="px-2 py-0.5 rounded-full text-[11px] font-bold ${
+              r.status === 'ACC' ? 'bg-emerald-100 text-emerald-700' :
+              r.status === 'Revisi' ? 'bg-red-100 text-red-700' : 'bg-amber-100 text-amber-700'
+            }">${escapeHtml(r.status || 'Menunggu ACC')}</span>
           </td>
-          <td class="py-3 px-3.5 whitespace-nowrap">
-            <span class="px-2 py-0.5 rounded bg-slate-100 font-bold text-slate-700">${escapeHtml(r.deptKode)}</span>
+          <td class="p-2.5 text-slate-500">${escapeHtml(r.revisionNote || '-')}</td>
+        </tr>
+      `).join("");
+    }
+
+    function renderAdminTable() {
+      const tbody = document.getElementById("admin-surat-tbody");
+      if (!tbody) return;
+      if (state.rows.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Belum ada surat masuk.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = state.rows.map(r => `
+        <tr class="hover:bg-slate-50">
+          <td class="p-2.5 font-bold">${escapeHtml(r.nomorSurat)}</td>
+          <td class="p-2.5">${escapeHtml(r.deptNama || r.deptKode)}</td>
+          <td class="p-2.5">
+            <div class="font-semibold">${escapeHtml(r.perihal)}</div>
+            <div class="text-[11px] text-slate-500">Yth. ${escapeHtml(r.tujuan)}</div>
           </td>
-          <td class="py-3 px-3.5">
-            <div class="font-bold text-slate-900">${escapeHtml(r.acara)}</div>
-            <div class="text-[11px] text-slate-500">${escapeHtml(r.jenisNama)} → ${escapeHtml(r.tujuan)}</div>
-            ${r.canvaLink ? `<a href="${escapeHtml(r.canvaLink)}" target="_blank" rel="noopener" class="text-[11px] text-blue-600 underline">Lihat Link Canva Sertifikat</a>` : ''}
-            ${r.revisionNote ? `<div class="mt-1 px-2 py-0.5 rounded bg-rose-50 text-rose-700 text-[11px]">Revisi: ${escapeHtml(r.revisionNote)}</div>` : ''}
+          <td class="p-2.5">
+            <select id="st-${escapeAttr(r.id)}" class="px-2 py-1 rounded border border-slate-300 text-xs font-semibold">
+              <option value="Menunggu ACC" ${r.status==='Menunggu ACC'?'selected':''}>Menunggu ACC</option>
+              <option value="ACC" ${r.status==='ACC'?'selected':''}>ACC</option>
+              <option value="Revisi" ${r.status==='Revisi'?'selected':''}>Revisi</option>
+            </select>
           </td>
-          <td class="py-3 px-3.5 text-[11px] text-slate-600">
-            <div><strong>PIC:</strong> ${escapeHtml(r.pic)}</div>
-            <div><strong>Ketupel:</strong> ${escapeHtml(r.ketupelNama)}</div>
-            <div>${escapeHtml(r.tanggalKegiatan)}</div>
+          <td class="p-2.5">
+            <input id="note-${escapeAttr(r.id)}" type="text" value="${escapeAttr(r.revisionNote || '')}" placeholder="Catatan revisi..." class="w-full px-2 py-1 rounded border border-slate-300 text-xs" />
           </td>
-          <td class="py-3 px-3.5 whitespace-nowrap">${statusBadgeHTML(r.status)}</td>
-          <td class="py-3 px-3.5 text-right whitespace-nowrap space-x-1">
-            <button onclick="sekumApproveLetter('${r.id}')" class="px-2.5 py-1 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold">ACC</button>
-            <button onclick="openRevisionModal('${r.id}')" class="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold">Revisi</button>
-            <button onclick="deleteRekapItem('${r.id}')" class="px-2 py-1 rounded-lg bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold">Hapus</button>
+          <td class="p-2.5 text-center space-x-1 whitespace-nowrap">
+            <button onclick="saveRowStatus('${escapeAttr(r.id)}')" class="px-2.5 py-1 rounded bg-blue-600 text-white font-bold cursor-pointer">Simpan</button>
+            <button onclick="deleteRowSurat('${escapeAttr(r.id)}')" class="px-2.5 py-1 rounded bg-red-600 text-white font-bold cursor-pointer">Hapus</button>
           </td>
         </tr>
-      `).join('');
+      `).join("");
     }
 
-    async function sekumApproveLetter(id) {
-      setSyncPill('loading', 'Menyimpan ACC...');
-      const r = await api({ action: 'setStatus', id, status: 'ACC & Terbit', note: '' });
-      if (!r.ok) {
-        setSyncPill('error', 'Gagal update');
-        showToast(r.error || 'Gagal menyetujui surat.', 'warning');
-        return;
-      }
-      const it = rekapDatabase.find(x => x.id === id);
-      if (it) {
-        it.status = 'ACC & Terbit';
-        it.revisionNote = '';
-      }
-      setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-      renderSekumRekapTable();
-      renderNavbarSubtabs();
-      showToast('Surat berhasil di-ACC & diterbitkan!', 'success');
-    }
-
-    function openRevisionModal(id) {
-      const it = rekapDatabase.find(x => x.id === id);
-      if (!it) return;
-      const backdrop = document.getElementById('app-modal-backdrop');
-      const box = document.getElementById('app-modal-box');
-      box.innerHTML = `
-        <h3 class="text-base font-extrabold text-slate-900 mb-1">Catatan Revisi Sekretaris Umum</h3>
-        <p class="text-xs text-slate-500 mb-3">${escapeHtml(it.nomorSurat)} — ${escapeHtml(it.acara)}</p>
-        <textarea id="modal-revision-textarea" rows="3" placeholder="Tuliskan bagian surat/lampiran yang perlu diperbaiki..." class="w-full rounded-xl border border-slate-300 p-3 text-xs focus:outline-none focus:border-amber-500 mb-4">${escapeHtml(it.revisionNote || '')}</textarea>
-        <div class="flex justify-end gap-2">
-          <button onclick="closeAppModal()" class="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-xs font-bold text-slate-700">Batal</button>
-          <button onclick="saveSekumRevision('${id}')" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-xs font-extrabold text-slate-950">Kirim Revisi</button>
-        </div>
-      `;
-      backdrop.classList.remove('hidden');
-      backdrop.classList.add('flex');
-    }
-
-    function closeAppModal() {
-      const backdrop = document.getElementById('app-modal-backdrop');
-      backdrop.classList.add('hidden');
-      backdrop.classList.remove('flex');
-    }
-
-    async function saveSekumRevision(id) {
-      const note = document.getElementById('modal-revision-textarea').value.trim() || 'Harap periksa kembali kelengkapan redaksi surat & lampiran.';
-      setSyncPill('loading', 'Mengirim revisi...');
-      const r = await api({ action: 'setStatus', id, status: 'Perlu Revisi', note });
-      if (!r.ok) {
-        setSyncPill('error', 'Gagal update');
-        showToast(r.error || 'Gagal menyimpan revisi.', 'warning');
-        return;
-      }
-      const it = rekapDatabase.find(x => x.id === id);
-      if (it) {
-        it.status = 'Perlu Revisi';
-        it.revisionNote = note;
-      }
-      setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-      renderSekumRekapTable();
-      renderNavbarSubtabs();
-      closeAppModal();
-      showToast('Status diubah menjadi Perlu Revisi.', 'info');
-    }
-
-    async function deleteRekapItem(id) {
-      if (!confirm('Yakin ingin menghapus baris nomor surat ini dari Google Sheet?')) return;
-      setSyncPill('loading', 'Menghapus...');
-      const r = await api({ action: 'delete', id });
-      if (!r.ok) {
-        setSyncPill('error', 'Gagal hapus');
-        showToast(r.error || 'Gagal menghapus entri.', 'warning');
-        return;
-      }
-      rekapDatabase = rekapDatabase.filter(x => x.id !== id);
-      setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-      renderSekumRekapTable();
-      renderNavbarSubtabs();
-      showToast('Entri berhasil dihapus dari Google Sheet.', 'info');
-    }
-
-    async function updateSekumManualCounter() {
-      const val = parseInt(document.getElementById('sekum-counter-input').value, 10);
-      if (isNaN(val) || val < 1) {
-        showToast('Masukkan angka counter yang valid (minimal 1).', 'warning');
-        return;
-      }
-      setSyncPill('loading', 'Mengatur counter...');
-      const r = await api({ action: 'setCounter', value: val });
-      if (!r.ok) {
-        setSyncPill('error', 'Gagal update');
-        showToast(r.error || 'Gagal mengatur counter.', 'warning');
-        return;
-      }
-      manualNextCounter = val;
-      syncCounterAboveRekap();
-      renderLivePreviewSheets();
-      setSyncPill('ok', `Terhubung (${rekapDatabase.length} surat)`);
-      showToast(`Counter nomor urut diatur ke #${formatSeq3(val)}.`, 'success');
-    }
-
-    function exportRekapCSV() {
-      const headers = ['Nomor Surat', 'Tanggal Surat', 'Departemen', 'Jenis Surat', 'Nama Kegiatan', 'Tujuan', 'Tanggal Kegiatan', 'Waktu', 'Tempat', 'PIC', 'Ketua Pelaksana', 'NRP Ketupel', 'CP', 'Status', 'Catatan Revisi'];
-      const lines = [headers.join(',')];
-      rekapDatabase.forEach(r => {
-        const vals = [
-          r.nomorSurat, r.tanggalSurat, r.deptKode, r.jenisNama, r.acara,
-          r.tujuan, r.tanggalKegiatan, r.waktu, r.tempat, r.pic,
-          r.ketupelNama, r.ketupelNrp, r.cp, r.status, r.revisionNote
-        ].map(v => `"${String(v || '').replace(/"/g, '""')}"`);
-        lines.push(vals.join(','));
+    async function saveRowStatus(id) {
+      const status = document.getElementById("st-" + id).value;
+      const note = document.getElementById("note-" + id).value;
+      const res = await postToScript({
+        action: "setStatus",
+        password: state.adminPass,
+        id: id,
+        status: status,
+        note: note
       });
-      const blob = new Blob(['\ufeff' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      if (res.ok) {
+        showToast("Status surat diperbarui.");
+        await loadServerData();
+      } else {
+        showToast(res.error || "Gagal memperbarui status.", true);
+      }
+    }
+
+    async function deleteRowSurat(id) {
+      if (!confirm("Hapus baris surat ini dari database?")) return;
+      const res = await postToScript({
+        action: "delete",
+        password: state.adminPass,
+        id: id
+      });
+      if (res.ok) {
+        showToast("Surat dihapus.");
+        await loadServerData();
+      } else {
+        showToast(res.error || "Gagal menghapus surat.", true);
+      }
+    }
+
+    async function updateCounter() {
+      const val = document.getElementById("admin-counter-input").value;
+      const res = await postToScript({
+        action: "setCounter",
+        password: state.adminPass,
+        value: val
+      });
+      if (res.ok) {
+        showToast("Counter nomor urut berhasil diperbarui.");
+        await loadServerData();
+      } else {
+        showToast(res.error || "Gagal mengubah counter.", true);
+      }
+    }
+
+    // =========================================================================
+    // ADMIN: KELOLA LINK SEKRE & BENDAHARA
+    // =========================================================================
+    function renderAdminLinksEditor() {
+      const list = document.getElementById("admin-links-list");
+      if (!list) return;
+      list.innerHTML = state.links.map((item, idx) => `
+        <div class="grid md:grid-cols-12 gap-2.5 p-3 rounded-xl border border-slate-200 bg-slate-50 items-center">
+          <div class="md:col-span-2">
+            <select data-link-field="kategori" data-idx="${idx}" class="w-full px-2.5 py-2 rounded-lg border border-slate-300 text-xs font-bold bg-white">
+              <option value="Kesekretariatan" ${item.kategori==='Kesekretariatan'?'selected':''}>Kesekretariatan</option>
+              <option value="Kebendaharaan" ${item.kategori==='Kebendaharaan'?'selected':''}>Kebendaharaan</option>
+            </select>
+          </div>
+          <div class="md:col-span-4">
+            <input type="text" data-link-field="judul" data-idx="${idx}" value="${escapeAttr(item.judul)}" placeholder="Nama Dokumen / SOP" class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs font-semibold bg-white" />
+          </div>
+          <div class="md:col-span-5">
+            <input type="url" data-link-field="url" data-idx="${idx}" value="${escapeAttr(item.url || '')}" placeholder="Kosongkan jika belum ada, atau tempel https://..." class="w-full px-3 py-2 rounded-lg border border-slate-300 text-xs bg-white" />
+          </div>
+          <div class="md:col-span-1 text-right">
+            <button onclick="removeAdminLinkRow(${idx})" class="px-2.5 py-2 rounded-lg bg-red-100 text-red-700 text-xs font-bold cursor-pointer">✕</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function collectLinksFromEditor() {
+      const updated = state.links.map(l => ({ ...l }));
+      document.querySelectorAll("[data-link-field]").forEach(el => {
+        const idx = Number(el.dataset.idx);
+        const field = el.dataset.linkField;
+        if (updated[idx]) updated[idx][field] = el.value.trim();
+      });
+      return updated;
+    }
+
+    function addAdminLinkRow() {
+      state.links = collectLinksFromEditor();
+      state.links.push({
+        id: "lnk-" + Date.now(),
+        kategori: "Kesekretariatan",
+        judul: "Dokumen Baru",
+        url: ""
+      });
+      renderAdminLinksEditor();
+    }
+
+    function removeAdminLinkRow(idx) {
+      state.links = collectLinksFromEditor();
+      state.links.splice(idx, 1);
+      renderAdminLinksEditor();
+    }
+
+    async function saveAdminLinks() {
+      const updatedLinks = collectLinksFromEditor();
+      const res = await postToScript({
+        action: "saveLinks",
+        password: state.adminPass,
+        links: updatedLinks
+      });
+      if (res.ok) {
+        state.links = updatedLinks;
+        syncAllUI();
+        showToast("Semua tautan Administrasi & Keuangan berhasil disimpan.");
+      } else {
+        showToast(res.error || "Gagal menyimpan tautan.", true);
+      }
+    }
+
+    function downloadCsvRekap() {
+      const headers = ["ID", "Timestamp", "Nomor Surat", "Kode Dept", "Nama Dept", "Jenis Surat", "Perihal", "Tujuan", "Ketua", "Sekretaris", "Tanggal Surat", "Status", "Catatan"];
+      const lines = [headers.join(",")];
+      state.rows.forEach(r => {
+        const vals = [r.id, r.timestamp, r.nomorSurat, r.deptKode, r.deptNama, r.jenisSurat, r.perihal, r.tujuan, r.ketuaNama, r.sekretarisNama, r.tanggalSurat, r.status, r.revisionNote]
+          .map(v => `"${String(v || "").replace(/"/g, '""')}"`);
+        lines.push(vals.join(","));
+      });
+      const blob = new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
+      const a = document.createElement("a");
       a.href = url;
-      a.download = `Rekap_Persuratan_HIMASIKA_KabinetZain_${new Date().toISOString().slice(0,10)}.csv`;
+      a.download = "Rekap_Surat_HIMASIKA_2026.csv";
       a.click();
       URL.revokeObjectURL(url);
-      showToast('File CSV rekap nomor surat berhasil diunduh.', 'success');
     }
 
-    // =========================================================
-    // BOOTSTRAP AWAL
-    // =========================================================
-    document.addEventListener('DOMContentLoaded', () => {
-      const todayIso = new Date().toISOString().slice(0, 10);
-      document.getElementById('form-tanggal-surat').value = todayIso;
+    function escapeHtml(s) {
+      return String(s || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
 
-      renderIkCheckboxGrid();
-      renderEquipmentEditor();
-      renderRundownEditor();
-      renderCertEditor();
-      onTemplateTypeChanged();
-      initStorageData(false);
+    function escapeAttr(s) {
+      return escapeHtml(s).replace(/'/g, "&#39;");
+    }
+
+    // Inisialisasi awal
+    window.addEventListener("DOMContentLoaded", () => {
+      syncAllUI();
+      loadServerData();
     });
   </script>
 </body>
