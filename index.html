@@ -7,73 +7,97 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Plus Jakarta Sans', sans-serif; }
-    .hero-bg {
-      background-color: #0b1938;
-      background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
-      background-size: 22px 22px;
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 48%, #fdf2f8 100%);
+    }
+    .hero-pink-blue {
+      background: linear-gradient(125deg, #1d4ed8 0%, #3b82f6 38%, #a855f7 72%, #ec4899 100%);
+    }
+    .btn-gradient {
+      background: linear-gradient(135deg, #2563eb 0%, #ec4899 100%);
+    }
+    .btn-gradient:hover {
+      background: linear-gradient(135deg, #1d4ed8 0%, #db2777 100%);
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
     }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="text-slate-800 min-h-screen flex flex-col relative overflow-x-hidden">
+
+  <!-- DEKORASI BLOB WARNA PASTEL BIRU & PINK -->
+  <div class="pointer-events-none fixed -top-24 -left-24 w-96 h-96 rounded-full bg-blue-300/25 blur-3xl -z-10"></div>
+  <div class="pointer-events-none fixed top-1/3 -right-24 w-96 h-96 rounded-full bg-pink-300/25 blur-3xl -z-10"></div>
+  <div class="pointer-events-none fixed -bottom-24 left-1/3 w-96 h-96 rounded-full bg-sky-200/30 blur-3xl -z-10"></div>
 
   <!-- TOAST NOTIFIKASI -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-slate-900 text-white px-4 py-3 rounded-xl shadow-2xl border border-slate-700 text-sm font-medium"></div>
+  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-gradient-to-r from-blue-700 to-pink-600 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/25 text-sm font-semibold"></div>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div id="modal-login" class="fixed inset-0 z-40 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-slate-200">
-      <div class="flex items-center justify-between mb-4">
+  <div id="modal-login" class="fixed inset-0 z-40 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-7 shadow-2xl border border-pink-100 relative overflow-hidden">
+      <div class="h-2 w-full btn-gradient absolute top-0 left-0"></div>
+      <div class="flex items-center justify-between mb-5 mt-1">
         <div>
-          <span class="text-[11px] font-bold uppercase tracking-wider text-amber-600">Akses Pengurus Inti</span>
-          <h3 class="text-lg font-extrabold text-slate-900">Login Dashboard Sekum & Bendahara</h3>
+          <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-600 text-[11px] font-extrabold uppercase tracking-wider mb-1">
+            Akses Sekum & Bendahara
+          </span>
+          <h3 class="text-lg font-extrabold text-slate-900">Login Dashboard Admin</h3>
         </div>
-        <button onclick="closeLoginModal()" class="w-8 h-8 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold cursor-pointer">✕</button>
+        <button onclick="closeLoginModal()" class="w-8 h-8 rounded-full bg-pink-50 hover:bg-pink-100 text-pink-600 font-bold cursor-pointer transition">✕</button>
       </div>
-      <div class="space-y-3.5">
+      <div class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">Username Admin</label>
-          <input id="login-username" type="text" placeholder="Masukkan username..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">Username Admin</label>
+          <input id="login-username" type="text" placeholder="Masukkan username..." class="w-full px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/30 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1">Password Admin</label>
-          <input id="login-password" type="password" placeholder="Masukkan password..." onkeydown="if(event.key==='Enter') submitLogin()" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-600" />
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">Password Admin</label>
+          <input id="login-password" type="password" placeholder="Masukkan password..." onkeydown="if(event.key==='Enter') submitLogin()" class="w-full px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/30 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
         </div>
-        <button onclick="submitLogin()" id="btn-login-submit" class="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm shadow cursor-pointer">
-          Masuk Dashboard Admin →
+        <button onclick="submitLogin()" id="btn-login-submit" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-sm shadow-lg shadow-pink-200 cursor-pointer transition">
+          Masuk Dashboard Admin ✨
         </button>
       </div>
     </div>
   </div>
 
-  <!-- NAVBAR ATAS -->
-  <header class="hero-bg text-white border-b border-white/10">
-    <div class="max-w-6xl mx-auto px-4 py-6">
+  <!-- NAVBAR & HERO ATAS -->
+  <header class="hero-pink-blue text-white shadow-lg shadow-blue-200/50 relative overflow-hidden">
+    <div class="pointer-events-none absolute -right-16 -top-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
+    <div class="pointer-events-none absolute left-1/4 -bottom-20 w-80 h-80 rounded-full bg-pink-300/20 blur-2xl"></div>
+
+    <div class="max-w-6xl mx-auto px-4 py-7 relative z-10">
       <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
         <div class="flex items-center gap-2.5">
-          <span class="px-3 py-1 rounded-full bg-amber-400/15 border border-amber-400/30 text-amber-300 text-xs font-bold tracking-wide">
-            HIMASIKA ITS • 2026–2027
+          <span class="px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-xs border border-white/30 text-white text-xs font-extrabold tracking-wide shadow-xs">
+            ✨ HIMASIKA ITS • 2026–2027
           </span>
-          <span class="text-xs text-slate-300 hidden sm:inline">Kabinet Zain</span>
+          <span class="px-3 py-1 rounded-full bg-pink-950/25 text-pink-100 text-xs font-semibold hidden sm:inline">
+            Kabinet Zain
+          </span>
         </div>
         <div class="flex items-center gap-2">
-          <button onclick="loadPortalData(true)" class="px-3.5 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold cursor-pointer">
+          <button onclick="loadPortalData(true)" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-xs border border-white/20 text-xs font-bold cursor-pointer transition">
             ↻ Refresh
           </button>
-          <button id="btn-nav-admin" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-extrabold shadow cursor-pointer">
+          <button id="btn-nav-admin" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-white text-pink-600 hover:bg-pink-50 text-xs font-extrabold shadow-md cursor-pointer transition">
             🔐 Login Admin (Sekre / Bendahara)
           </button>
-          <button id="btn-nav-logout" onclick="logoutAdmin()" class="hidden px-4 py-2 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-bold shadow cursor-pointer">
+          <button id="btn-nav-logout" onclick="logoutAdmin()" class="hidden px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow cursor-pointer transition">
             Keluar Mode Admin
           </button>
         </div>
       </div>
 
       <div class="max-w-3xl">
-        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2">
+        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2.5 drop-shadow-xs">
           Portal Template, SOP & Alur Administrasi
         </h1>
-        <p class="text-slate-300 text-sm leading-relaxed">
+        <p class="text-blue-50 text-sm leading-relaxed">
           Pusat tautan template surat resmi, proposal/LPJ, panduan alur peminjaman ruangan & inventaris, serta administrasi keuangan fungsionaris HIMASIKA ITS.
         </p>
       </div>
@@ -81,44 +105,53 @@
   </header>
 
   <!-- ===================================================================== -->
-  <!-- VIEW PUBLIK: HALAMAN TEMPLATE & DROPDOWN ALUR PEMINJAMAN (A -> B -> C) -->
+  <!-- VIEW PUBLIK: DROPDOWN ALUR PEMINJAMAN (A -> B -> C) & HALAMAN LINK    -->
   <!-- ===================================================================== -->
-  <main id="view-public" class="max-w-6xl mx-auto w-full px-4 py-7 flex-1 space-y-8">
+  <main id="view-public" class="max-w-6xl mx-auto w-full px-4 py-8 flex-1 space-y-8">
 
     <!-- BAGIAN 1: DROPDOWN ALUR PEMINJAMAN & BIROKRASI (A -> B -> C) -->
-    <section class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200">
+    <section class="glass-card rounded-3xl p-6 sm:p-7 shadow-xl shadow-blue-100/60 border border-pink-100 relative overflow-hidden">
+      <div class="h-1.5 w-full btn-gradient absolute top-0 left-0"></div>
+
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-pink-100">
         <div>
-          <span class="inline-block px-2.5 py-0.5 rounded bg-blue-50 text-blue-700 text-[11px] font-bold uppercase tracking-wide mb-1">
-            Panduan Alur Bertahap
+          <span class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 text-blue-800 text-[11px] font-extrabold uppercase tracking-wide mb-1.5">
+            🧭 Panduan Alur Bertahap
           </span>
-          <h2 class="text-lg font-extrabold text-slate-900">Alur Peminjaman Ruang, Inventaris & Birokrasi (A → B → C)</h2>
-          <p class="text-xs text-slate-500">Pilih jenis peminjaman atau pengajuan di dropdown bawah untuk melihat alur tujuan dan syaratnya.</p>
+          <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">
+            Alur Peminjaman Ruang, Inventaris & Birokrasi (A → B → C)
+          </h2>
+          <p class="text-xs text-slate-500 mt-0.5">
+            Pilih jenis keperluan di dropdown samping untuk melihat urutan tujuan pengajuan dan syaratnya.
+          </p>
         </div>
+
         <div class="w-full md:w-96">
-          <label class="block text-[11px] font-bold text-slate-500 uppercase mb-1">Pilih Jenis Peminjaman / Pengajuan:</label>
-          <select id="flow-selector" onchange="renderSelectedFlow()" class="w-full px-3.5 py-2.5 rounded-xl border border-blue-300 bg-blue-50/40 text-slate-900 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-blue-600"></select>
+          <label class="block text-[11px] font-extrabold text-pink-600 uppercase tracking-wider mb-1.5">
+            Pilih Jenis Peminjaman / Pengajuan:
+          </label>
+          <select id="flow-selector" onchange="renderSelectedFlow()" class="w-full px-4 py-3 rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50/70 to-pink-50/70 text-slate-900 text-xs font-bold focus:outline-none focus:border-pink-400 cursor-pointer shadow-xs"></select>
         </div>
       </div>
 
       <!-- Konten Alur yang Dipilih dari Dropdown -->
-      <div id="flow-detail-box" class="mt-4"></div>
+      <div id="flow-detail-box" class="mt-5"></div>
     </section>
 
     <!-- BAGIAN 2: HALAMAN / KATEGORI TEMPLATE & LINK DOKUMEN -->
-    <section class="space-y-4">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+    <section class="space-y-5">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
         <!-- Tab Halaman Dinamis -->
         <div id="public-pages-tabs" class="flex flex-wrap gap-2"></div>
 
         <!-- Pencarian Cepat -->
-        <div class="w-full sm:w-64">
-          <input id="search-link-input" type="text" oninput="renderPublicLinks()" placeholder="Cari nama template / dokumen..." class="w-full px-3.5 py-2 rounded-xl border border-slate-300 bg-white text-xs focus:outline-none focus:ring-2 focus:ring-blue-600" />
+        <div class="w-full lg:w-72 relative">
+          <input id="search-link-input" type="text" oninput="renderPublicLinks()" placeholder="🔍 Cari nama template / dokumen..." class="w-full px-4 py-2.5 rounded-2xl border border-pink-200 bg-white/90 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-xs" />
         </div>
       </div>
 
       <!-- Info Halaman Aktif -->
-      <div id="active-page-header" class="bg-white px-5 py-4 rounded-2xl border border-slate-200 flex flex-wrap items-center justify-between gap-2"></div>
+      <div id="active-page-header" class="glass-card px-6 py-4 rounded-2xl border border-blue-100 shadow-sm flex flex-wrap items-center justify-between gap-2"></div>
 
       <!-- Grid Kartu Template & Link -->
       <div id="public-links-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
@@ -129,17 +162,17 @@
   <!-- ===================================================================== -->
   <!-- VIEW ADMIN: KELOLA HALAMAN, LINK TEMPLATE & DROPDOWN ALUR             -->
   <!-- ===================================================================== -->
-  <main id="view-admin" class="hidden max-w-6xl mx-auto w-full px-4 py-7 flex-1 space-y-6">
-    <div class="bg-amber-50 border border-amber-300 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
+  <main id="view-admin" class="hidden max-w-6xl mx-auto w-full px-4 py-8 flex-1 space-y-6">
+    <div class="bg-gradient-to-r from-blue-50 via-white to-pink-50 border border-pink-200 rounded-3xl p-5 shadow-md flex flex-wrap items-center justify-between gap-3">
       <div>
-        <div class="text-xs font-extrabold text-amber-900 uppercase">Mode Editor Admin Aktif (Sekretaris Umum & Bendahara)</div>
-        <p class="text-xs text-amber-800">Semua perubahan (tambah halaman, edit link, ubah dropdown alur) akan tersimpan permanen setelah menekan tombol <strong>Simpan Semua Perubahan</strong>.</p>
+        <div class="text-xs font-extrabold text-pink-600 uppercase tracking-wider">✨ Mode Editor Admin Aktif (Sekretaris Umum & Bendahara)</div>
+        <p class="text-xs text-slate-600 mt-0.5">Tambah halaman, edit link template, atau ubah dropdown alur peminjaman lalu klik <strong>Simpan Semua Perubahan</strong>.</p>
       </div>
       <div class="flex gap-2">
-        <button onclick="switchModeView('public')" class="px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-slate-700 text-xs font-bold cursor-pointer">
+        <button onclick="switchModeView('public')" class="px-4 py-2.5 rounded-xl bg-white border border-blue-200 hover:bg-blue-50 text-blue-700 text-xs font-bold cursor-pointer transition">
           👁 Lihat Tampilan Publik
         </button>
-        <button onclick="saveAllPortalChanges()" id="btn-save-all" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-extrabold shadow cursor-pointer">
+        <button onclick="saveAllPortalChanges()" id="btn-save-all" class="px-5 py-2.5 rounded-xl btn-gradient text-white text-xs font-extrabold shadow-md shadow-pink-200 cursor-pointer transition">
           💾 Simpan Semua Perubahan
         </button>
       </div>
@@ -147,27 +180,27 @@
 
     <!-- Sub-Tab Admin -->
     <div class="flex flex-wrap gap-2 text-xs font-bold">
-      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2.5 rounded-xl bg-slate-900 text-white cursor-pointer">
+      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2.5 rounded-2xl btn-gradient text-white shadow-sm cursor-pointer">
         1. Kelola Link Template & Dokumen
       </button>
-      <button onclick="switchAdminSubTab('pages')" id="adm-tab-pages" class="px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 cursor-pointer">
+      <button onclick="switchAdminSubTab('pages')" id="adm-tab-pages" class="px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer">
         2. Tambah / Edit Halaman (Kategori)
       </button>
-      <button onclick="switchAdminSubTab('flows')" id="adm-tab-flows" class="px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 cursor-pointer">
+      <button onclick="switchAdminSubTab('flows')" id="adm-tab-flows" class="px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer">
         3. Edit Dropdown Alur Peminjaman (A → B → C)
       </button>
     </div>
 
     <!-- ADMIN SUB-TAB 1: KELOLA LINK -->
-    <div id="adm-panel-links" class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b pb-3">
+    <div id="adm-panel-links" class="glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
         <div>
           <h2 class="text-base font-extrabold text-slate-900">Daftar Link Template & Dokumen</h2>
-          <p class="text-xs text-slate-500">Tempel link Google Docs / Word / Drive / Form. Kosongkan URL jika belum ada agar tidak menampilkan tautan mati.</p>
+          <p class="text-xs text-slate-500">Tempel link Google Docs / Word / Drive / Form. Kosongkan URL jika belum tersedia.</p>
         </div>
         <div class="flex items-center gap-2">
-          <select id="adm-filter-page" onchange="renderAdminLinks()" class="px-3 py-2 rounded-xl border border-slate-300 text-xs font-semibold"></select>
-          <button onclick="addNewLinkItem()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold cursor-pointer">
+          <select id="adm-filter-page" onchange="renderAdminLinks()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50/40 text-xs font-bold text-slate-800"></select>
+          <button onclick="addNewLinkItem()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
             + Tambah Link Baru
           </button>
         </div>
@@ -176,13 +209,13 @@
     </div>
 
     <!-- ADMIN SUB-TAB 2: KELOLA HALAMAN -->
-    <div id="adm-panel-pages" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b pb-3">
+    <div id="adm-panel-pages" class="hidden glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
         <div>
           <h2 class="text-base font-extrabold text-slate-900">Kelola Halaman / Tab Kategori</h2>
-          <p class="text-xs text-slate-500">Buat halaman baru (misal: <em>Arsip Rapat</em>, <em>Kebutuhan Wisuda</em>, dll.) atau ubah nama halaman yang sudah ada.</p>
+          <p class="text-xs text-slate-500">Buat halaman baru atau ubah nama dan deskripsi halaman yang sudah ada.</p>
         </div>
-        <button onclick="addNewPageItem()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold cursor-pointer">
+        <button onclick="addNewPageItem()" class="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
           + Tambah Halaman Baru
         </button>
       </div>
@@ -190,13 +223,13 @@
     </div>
 
     <!-- ADMIN SUB-TAB 3: KELOLA DROPDOWN ALUR PEMINJAMAN -->
-    <div id="adm-panel-flows" class="hidden bg-white p-6 rounded-2xl shadow-sm border border-slate-200 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b pb-3">
+    <div id="adm-panel-flows" class="hidden glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
         <div>
           <h2 class="text-base font-extrabold text-slate-900">Kelola Dropdown Alur Peminjaman & Birokrasi (A → B → C)</h2>
-          <p class="text-xs text-slate-500">Setiap baris pada kotak langkah akan otomatis ditampilkan sebagai tahapan berurutan (Tahap 1, 2, 3, dst.).</p>
+          <p class="text-xs text-slate-500">Pisahkan tiap tahapan alur menggunakan baris baru (Enter).</p>
         </div>
-        <button onclick="addNewFlowItem()" class="px-3.5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold cursor-pointer">
+        <button onclick="addNewFlowItem()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
           + Tambah Jenis Alur Baru
         </button>
       </div>
@@ -204,8 +237,8 @@
     </div>
   </main>
 
-  <footer class="bg-white border-t border-slate-200 py-5 px-4 text-center text-xs text-slate-500 mt-10">
-    Portal Kesekretariatan & Kebendaharaan HIMASIKA ITS — Kabinet Zain • PIC Administrasi: <strong class="text-slate-800">Salwa (081362192288)</strong>
+  <footer class="bg-white/80 backdrop-blur-xs border-t border-pink-100 py-5 px-4 text-center text-xs text-slate-600 mt-10">
+    Portal Kesekretariatan & Kebendaharaan <span class="font-bold text-blue-600">HIMASIKA ITS</span> — <span class="font-bold text-pink-600">Kabinet Zain</span> • PIC Administrasi: <strong class="text-slate-900">Salwa (081362192288)</strong>
   </footer>
 
   <script>
@@ -219,7 +252,6 @@
 
     let activePageId = "pg-surat";
 
-    // Data default (semua URL kosong "" agar link tahun lalu tidak tampil sebelum diisi Admin)
     let portalData = {
       pages: [
         { id: 'pg-surat', nama: '10 Template Surat Resmi', deskripsi: 'Template standar tata naskah dinas HIMASIKA ITS Kabinet Zain (margin 2,54 cm).' },
@@ -316,11 +348,11 @@
     function showToast(msg, isError = false) {
       const t = document.getElementById("toast");
       t.textContent = msg;
-      t.classList.remove("hidden", "bg-slate-900", "bg-red-700", "border-slate-700", "border-red-400");
+      t.classList.remove("hidden", "from-blue-700", "to-pink-600", "bg-red-700");
       if (isError) {
-        t.classList.add("bg-red-700", "border-red-400");
+        t.classList.add("bg-red-700");
       } else {
-        t.classList.add("bg-slate-900", "border-slate-700");
+        t.classList.add("from-blue-700", "to-pink-600");
       }
       clearTimeout(window._toastTimer);
       window._toastTimer = setTimeout(() => t.classList.add("hidden"), 3800);
@@ -340,7 +372,7 @@
           }
           renderAllPublic();
           if (auth.isLoggedIn) renderAllAdmin();
-          if (notify) showToast("Data portal berhasil diperbarui.");
+          if (notify) showToast("✨ Data portal berhasil diperbarui.");
         }
       } catch (e) {
         renderAllPublic();
@@ -358,7 +390,7 @@
     }
 
     // =========================================================================
-    // RENDER HALAMAN PUBLIK (DROPDOWN ALUR + HALAMAN TEMPLATE)
+    // RENDER HALAMAN PUBLIK (DROPDOWN ALUR + HALAMAN TEMPLATE PINK & BIRU)
     // =========================================================================
     function renderAllPublic() {
       renderFlowDropdown();
@@ -390,8 +422,8 @@
       }
 
       const stepsHtml = (flow.langkah || []).map((step, idx) => `
-        <div class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-200">
-          <span class="w-6 h-6 rounded-full bg-blue-600 text-white text-xs font-extrabold flex items-center justify-center shrink-0 mt-0.5">
+        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/70 via-white to-pink-50/70 border border-blue-100/80 shadow-2xs">
+          <span class="w-7 h-7 rounded-full btn-gradient text-white text-xs font-extrabold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
             ${idx + 1}
           </span>
           <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(step)}</p>
@@ -399,16 +431,17 @@
       `).join("");
 
       box.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900">${escapeHtml(flow.judul)}</h3>
-          <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold">
+          <span class="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 border border-pink-200 text-xs font-extrabold">
             ⏱ Batas Pengajuan: ${escapeHtml(flow.estimasi || '-')}
           </span>
         </div>
-        <div class="space-y-2 mb-3">${stepsHtml}</div>
+        <div class="space-y-2.5 mb-3.5">${stepsHtml}</div>
         ${flow.catatan ? `
-          <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-blue-900">
-            <strong>Catatan Penting:</strong> ${escapeHtml(flow.catatan)}
+          <div class="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200 text-xs text-blue-900 flex items-start gap-2">
+            <span class="text-sm">💡</span>
+            <div><strong>Catatan Penting:</strong> ${escapeHtml(flow.catatan)}</div>
           </div>
         ` : ''}
       `;
@@ -420,10 +453,10 @@
       container.innerHTML = portalData.pages.map(pg => {
         const isActive = pg.id === activePageId;
         return `
-          <button onclick="selectPublicPage('${escapeAttr(pg.id)}')" class="px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
+          <button onclick="selectPublicPage('${escapeAttr(pg.id)}')" class="px-4 py-2.5 rounded-2xl text-xs font-extrabold transition cursor-pointer ${
             isActive
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'bg-white text-slate-700 border border-slate-300 hover:bg-slate-100'
+              ? 'btn-gradient text-white shadow-md shadow-pink-200/70'
+              : 'bg-white/90 text-slate-700 border border-pink-100 hover:border-blue-300 hover:bg-blue-50/50'
           }">
             ${escapeHtml(pg.nama)}
           </button>
@@ -449,7 +482,6 @@
         return;
       }
 
-      // Jika user sedang mengetik di pencarian, cari di semua halaman; jika kosong, tampilkan halaman aktif
       let filtered = keyword
         ? portalData.links.filter(l =>
             (l.judul || "").toLowerCase().includes(keyword) ||
@@ -462,34 +494,49 @@
           <h3 class="text-base font-extrabold text-slate-900">${keyword ? `Hasil Pencarian: "${escapeHtml(keyword)}"` : escapeHtml(page.nama)}</h3>
           <p class="text-xs text-slate-500">${keyword ? `Ditemukan ${filtered.length} dokumen di seluruh halaman.` : escapeHtml(page.deskripsi || '')}</p>
         </div>
-        <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-xs font-bold">${filtered.length} Item</span>
+        <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 text-pink-700 text-xs font-extrabold">
+          ${filtered.length} Dokumen
+        </span>
       `;
 
       if (filtered.length === 0) {
         gridBox.innerHTML = `
-          <div class="col-span-full bg-white p-8 rounded-2xl border border-dashed border-slate-300 text-center text-xs text-slate-500">
+          <div class="col-span-full glass-card p-8 rounded-3xl border border-dashed border-pink-300 text-center text-xs text-slate-500">
             Belum ada tautan dokumen pada bagian ini.
           </div>
         `;
         return;
       }
 
-      gridBox.innerHTML = filtered.map(item => {
+      gridBox.innerHTML = filtered.map((item, idx) => {
         const hasUrl = item.url && item.url.trim() !== "";
         const parentPage = portalData.pages.find(p => p.id === item.pageId);
+        const isEven = idx % 2 === 0;
+        const accentBar = isEven ? "from-blue-500 to-cyan-400" : "from-pink-500 to-rose-400";
+        const iconBg = isEven ? "bg-blue-50 text-blue-600" : "bg-pink-50 text-pink-600";
+
         return `
-          <div class="bg-white rounded-2xl p-5 border ${hasUrl ? 'border-slate-200 shadow-xs hover:border-blue-400' : 'border-dashed border-slate-300 bg-slate-50/60'} flex flex-col justify-between gap-4 transition">
-            <div>
-              ${keyword && parentPage ? `<span class="inline-block px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[10px] font-bold mb-1.5">${escapeHtml(parentPage.nama)}</span>` : ''}
+          <div class="glass-card rounded-3xl p-5 border ${hasUrl ? 'border-blue-100 shadow-md shadow-blue-100/40 hover:-translate-y-1 hover:border-pink-300' : 'border-dashed border-pink-200 bg-white/60'} flex flex-col justify-between gap-4 transition-all duration-200 relative overflow-hidden">
+            <div class="h-1 w-full bg-gradient-to-r ${accentBar} absolute top-0 left-0"></div>
+            <div class="pt-1">
+              <div class="flex items-center justify-between gap-2 mb-2.5">
+                <span class="w-8 h-8 rounded-xl ${iconBg} flex items-center justify-center text-sm font-bold">
+                  ${hasUrl ? '📄' : '⏳'}
+                </span>
+                ${keyword && parentPage
+                  ? `<span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold">${escapeHtml(parentPage.nama)}</span>`
+                  : `<span class="px-2.5 py-0.5 rounded-full ${hasUrl ? 'bg-emerald-50 text-emerald-700' : 'bg-pink-50 text-pink-600'} text-[10px] font-bold">${hasUrl ? 'Tersedia' : 'Menunggu Update'}</span>`
+                }
+              </div>
               <h4 class="text-sm font-extrabold text-slate-900 leading-snug mb-1.5">${escapeHtml(item.judul)}</h4>
               <p class="text-xs text-slate-500 leading-relaxed">${escapeHtml(item.ket || 'Dokumen resmi Kabinet Zain HIMASIKA ITS.')}</p>
             </div>
             <div>
               ${hasUrl
-                ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-xs">
+                ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl btn-gradient text-white text-xs font-extrabold transition shadow-sm shadow-pink-200">
                     Buka Template / Tautan ↗
                   </a>`
-                : `<div class="w-full text-center px-3 py-2 rounded-xl bg-slate-200/70 text-slate-500 text-xs font-semibold">
+                : `<div class="w-full text-center px-3 py-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-pink-50 border border-pink-100 text-slate-500 text-[11px] font-semibold">
                     Link Kosong • Menunggu Update Admin
                   </div>`
               }
@@ -539,17 +586,16 @@
         }
         activateAdminSession();
       } catch (e) {
-        // Fallback jika backend belum di-deploy versi baru
         if (username.toLowerCase() === "admin" && password === "himasika2026") {
           auth = { isLoggedIn: true, username, password };
           activateAdminSession();
-          showToast("Login berhasil (pastikan Kode.gs sudah di-deploy Versi Baru agar perubahan tersimpan online).");
+          showToast("Login berhasil (pastikan Kode.gs sudah di-deploy Versi Baru).");
         } else {
           showToast("Gagal terhubung ke server Apps Script.", true);
         }
       } finally {
         btn.disabled = false;
-        btn.textContent = "Masuk Dashboard Admin →";
+        btn.textContent = "Masuk Dashboard Admin ✨";
       }
     }
 
@@ -559,7 +605,7 @@
       document.getElementById("btn-nav-logout").classList.remove("hidden");
       switchModeView("admin");
       renderAllAdmin();
-      showToast("Selamat datang di Dashboard Admin Sekum & Bendahara.");
+      showToast("✨ Selamat datang di Dashboard Admin Sekum & Bendahara.");
     }
 
     function logoutAdmin() {
@@ -582,9 +628,9 @@
         document.getElementById("adm-panel-" + t).classList.toggle("hidden", t !== tab);
         const btn = document.getElementById("adm-tab-" + t);
         if (t === tab) {
-          btn.className = "px-4 py-2.5 rounded-xl bg-slate-900 text-white cursor-pointer";
+          btn.className = "px-4 py-2.5 rounded-2xl btn-gradient text-white shadow-sm cursor-pointer";
         } else {
-          btn.className = "px-4 py-2.5 rounded-xl bg-white border border-slate-300 text-slate-700 cursor-pointer";
+          btn.className = "px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer";
         }
       });
     }
@@ -611,31 +657,30 @@
     function renderAdminLinks() {
       const container = document.getElementById("adm-links-container");
       const filterPage = document.getElementById("adm-filter-page").value || "ALL";
-      const pageOptions = portalData.pages.map(p => `<option value="${escapeAttr(p.id)}">${escapeHtml(p.nama)}</option>`).join("");
 
       const list = portalData.links
         .map((item, realIdx) => ({ item, realIdx }))
         .filter(({ item }) => filterPage === "ALL" || item.pageId === filterPage);
 
       container.innerHTML = list.map(({ item, realIdx }) => `
-        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 grid md:grid-cols-12 gap-3 items-start">
+        <div class="p-4 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 grid md:grid-cols-12 gap-3 items-start">
           <div class="md:col-span-3">
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Halaman</label>
-            <select onchange="updateLinkField(${realIdx}, 'pageId', this.value)" class="w-full px-2.5 py-2 rounded-lg border border-slate-300 bg-white text-xs font-semibold">
+            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Halaman</label>
+            <select onchange="updateLinkField(${realIdx}, 'pageId', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-semibold">
               ${portalData.pages.map(p => `<option value="${escapeAttr(p.id)}" ${p.id === item.pageId ? 'selected' : ''}>${escapeHtml(p.nama)}</option>`).join("")}
             </select>
           </div>
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Judul Template / Dokumen</label>
-            <input type="text" value="${escapeAttr(item.judul)}" onchange="updateLinkField(${realIdx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs font-bold mb-1.5" />
-            <input type="text" value="${escapeAttr(item.ket || '')}" placeholder="Keterangan singkat..." onchange="updateLinkField(${realIdx}, 'ket', this.value)" class="w-full px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-[11px]" />
+            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Judul Template / Dokumen</label>
+            <input type="text" value="${escapeAttr(item.judul)}" onchange="updateLinkField(${realIdx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs font-bold mb-1.5" />
+            <input type="text" value="${escapeAttr(item.ket || '')}" placeholder="Keterangan singkat..." onchange="updateLinkField(${realIdx}, 'ket', this.value)" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-[11px]" />
           </div>
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">URL Link (Kosongkan jika belum ada)</label>
-            <input type="url" value="${escapeAttr(item.url || '')}" placeholder="https://docs.google.com/..." onchange="updateLinkField(${realIdx}, 'url', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs" />
+            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">URL Link (Kosongkan jika belum ada)</label>
+            <input type="url" value="${escapeAttr(item.url || '')}" placeholder="https://docs.google.com/..." onchange="updateLinkField(${realIdx}, 'url', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs" />
           </div>
           <div class="md:col-span-1 flex md:justify-end pt-4">
-            <button onclick="deleteLinkItem(${realIdx})" class="px-3 py-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold cursor-pointer">Hapus</button>
+            <button onclick="deleteLinkItem(${realIdx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
           </div>
         </div>
       `).join("");
@@ -673,17 +718,17 @@
     function renderAdminPages() {
       const container = document.getElementById("adm-pages-container");
       container.innerHTML = portalData.pages.map((pg, idx) => `
-        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 grid md:grid-cols-12 gap-3 items-center">
+        <div class="p-4 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 grid md:grid-cols-12 gap-3 items-center">
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nama Halaman / Tab</label>
-            <input type="text" value="${escapeAttr(pg.nama)}" onchange="updatePageField(${idx}, 'nama', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs font-bold" />
+            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Nama Halaman / Tab</label>
+            <input type="text" value="${escapeAttr(pg.nama)}" onchange="updatePageField(${idx}, 'nama', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-bold" />
           </div>
           <div class="md:col-span-7">
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Deskripsi Halaman</label>
-            <input type="text" value="${escapeAttr(pg.deskripsi || '')}" onchange="updatePageField(${idx}, 'deskripsi', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs" />
+            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Deskripsi Halaman</label>
+            <input type="text" value="${escapeAttr(pg.deskripsi || '')}" onchange="updatePageField(${idx}, 'deskripsi', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
           </div>
           <div class="md:col-span-1 flex md:justify-end pt-4">
-            <button onclick="deletePageItem(${idx})" class="px-3 py-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold cursor-pointer">Hapus</button>
+            <button onclick="deletePageItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
           </div>
         </div>
       `).join("");
@@ -725,27 +770,27 @@
     function renderAdminFlows() {
       const container = document.getElementById("adm-flows-container");
       container.innerHTML = portalData.flows.map((fl, idx) => `
-        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+        <div class="p-5 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 space-y-3">
           <div class="grid md:grid-cols-12 gap-3 items-center">
             <div class="md:col-span-7">
-              <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Judul Pilihan Dropdown (Jenis Peminjaman / Pengajuan)</label>
-              <input type="text" value="${escapeAttr(fl.judul)}" onchange="updateFlowField(${idx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs font-bold" />
+              <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Judul Pilihan Dropdown (Jenis Peminjaman / Pengajuan)</label>
+              <input type="text" value="${escapeAttr(fl.judul)}" onchange="updateFlowField(${idx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-bold" />
             </div>
             <div class="md:col-span-4">
-              <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Batas Waktu / Estimasi</label>
-              <input type="text" value="${escapeAttr(fl.estimasi || '')}" onchange="updateFlowField(${idx}, 'estimasi', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs" />
+              <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Batas Waktu / Estimasi</label>
+              <input type="text" value="${escapeAttr(fl.estimasi || '')}" onchange="updateFlowField(${idx}, 'estimasi', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
             </div>
             <div class="md:col-span-1 flex md:justify-end pt-4">
-              <button onclick="deleteFlowItem(${idx})" class="px-3 py-2 rounded-lg bg-red-100 hover:bg-red-200 text-red-700 text-xs font-bold cursor-pointer">Hapus</button>
+              <button onclick="deleteFlowItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
             </div>
           </div>
           <div>
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Tahapan Alur A → B → C (Pisahkan tiap tahap dengan Enter / baris baru)</label>
-            <textarea rows="4" onchange="updateFlowSteps(${idx}, this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs leading-relaxed">${escapeHtml((fl.langkah || []).join('\n'))}</textarea>
+            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Tahapan Alur A → B → C (Pisahkan tiap tahap dengan Enter / baris baru)</label>
+            <textarea rows="4" onchange="updateFlowSteps(${idx}, this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs leading-relaxed">${escapeHtml((fl.langkah || []).join('\n'))}</textarea>
           </div>
           <div>
-            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Catatan Penting</label>
-            <input type="text" value="${escapeAttr(fl.catatan || '')}" onchange="updateFlowField(${idx}, 'catatan', this.value)" class="w-full px-3 py-2 rounded-lg border border-slate-300 bg-white text-xs" />
+            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Catatan Penting</label>
+            <input type="text" value="${escapeAttr(fl.catatan || '')}" onchange="updateFlowField(${idx}, 'catatan', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
           </div>
         </div>
       `).join("");
