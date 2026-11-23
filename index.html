@@ -3,205 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal Kesekretariatan & Keuangan — Kabinet Zain | HIMASIKA ITS</title>
+  <title>Portal Administrasi — Kabinet Zain | HIMASIKA ITS</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
-      background: linear-gradient(135deg, #eff6ff 0%, #ffffff 48%, #fdf2f8 100%);
+      background-color: #fafbfe;
+      background-image:
+        radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.45) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(251, 207, 232, 0.45) 0px, transparent 50%);
     }
-    .hero-pink-blue {
-      background: linear-gradient(125deg, #1d4ed8 0%, #3b82f6 38%, #a855f7 72%, #ec4899 100%);
+    .pink-blue-grad {
+      background: linear-gradient(120deg, #3b82f6 0%, #8b5cf6 52%, #ec4899 100%);
     }
-    .btn-gradient {
-      background: linear-gradient(135deg, #2563eb 0%, #ec4899 100%);
-    }
-    .btn-gradient:hover {
-      background: linear-gradient(135deg, #1d4ed8 0%, #db2777 100%);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.88);
-      backdrop-filter: blur(12px);
+    .pink-blue-soft {
+      background: linear-gradient(120deg, #eff6ff 0%, #fdf2f8 100%);
     }
   </style>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col relative overflow-x-hidden">
-
-  <!-- DEKORASI BLOB WARNA PASTEL BIRU & PINK -->
-  <div class="pointer-events-none fixed -top-24 -left-24 w-96 h-96 rounded-full bg-blue-300/25 blur-3xl -z-10"></div>
-  <div class="pointer-events-none fixed top-1/3 -right-24 w-96 h-96 rounded-full bg-pink-300/25 blur-3xl -z-10"></div>
-  <div class="pointer-events-none fixed -bottom-24 left-1/3 w-96 h-96 rounded-full bg-sky-200/30 blur-3xl -z-10"></div>
+<body class="text-slate-800 min-h-screen flex flex-col">
 
   <!-- TOAST NOTIFIKASI -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 hidden max-w-sm bg-gradient-to-r from-blue-700 to-pink-600 text-white px-4 py-3 rounded-2xl shadow-2xl border border-white/25 text-sm font-semibold"></div>
+  <div id="toast" class="fixed top-5 right-5 z-50 hidden max-w-sm bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl text-xs font-semibold"></div>
+
+  <!-- FLOATING WHATSAPP CP SALWA -->
+  <a href="https://wa.me/6281362192288?text=Halo%20Salwa%2C%20izin%20bertanya%20terkait%20administrasi%20HIMASIKA%20ITS" target="_blank" rel="noopener noreferrer"
+     class="fixed bottom-5 right-5 z-40 flex items-center gap-2.5 px-4 py-3 rounded-full pink-blue-grad text-white text-xs font-bold shadow-lg shadow-pink-300/50 hover:scale-105 transition">
+    <span class="text-base">💬</span>
+    <span>CP Sekum: Salwa (081362192288)</span>
+  </a>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div id="modal-login" class="fixed inset-0 z-40 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-md w-full p-7 shadow-2xl border border-pink-100 relative overflow-hidden">
-      <div class="h-2 w-full btn-gradient absolute top-0 left-0"></div>
-      <div class="flex items-center justify-between mb-5 mt-1">
+  <div id="modal-login" class="fixed inset-0 z-50 hidden bg-slate-900/50 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-sm w-full p-7 shadow-2xl border border-pink-100">
+      <div class="flex items-center justify-between mb-5">
         <div>
-          <span class="inline-block px-2.5 py-0.5 rounded-full bg-pink-50 text-pink-600 text-[11px] font-extrabold uppercase tracking-wider mb-1">
-            Akses Sekum & Bendahara
-          </span>
-          <h3 class="text-lg font-extrabold text-slate-900">Login Dashboard Admin</h3>
+          <span class="text-[11px] font-bold text-pink-500 uppercase tracking-wider">Sekum & Bendahara</span>
+          <h3 class="text-lg font-extrabold text-slate-900">Login Admin</h3>
         </div>
-        <button onclick="closeLoginModal()" class="w-8 h-8 rounded-full bg-pink-50 hover:bg-pink-100 text-pink-600 font-bold cursor-pointer transition">✕</button>
+        <button onclick="closeLoginModal()" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-pink-50 text-slate-500 hover:text-pink-600 font-bold cursor-pointer">✕</button>
       </div>
       <div class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1.5">Username Admin</label>
-          <input id="login-username" type="text" placeholder="Masukkan username..." class="w-full px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/30 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">Username</label>
+          <input id="login-username" type="text" placeholder="Username admin" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-blue-400" />
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-600 mb-1.5">Password Admin</label>
-          <input id="login-password" type="password" placeholder="Masukkan password..." onkeydown="if(event.key==='Enter') submitLogin()" class="w-full px-4 py-2.5 rounded-xl border border-blue-200 bg-blue-50/30 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500" />
+          <label class="block text-xs font-bold text-slate-600 mb-1.5">Password</label>
+          <input id="login-password" type="password" placeholder="Password admin" onkeydown="if(event.key==='Enter') submitLogin()" class="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-pink-400" />
         </div>
-        <button onclick="submitLogin()" id="btn-login-submit" class="w-full py-3 rounded-xl btn-gradient text-white font-bold text-sm shadow-lg shadow-pink-200 cursor-pointer transition">
-          Masuk Dashboard Admin ✨
+        <button onclick="submitLogin()" id="btn-login-submit" class="w-full py-3 rounded-xl pink-blue-grad text-white font-bold text-sm shadow-md shadow-pink-200 cursor-pointer">
+          Masuk Dashboard
         </button>
       </div>
     </div>
   </div>
 
-  <!-- NAVBAR & HERO ATAS -->
-  <header class="hero-pink-blue text-white shadow-lg shadow-blue-200/50 relative overflow-hidden">
-    <div class="pointer-events-none absolute -right-16 -top-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
-    <div class="pointer-events-none absolute left-1/4 -bottom-20 w-80 h-80 rounded-full bg-pink-300/20 blur-2xl"></div>
-
-    <div class="max-w-6xl mx-auto px-4 py-7 relative z-10">
-      <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
-        <div class="flex items-center gap-2.5">
-          <span class="px-3.5 py-1 rounded-full bg-white/20 backdrop-blur-xs border border-white/30 text-white text-xs font-extrabold tracking-wide shadow-xs">
-            ✨ HIMASIKA ITS • 2026–2027
-          </span>
-          <span class="px-3 py-1 rounded-full bg-pink-950/25 text-pink-100 text-xs font-semibold hidden sm:inline">
-            Kabinet Zain
-          </span>
-        </div>
-        <div class="flex items-center gap-2">
-          <button onclick="loadPortalData(true)" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 backdrop-blur-xs border border-white/20 text-xs font-bold cursor-pointer transition">
-            ↻ Refresh
-          </button>
-          <button id="btn-nav-admin" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-white text-pink-600 hover:bg-pink-50 text-xs font-extrabold shadow-md cursor-pointer transition">
-            🔐 Login Admin (Sekre / Bendahara)
-          </button>
-          <button id="btn-nav-logout" onclick="logoutAdmin()" class="hidden px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow cursor-pointer transition">
-            Keluar Mode Admin
-          </button>
-        </div>
+  <!-- HEADER RINGKAS & LEGA -->
+  <header class="max-w-5xl mx-auto w-full px-5 pt-7 pb-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-pink-100 shadow-2xs">
+        <span class="w-2 h-2 rounded-full pink-blue-grad"></span>
+        <span class="text-xs font-extrabold text-slate-700">HIMASIKA ITS • Kabinet Zain</span>
       </div>
 
-      <div class="max-w-3xl">
-        <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-2.5 drop-shadow-xs">
-          Portal Template, SOP & Alur Administrasi
-        </h1>
-        <p class="text-blue-50 text-sm leading-relaxed">
-          Pusat tautan template surat resmi, proposal/LPJ, panduan alur peminjaman ruangan & inventaris, serta administrasi keuangan fungsionaris HIMASIKA ITS.
-        </p>
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/6281362192288?text=Halo%20Salwa%2C%20izin%20bertanya%20terkait%20administrasi%20HIMASIKA%20ITS" target="_blank" rel="noopener noreferrer"
+           class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white border border-blue-100 hover:border-pink-300 text-slate-700 text-xs font-bold transition">
+          📞 CP: 081362192288
+        </a>
+        <button id="btn-nav-admin" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-white border border-pink-200 hover:bg-pink-50 text-pink-600 text-xs font-extrabold transition cursor-pointer">
+          Admin Sekre/Bendahara
+        </button>
+        <button id="btn-nav-logout" onclick="logoutAdmin()" class="hidden px-4 py-2 rounded-xl bg-rose-500 text-white text-xs font-bold cursor-pointer">
+          Keluar Admin
+        </button>
       </div>
+    </div>
+
+    <div class="max-w-2xl">
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+        Portal Template & Administrasi
+      </h1>
+      <p class="text-slate-500 text-sm leading-relaxed">
+        Kumpulan template surat resmi, proposal, LPJ, keuangan, serta panduan alur peminjaman ruangan & inventaris.
+      </p>
     </div>
   </header>
 
   <!-- ===================================================================== -->
-  <!-- VIEW PUBLIK: DROPDOWN ALUR PEMINJAMAN (A -> B -> C) & HALAMAN LINK    -->
+  <!-- VIEW PUBLIK: SATU BARIS NAVIGASI UTAMA (ANTI-NUMPUK)                  -->
   <!-- ===================================================================== -->
-  <main id="view-public" class="max-w-6xl mx-auto w-full px-4 py-8 flex-1 space-y-8">
+  <main id="view-public" class="max-w-5xl mx-auto w-full px-5 py-4 flex-1 space-y-6">
 
-    <!-- BAGIAN 1: DROPDOWN ALUR PEMINJAMAN & BIROKRASI (A -> B -> C) -->
-    <section class="glass-card rounded-3xl p-6 sm:p-7 shadow-xl shadow-blue-100/60 border border-pink-100 relative overflow-hidden">
-      <div class="h-1.5 w-full btn-gradient absolute top-0 left-0"></div>
+    <!-- Navigasi Tab Tunggal (Kategori Dokumen + Tab Alur Peminjaman) -->
+    <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200/80 pb-4">
+      <div id="public-pages-tabs" class="flex flex-wrap gap-2"></div>
 
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-pink-100">
-        <div>
-          <span class="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 text-blue-800 text-[11px] font-extrabold uppercase tracking-wide mb-1.5">
-            🧭 Panduan Alur Bertahap
-          </span>
-          <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">
-            Alur Peminjaman Ruang, Inventaris & Birokrasi (A → B → C)
-          </h2>
-          <p class="text-xs text-slate-500 mt-0.5">
-            Pilih jenis keperluan di dropdown samping untuk melihat urutan tujuan pengajuan dan syaratnya.
-          </p>
-        </div>
-
-        <div class="w-full md:w-96">
-          <label class="block text-[11px] font-extrabold text-pink-600 uppercase tracking-wider mb-1.5">
-            Pilih Jenis Peminjaman / Pengajuan:
-          </label>
-          <select id="flow-selector" onchange="renderSelectedFlow()" class="w-full px-4 py-3 rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50/70 to-pink-50/70 text-slate-900 text-xs font-bold focus:outline-none focus:border-pink-400 cursor-pointer shadow-xs"></select>
-        </div>
+      <div id="search-wrapper" class="w-full sm:w-60">
+        <input id="search-link-input" type="text" oninput="renderPublicLinks()" placeholder="Cari template..."
+               class="w-full px-3.5 py-2 rounded-xl border border-slate-200 bg-white text-xs focus:outline-none focus:border-pink-300" />
       </div>
+    </div>
 
-      <!-- Konten Alur yang Dipilih dari Dropdown -->
-      <div id="flow-detail-box" class="mt-5"></div>
-    </section>
-
-    <!-- BAGIAN 2: HALAMAN / KATEGORI TEMPLATE & LINK DOKUMEN -->
-    <section class="space-y-5">
-      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-3">
-        <!-- Tab Halaman Dinamis -->
-        <div id="public-pages-tabs" class="flex flex-wrap gap-2"></div>
-
-        <!-- Pencarian Cepat -->
-        <div class="w-full lg:w-72 relative">
-          <input id="search-link-input" type="text" oninput="renderPublicLinks()" placeholder="🔍 Cari nama template / dokumen..." class="w-full px-4 py-2.5 rounded-2xl border border-pink-200 bg-white/90 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-pink-400 shadow-xs" />
-        </div>
-      </div>
-
-      <!-- Info Halaman Aktif -->
-      <div id="active-page-header" class="glass-card px-6 py-4 rounded-2xl border border-blue-100 shadow-sm flex flex-wrap items-center justify-between gap-2"></div>
-
-      <!-- Grid Kartu Template & Link -->
+    <!-- KONTEN A: HALAMAN DOKUMEN & TEMPLATE -->
+    <div id="section-docs" class="space-y-5">
+      <div id="active-page-header" class="flex flex-wrap items-baseline justify-between gap-2"></div>
       <div id="public-links-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
-    </section>
+    </div>
+
+    <!-- KONTEN B: ALUR PEMINJAMAN (A -> B -> C) (MUNCUL SAAT TAB ALUR DIKLIK) -->
+    <div id="section-flows" class="hidden space-y-5">
+      <div class="bg-white rounded-3xl p-6 border border-blue-100 shadow-xs space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+          <div>
+            <h2 class="text-base font-extrabold text-slate-900">Alur Peminjaman & Birokrasi (A → B → C)</h2>
+            <p class="text-xs text-slate-500">Pilih jenis keperluan di samping untuk melihat urutan pengajuannya.</p>
+          </div>
+          <select id="flow-selector" onchange="renderSelectedFlow()"
+                  class="w-full sm:w-80 px-3.5 py-2.5 rounded-xl border border-pink-200 pink-blue-soft text-slate-800 text-xs font-bold focus:outline-none cursor-pointer"></select>
+        </div>
+
+        <div id="flow-detail-box"></div>
+      </div>
+    </div>
 
   </main>
 
   <!-- ===================================================================== -->
   <!-- VIEW ADMIN: KELOLA HALAMAN, LINK TEMPLATE & DROPDOWN ALUR             -->
   <!-- ===================================================================== -->
-  <main id="view-admin" class="hidden max-w-6xl mx-auto w-full px-4 py-8 flex-1 space-y-6">
-    <div class="bg-gradient-to-r from-blue-50 via-white to-pink-50 border border-pink-200 rounded-3xl p-5 shadow-md flex flex-wrap items-center justify-between gap-3">
+  <main id="view-admin" class="hidden max-w-5xl mx-auto w-full px-5 py-4 flex-1 space-y-6">
+    <div class="pink-blue-soft border border-pink-200 rounded-2xl p-4 flex flex-wrap items-center justify-between gap-3">
       <div>
-        <div class="text-xs font-extrabold text-pink-600 uppercase tracking-wider">✨ Mode Editor Admin Aktif (Sekretaris Umum & Bendahara)</div>
-        <p class="text-xs text-slate-600 mt-0.5">Tambah halaman, edit link template, atau ubah dropdown alur peminjaman lalu klik <strong>Simpan Semua Perubahan</strong>.</p>
+        <div class="text-xs font-extrabold text-pink-600">Mode Editor Admin (Sekum & Bendahara)</div>
+        <p class="text-xs text-slate-600">Edit link, tambah halaman, atau ubah alur peminjaman lalu simpan perubahan.</p>
       </div>
       <div class="flex gap-2">
-        <button onclick="switchModeView('public')" class="px-4 py-2.5 rounded-xl bg-white border border-blue-200 hover:bg-blue-50 text-blue-700 text-xs font-bold cursor-pointer transition">
-          👁 Lihat Tampilan Publik
+        <button onclick="switchModeView('public')" class="px-3.5 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold cursor-pointer">
+          Lihat Web Publik
         </button>
-        <button onclick="saveAllPortalChanges()" id="btn-save-all" class="px-5 py-2.5 rounded-xl btn-gradient text-white text-xs font-extrabold shadow-md shadow-pink-200 cursor-pointer transition">
-          💾 Simpan Semua Perubahan
+        <button onclick="saveAllPortalChanges()" id="btn-save-all" class="px-4 py-2 rounded-xl pink-blue-grad text-white text-xs font-bold shadow-sm cursor-pointer">
+          Simpan Perubahan
         </button>
       </div>
     </div>
 
     <!-- Sub-Tab Admin -->
     <div class="flex flex-wrap gap-2 text-xs font-bold">
-      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2.5 rounded-2xl btn-gradient text-white shadow-sm cursor-pointer">
-        1. Kelola Link Template & Dokumen
+      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2 rounded-xl pink-blue-grad text-white cursor-pointer">
+        1. Kelola Link Template
       </button>
-      <button onclick="switchAdminSubTab('pages')" id="adm-tab-pages" class="px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer">
-        2. Tambah / Edit Halaman (Kategori)
+      <button onclick="switchAdminSubTab('pages')" id="adm-tab-pages" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 cursor-pointer">
+        2. Tambah / Edit Halaman
       </button>
-      <button onclick="switchAdminSubTab('flows')" id="adm-tab-flows" class="px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer">
-        3. Edit Dropdown Alur Peminjaman (A → B → C)
+      <button onclick="switchAdminSubTab('flows')" id="adm-tab-flows" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 cursor-pointer">
+        3. Edit Dropdown Alur (A → B → C)
       </button>
     </div>
 
     <!-- ADMIN SUB-TAB 1: KELOLA LINK -->
-    <div id="adm-panel-links" class="glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
-        <div>
-          <h2 class="text-base font-extrabold text-slate-900">Daftar Link Template & Dokumen</h2>
-          <p class="text-xs text-slate-500">Tempel link Google Docs / Word / Drive / Form. Kosongkan URL jika belum tersedia.</p>
-        </div>
+    <div id="adm-panel-links" class="bg-white p-6 rounded-3xl border border-slate-200/80 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+        <h2 class="text-sm font-extrabold text-slate-900">Daftar Link Template & Dokumen</h2>
         <div class="flex items-center gap-2">
-          <select id="adm-filter-page" onchange="renderAdminLinks()" class="px-3.5 py-2 rounded-xl border border-blue-200 bg-blue-50/40 text-xs font-bold text-slate-800"></select>
-          <button onclick="addNewLinkItem()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
-            + Tambah Link Baru
+          <select id="adm-filter-page" onchange="renderAdminLinks()" class="px-3 py-2 rounded-xl border border-slate-200 text-xs font-semibold"></select>
+          <button onclick="addNewLinkItem()" class="px-3.5 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer">
+            + Tambah Link
           </button>
         </div>
       </div>
@@ -209,138 +178,128 @@
     </div>
 
     <!-- ADMIN SUB-TAB 2: KELOLA HALAMAN -->
-    <div id="adm-panel-pages" class="hidden glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
-        <div>
-          <h2 class="text-base font-extrabold text-slate-900">Kelola Halaman / Tab Kategori</h2>
-          <p class="text-xs text-slate-500">Buat halaman baru atau ubah nama dan deskripsi halaman yang sudah ada.</p>
-        </div>
-        <button onclick="addNewPageItem()" class="px-4 py-2 rounded-xl bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
-          + Tambah Halaman Baru
+    <div id="adm-panel-pages" class="hidden bg-white p-6 rounded-3xl border border-slate-200/80 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+        <h2 class="text-sm font-extrabold text-slate-900">Kelola Halaman / Tab Kategori</h2>
+        <button onclick="addNewPageItem()" class="px-3.5 py-2 rounded-xl bg-pink-600 text-white text-xs font-bold cursor-pointer">
+          + Tambah Halaman
         </button>
       </div>
       <div id="adm-pages-container" class="space-y-3"></div>
     </div>
 
-    <!-- ADMIN SUB-TAB 3: KELOLA DROPDOWN ALUR PEMINJAMAN -->
-    <div id="adm-panel-flows" class="hidden glass-card p-6 rounded-3xl shadow-md border border-blue-100 space-y-4">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-pink-100 pb-4">
-        <div>
-          <h2 class="text-base font-extrabold text-slate-900">Kelola Dropdown Alur Peminjaman & Birokrasi (A → B → C)</h2>
-          <p class="text-xs text-slate-500">Pisahkan tiap tahapan alur menggunakan baris baru (Enter).</p>
-        </div>
-        <button onclick="addNewFlowItem()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs cursor-pointer transition">
-          + Tambah Jenis Alur Baru
+    <!-- ADMIN SUB-TAB 3: KELOLA DROPDOWN ALUR -->
+    <div id="adm-panel-flows" class="hidden bg-white p-6 rounded-3xl border border-slate-200/80 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-100 pb-3">
+        <h2 class="text-sm font-extrabold text-slate-900">Kelola Dropdown Alur Peminjaman (A → B → C)</h2>
+        <button onclick="addNewFlowItem()" class="px-3.5 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold cursor-pointer">
+          + Tambah Alur Baru
         </button>
       </div>
       <div id="adm-flows-container" class="space-y-4"></div>
     </div>
   </main>
 
-  <footer class="bg-white/80 backdrop-blur-xs border-t border-pink-100 py-5 px-4 text-center text-xs text-slate-600 mt-10">
-    Portal Kesekretariatan & Kebendaharaan <span class="font-bold text-blue-600">HIMASIKA ITS</span> — <span class="font-bold text-pink-600">Kabinet Zain</span> • PIC Administrasi: <strong class="text-slate-900">Salwa (081362192288)</strong>
+  <footer class="max-w-5xl mx-auto w-full px-5 py-8 mt-8 border-t border-slate-200/70 flex flex-wrap items-center justify-between gap-2 text-xs text-slate-500">
+    <div>Kesekretariatan & Kebendaharaan <strong class="text-slate-700">HIMASIKA ITS — Kabinet Zain</strong></div>
+    <div>CP Administrasi: <a href="https://wa.me/6281362192288" target="_blank" class="font-bold text-pink-600 hover:underline">Salwa (081362192288)</a></div>
   </footer>
 
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxHxMbBUVfOBKgQzJZ1pR6mfKRa0Jo7AfBOridRdk-dG7SQqtmkAqJXmlQSKeVCipgLqA/exec";
 
-    let auth = {
-      isLoggedIn: false,
-      username: "",
-      password: ""
-    };
-
-    let activePageId = "pg-surat";
+    let auth = { isLoggedIn: false, username: "", password: "" };
+    let activeTab = "pg-surat"; // bisa ID halaman atau "TAB_ALUR"
 
     let portalData = {
       pages: [
-        { id: 'pg-surat', nama: '10 Template Surat Resmi', deskripsi: 'Template standar tata naskah dinas HIMASIKA ITS Kabinet Zain (margin 2,54 cm).' },
-        { id: 'pg-proplpj', nama: 'Proposal, LPJ & Nomor Surat', deskripsi: 'Alur pengajuan nomor surat keluar, template proposal kegiatan, dan format LPJ.' },
-        { id: 'pg-pinjam', nama: 'Peminjaman Ruang & Inventaris', deskripsi: 'Formulir peminjaman barang kesekretariatan, jadwal ruang TW-1, dan izin sarpras.' },
-        { id: 'pg-keuangan', nama: 'Keuangan & Kebendaharaan', deskripsi: 'Format RAB, SPJ, alur pencairan dana proker, dan rekap kas fungsionaris.' }
+        { id: 'pg-surat', nama: 'Template Surat (10)', deskripsi: 'Standar tata naskah dinas HIMASIKA ITS Kabinet Zain (margin 2,54 cm).' },
+        { id: 'pg-proplpj', nama: 'Proposal & LPJ', deskripsi: 'Form nomor surat keluar, template proposal kegiatan, dan format LPJ.' },
+        { id: 'pg-pinjam', nama: 'Peminjaman & Sarpras', deskripsi: 'Formulir inventaris kesekretariatan dan jadwal ruang TW-1.' },
+        { id: 'pg-keuangan', nama: 'Keuangan', deskripsi: 'Format RAB, SPJ, dan rekap kas kabinet.' }
       ],
       links: [
-        { id: 'l-1', pageId: 'pg-surat', judul: '01. Template Surat Undangan Rapat / Kegiatan', ket: 'Untuk undangan internal fungsionaris maupun eksternal.', url: '' },
-        { id: 'l-2', pageId: 'pg-surat', judul: '02. Template Surat Peminjaman Ruangan / Gedung', ket: 'Pengajuan ruang TW-1, Teater, atau gedung di lingkungan ITS.', url: '' },
-        { id: 'l-3', pageId: 'pg-surat', judul: '03. Template Surat Peminjaman Barang / Inventaris', ket: 'Peminjaman inventaris internal HIMASIKA maupun departemen.', url: '' },
-        { id: 'l-4', pageId: 'pg-surat', judul: '04. Template Surat Permohonan Pemateri / Juri', ket: 'Surat resmi untuk dosen, alumni, atau narasumber luar.', url: '' },
-        { id: 'l-5', pageId: 'pg-surat', judul: '05. Template Surat Permohonan Dana / Sponsorship', ket: 'Pengajuan kerja sama mitra, donatur, atau sponsor kegiatan.', url: '' },
-        { id: 'l-6', pageId: 'pg-surat', judul: '06. Template Surat Izin Keramaian / Kegiatan', ket: 'Syarat wajib kegiatan yang mengumpulkan massa di area kampus.', url: '' },
-        { id: 'l-7', pageId: 'pg-surat', judul: '07. Template Surat Tugas / Delegasi', ket: 'Penugasan resmi fungsionaris untuk forum atau lomba.', url: '' },
-        { id: 'l-8', pageId: 'pg-surat', judul: '08. Template Surat Keterangan Aktif / Panitia', ket: 'Keterangan keaktifan fungsionaris atau kepanitiaan proker.', url: '' },
-        { id: 'l-9', pageId: 'pg-surat', judul: '09. Template Surat Pemberitahuan / Edaran', ket: 'Informasi resmi kabinet kepada warga Departemen Fisika.', url: '' },
-        { id: 'l-10', pageId: 'pg-surat', judul: '10. Template Surat Ucapan Terima Kasih', ket: 'Dikirim pasca-kegiatan kepada mitra, pemateri, atau instansi.', url: '' },
+        { id: 'l-1', pageId: 'pg-surat', judul: '01. Surat Undangan Rapat / Kegiatan', ket: 'Undangan internal fungsionaris maupun eksternal.', url: '' },
+        { id: 'l-2', pageId: 'pg-surat', judul: '02. Surat Peminjaman Ruangan / Gedung', ket: 'Pengajuan ruang TW-1, Teater, atau gedung ITS.', url: '' },
+        { id: 'l-3', pageId: 'pg-surat', judul: '03. Surat Peminjaman Barang / Inventaris', ket: 'Peminjaman inventaris internal HIMASIKA/departemen.', url: '' },
+        { id: 'l-4', pageId: 'pg-surat', judul: '04. Surat Permohonan Pemateri / Juri', ket: 'Surat resmi untuk dosen, alumni, atau narasumber.', url: '' },
+        { id: 'l-5', pageId: 'pg-surat', judul: '05. Surat Permohonan Dana / Sponsorship', ket: 'Pengajuan kerja sama mitra atau sponsor kegiatan.', url: '' },
+        { id: 'l-6', pageId: 'pg-surat', judul: '06. Surat Izin Keramaian / Kegiatan', ket: 'Syarat wajib kegiatan berkerumun di area kampus.', url: '' },
+        { id: 'l-7', pageId: 'pg-surat', judul: '07. Surat Tugas / Delegasi', ket: 'Penugasan resmi fungsionaris untuk forum/lomba.', url: '' },
+        { id: 'l-8', pageId: 'pg-surat', judul: '08. Surat Keterangan Aktif / Panitia', ket: 'Keterangan keaktifan fungsionaris atau panitia.', url: '' },
+        { id: 'l-9', pageId: 'pg-surat', judul: '09. Surat Pemberitahuan / Edaran', ket: 'Informasi resmi kabinet kepada warga Fisika ITS.', url: '' },
+        { id: 'l-10', pageId: 'pg-surat', judul: '10. Surat Ucapan Terima Kasih', ket: 'Dikirim pasca-kegiatan kepada mitra atau pemateri.', url: '' },
 
-        { id: 'l-11', pageId: 'pg-proplpj', judul: 'Form & Rekap Pengajuan Nomor Surat Keluar', ket: 'Wajib diisi sebelum meminta tanda tangan Sekum & Ketum.', url: '' },
-        { id: 'l-12', pageId: 'pg-proplpj', judul: 'Template Proposal Kegiatan & TOR', ket: 'Format baku pengajuan program kerja Kabinet Zain.', url: '' },
-        { id: 'l-13', pageId: 'pg-proplpj', judul: 'Template Laporan Pertanggungjawaban (LPJ)', ket: 'Dikumpulkan maksimal H+14 setelah kegiatan selesai.', url: '' },
-        { id: 'l-14', pageId: 'pg-proplpj', judul: 'Buku Pedoman & SOP Kesekretariatan', ket: 'Aturan penomoran, ukuran margin, kop surat, dan pengarsipan.', url: '' },
+        { id: 'l-11', pageId: 'pg-proplpj', judul: 'Form Pengajuan Nomor Surat Keluar', ket: 'Isi sebelum meminta TTD Sekum & Ketum.', url: '' },
+        { id: 'l-12', pageId: 'pg-proplpj', judul: 'Template Proposal Kegiatan & TOR', ket: 'Format baku pengajuan program kerja.', url: '' },
+        { id: 'l-13', pageId: 'pg-proplpj', judul: 'Template Laporan Pertanggungjawaban (LPJ)', ket: 'Dikumpulkan maksimal H+14 setelah kegiatan.', url: '' },
+        { id: 'l-14', pageId: 'pg-proplpj', judul: 'SOP Kesekretariatan Kabinet Zain', ket: 'Pedoman penomoran, kop surat, dan pengarsipan.', url: '' },
 
-        { id: 'l-15', pageId: 'pg-pinjam', judul: 'Form Peminjaman Inventaris HIMASIKA', ket: 'Cek ketersediaan proyektor, sound system, HT, dan perlengkapan.', url: '' },
-        { id: 'l-16', pageId: 'pg-pinjam', judul: 'Spreadsheet Jadwal Penggunaan Ruang TW-1', ket: 'Cek bentrok jadwal sebelum mengajukan surat ke Departemen.', url: '' },
-        { id: 'l-17', pageId: 'pg-pinjam', judul: 'Panduan Perizinan Sarpras FSAD & Rektorat ITS', ket: 'Format pengantar untuk peminjaman fasilitas tingkat fakultas/institut.', url: '' },
+        { id: 'l-15', pageId: 'pg-pinjam', judul: 'Form Peminjaman Inventaris HIMASIKA', ket: 'Cek ketersediaan proyektor, sound system, & HT.', url: '' },
+        { id: 'l-16', pageId: 'pg-pinjam', judul: 'Spreadsheet Jadwal Ruang TW-1', ket: 'Cek jadwal kosong sebelum mengajukan surat.', url: '' },
+        { id: 'l-17', pageId: 'pg-pinjam', judul: 'Panduan Perizinan Sarpras FSAD & ITS', ket: 'Format pengantar fasilitas tingkat fakultas/institut.', url: '' },
 
-        { id: 'l-18', pageId: 'pg-keuangan', judul: 'Format Rencana Anggaran Biaya (RAB)', ket: 'Wajib diasistensikan ke Bendahara sebelum pencairan dana.', url: '' },
-        { id: 'l-19', pageId: 'pg-keuangan', judul: 'Format Surat Pertanggungjawaban (SPJ) & Nota', ket: 'Standar pelaporan bukti transaksi dan kuitansi kegiatan.', url: '' },
-        { id: 'l-20', pageId: 'pg-keuangan', judul: 'Rekap Kas & Iuran Fungsionaris', ket: 'Transparansi pemasukan dan pengeluaran kas kabinet.', url: '' }
+        { id: 'l-18', pageId: 'pg-keuangan', judul: 'Format Rencana Anggaran Biaya (RAB)', ket: 'Asistensi ke Bendahara sebelum pencairan dana.', url: '' },
+        { id: 'l-19', pageId: 'pg-keuangan', judul: 'Format SPJ & Pelaporan Nota', ket: 'Standar pelaporan kuitansi dan bukti transaksi.', url: '' },
+        { id: 'l-20', pageId: 'pg-keuangan', judul: 'Rekap Kas & Iuran Fungsionaris', ket: 'Transparansi pemasukan dan pengeluaran kabinet.', url: '' }
       ],
       flows: [
         {
           id: 'fl-1',
-          judul: 'Peminjaman Ruang Departemen Fisika (TW-1 / Teater B & C)',
+          judul: 'Peminjaman Ruang Departemen Fisika (TW-1 / Teater)',
           estimasi: 'Minimal H-5 Kegiatan',
           langkah: [
-            'A. Sekretaris Proker cek jadwal kosong ruang di Spreadsheet Peminjaman Ruang & minta nomor surat ke Sekum HIMASIKA.',
-            'B. Buat surat peminjaman ruang ditujukan kepada Kepala Departemen Fisika ITS (TTD Ketua Pelaksana, Ketua HIMASIKA, dan Dosen Pembina/Kemahasiswaan).',
-            'C. Serahkan surat fisik/PDF ke Tata Usaha (TU) Departemen Fisika untuk didisposisi dan dicatat di buku peminjaman ruang.',
-            'D. Konfirmasi ke petugas/satpam gedung TW-1 pada H-1 sebelum kegiatan dimulai.'
+            'A. Sekretaris Proker cek jadwal kosong di Spreadsheet Ruang & minta nomor surat ke Sekum HIMASIKA.',
+            'B. Buat surat peminjaman ruang ke Kepala Departemen Fisika ITS (TTD Ketua Pelaksana, Ketua HIMASIKA, & Dosen Pembina).',
+            'C. Serahkan surat ke Tata Usaha (TU) Departemen Fisika untuk didisposisi.',
+            'D. Konfirmasi ke petugas/satpam gedung TW-1 pada H-1 kegiatan.'
           ],
-          catatan: 'Pastikan ruangan dikembalikan dalam kondisi bersih, AC/lampu dimatikan, dan kunci dikembalikan ke petugas.'
+          catatan: 'Kembalikan ruangan dalam keadaan bersih dan matikan AC/lampu setelah selesai.'
         },
         {
           id: 'fl-2',
-          judul: 'Peminjaman Ruang / Area Tingkat Fakultas (FSAD) atau Kampus ITS',
+          judul: 'Peminjaman Area Tingkat Fakultas (FSAD) / Kampus ITS',
           estimasi: 'Minimal H-10 Kegiatan',
           langkah: [
-            'A. Sekretaris Proker menyiapkan Surat Peminjaman Ruang & Izin Kegiatan dengan nomor resmi HIMASIKA ITS.',
-            'B. Mintakan pengesahan berjenjang: Ketua Pelaksana → Ketua HIMASIKA → Dosen Pembina Himpunan / Kepala Departemen Fisika.',
-            'C. Ajukan berkas ke Sekretariat Dekanat FSAD (jika lingkup fakultas) atau Direktorat Kemahasiswaan / Sarpras ITS (jika lingkup institut).',
-            'D. Simpan bukti ACC/disposisi untuk ditunjukkan ke petugas keamanan lokasi saat hari-H.'
+            'A. Siapkan Surat Peminjaman Ruang & Izin Kegiatan bernomor resmi HIMASIKA ITS.',
+            'B. Mintakan TTD berjenjang: Ketua Pelaksana → Ketua HIMASIKA → Dosen Pembina / Kadep Fisika.',
+            'C. Ajukan ke Sekretariat Dekanat FSAD atau Direktorat Kemahasiswaan / Sarpras ITS.',
+            'D. Simpan lembar ACC untuk ditunjukkan ke petugas keamanan saat hari-H.'
           ],
-          catatan: 'Untuk kegiatan dengan peserta eksternal atau keramaian besar, wajib melampirkan Surat Izin Keramaian.'
+          catatan: 'Wajib melampirkan Surat Izin Keramaian jika melibatkan peserta eksternal.'
         },
         {
           id: 'fl-3',
-          judul: 'Peminjaman Inventaris & Barang Kesekretariatan HIMASIKA',
+          judul: 'Peminjaman Inventaris & Barang HIMASIKA',
           estimasi: 'Minimal H-3 Kegiatan',
           langkah: [
-            'A. Peminjam mengisi Form Peminjaman Inventaris dan menghubungi Biro Kesekretariatan untuk cek ketersediaan barang.',
-            'B. Serah terima barang dilakukan di Sekretariat HIMASIKA disertai pengecekan kondisi fisik barang bersama PIC Sekre.',
-            'C. Pengembalian barang dilakukan maksimal H+1 kegiatan dalam kondisi lengkap dan bersih.'
+            'A. Isi Form Peminjaman Inventaris dan konfirmasi ke Biro Kesekretariatan.',
+            'B. Cek kondisi fisik barang bersama PIC Sekre saat serah terima di Sekretariat.',
+            'C. Kembalikan barang maksimal H+1 kegiatan dalam kondisi lengkap.'
           ],
-          catatan: 'Kerusakan atau kehilangan barang selama masa peminjaman menjadi tanggung jawab penuh departemen/panitia peminjam.'
+          catatan: 'Kerusakan/kehilangan selama peminjaman menjadi tanggung jawab panitia peminjam.'
         },
         {
           id: 'fl-4',
-          judul: 'Alur Pengajuan Nomor Surat & Tanda Tangan Sekum / Ketum',
-          estimasi: 'Minimal H-3 Sebelum Surat Dikirim',
+          judul: 'Pengajuan Nomor Surat & TTD Sekum / Ketum',
+          estimasi: 'Minimal H-3 Sebelum Kirim',
           langkah: [
-            'A. Sekretaris Proker menyusun draf surat sesuai 10 template resmi (margin 2,54 cm, Times New Roman 12 pt).',
-            'B. Isi Form Pengajuan Nomor Surat dan kirim draf ke Sekretaris Umum untuk pengecekan format.',
-            'C. Setelah di-ACC Sekum, nomor surat diterbitkan dan surat diajukan untuk tanda tangan Ketua HIMASIKA.'
+            'A. Susun draf surat sesuai 10 template resmi (margin 2,54 cm, Times New Roman 12 pt).',
+            'B. Isi Form Nomor Surat & kirim draf ke Sekum (Salwa) untuk dicek formatnya.',
+            'C. Setelah di-ACC Sekum, nomor terbit dan diajukan TTD Ketua HIMASIKA.'
           ],
-          catatan: 'Surat tidak boleh dikirim ke pihak luar sebelum mendapat nomor resmi dan pengesahan Ketum.'
+          catatan: 'Dilarang mengirim surat keluar tanpa nomor resmi dan pengesahan Ketum.'
         },
         {
           id: 'fl-5',
-          judul: 'Alur Pengajuan RAB & Pelaporan SPJ Keuangan (Bendahara)',
-          estimasi: 'RAB H-7 • SPJ Maksimal H+7',
+          judul: 'Pengajuan RAB & Pelaporan SPJ Keuangan',
+          estimasi: 'RAB H-7 • SPJ Maks H+7',
           langkah: [
-            'A. Bendahara Proker menyusun RAB sesuai format resmi dan melakukan asistensi ke Bendahara HIMASIKA.',
-            'B. Dana dicairkan sesuai pos anggaran yang telah disetujui Bendahara Kabinet.',
-            'C. Setelah kegiatan selesai, kumpulkan seluruh nota asli (berstempel/bertanda tangan) lalu susun SPJ untuk diverifikasi Bendahara.'
+            'A. Bendahara Proker menyusun RAB sesuai format dan asistensi ke Bendahara HIMASIKA.',
+            'B. Pencairan dana sesuai pos anggaran yang telah disetujui.',
+            'C. Kumpulkan seluruh nota asli lalu susun SPJ maksimal H+7 pasca-kegiatan.'
           ],
-          catatan: 'Nota tanpa nominal jelas atau tanpa bukti valid tidak dapat diklaim dalam SPJ.'
+          catatan: 'Nota wajib jelas nominalnya dan berstempel/bertanda tangan toko.'
         }
       ]
     };
@@ -348,35 +307,26 @@
     function showToast(msg, isError = false) {
       const t = document.getElementById("toast");
       t.textContent = msg;
-      t.classList.remove("hidden", "from-blue-700", "to-pink-600", "bg-red-700");
-      if (isError) {
-        t.classList.add("bg-red-700");
-      } else {
-        t.classList.add("from-blue-700", "to-pink-600");
-      }
+      t.classList.remove("hidden", "bg-slate-900", "bg-rose-600");
+      t.classList.add(isError ? "bg-rose-600" : "bg-slate-900");
       clearTimeout(window._toastTimer);
-      window._toastTimer = setTimeout(() => t.classList.add("hidden"), 3800);
+      window._toastTimer = setTimeout(() => t.classList.add("hidden"), 3500);
     }
 
-    // =========================================================================
-    // KONEKSI KE GOOGLE APPS SCRIPT
-    // =========================================================================
-    async function loadPortalData(notify = false) {
+    async function loadPortalData() {
       try {
         const res = await fetch(SCRIPT_URL + "?t=" + Date.now());
         const json = await res.json();
         if (json && json.ok && json.data && Array.isArray(json.data.pages)) {
           portalData = json.data;
-          if (!portalData.pages.some(p => p.id === activePageId) && portalData.pages.length > 0) {
-            activePageId = portalData.pages[0].id;
+          if (activeTab !== "TAB_ALUR" && !portalData.pages.some(p => p.id === activeTab) && portalData.pages.length > 0) {
+            activeTab = portalData.pages[0].id;
           }
           renderAllPublic();
           if (auth.isLoggedIn) renderAllAdmin();
-          if (notify) showToast("✨ Data portal berhasil diperbarui.");
         }
       } catch (e) {
         renderAllPublic();
-        if (notify) showToast("Menampilkan data lokal (pastikan Kode.gs sudah di-deploy).", true);
       }
     }
 
@@ -390,12 +340,111 @@
     }
 
     // =========================================================================
-    // RENDER HALAMAN PUBLIK (DROPDOWN ALUR + HALAMAN TEMPLATE PINK & BIRU)
+    // RENDER HALAMAN PUBLIK
     // =========================================================================
     function renderAllPublic() {
+      renderPublicTabs();
       renderFlowDropdown();
-      renderPublicPagesTabs();
       renderPublicLinks();
+    }
+
+    function renderPublicTabs() {
+      const container = document.getElementById("public-pages-tabs");
+      if (!container) return;
+
+      const pageButtons = portalData.pages.map(pg => {
+        const isActive = pg.id === activeTab;
+        return `
+          <button onclick="selectPublicTab('${escapeAttr(pg.id)}')" class="px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
+            isActive
+              ? 'pink-blue-grad text-white shadow-sm shadow-pink-200'
+              : 'bg-white text-slate-600 border border-slate-200 hover:border-pink-300 hover:text-pink-600'
+          }">
+            ${escapeHtml(pg.nama)}
+          </button>
+        `;
+      }).join("");
+
+      const isAlurActive = activeTab === "TAB_ALUR";
+      const alurButton = `
+        <button onclick="selectPublicTab('TAB_ALUR')" class="px-4 py-2 rounded-full text-xs font-bold transition cursor-pointer ${
+          isAlurActive
+            ? 'pink-blue-grad text-white shadow-sm shadow-blue-200'
+            : 'bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100'
+        }">
+          🧭 Alur Peminjaman (A → B → C)
+        </button>
+      `;
+
+      container.innerHTML = pageButtons + alurButton;
+
+      document.getElementById("section-docs").classList.toggle("hidden", isAlurActive);
+      document.getElementById("search-wrapper").classList.toggle("hidden", isAlurActive);
+      document.getElementById("section-flows").classList.toggle("hidden", !isAlurActive);
+    }
+
+    function selectPublicTab(tabId) {
+      activeTab = tabId;
+      renderPublicTabs();
+      if (tabId !== "TAB_ALUR") {
+        renderPublicLinks();
+      }
+    }
+
+    function renderPublicLinks() {
+      const page = portalData.pages.find(p => p.id === activeTab) || portalData.pages[0];
+      const headerBox = document.getElementById("active-page-header");
+      const gridBox = document.getElementById("public-links-grid");
+      const keyword = (document.getElementById("search-link-input").value || "").toLowerCase().trim();
+
+      if (!page) return;
+
+      const filtered = keyword
+        ? portalData.links.filter(l =>
+            (l.judul || "").toLowerCase().includes(keyword) ||
+            (l.ket || "").toLowerCase().includes(keyword)
+          )
+        : portalData.links.filter(l => l.pageId === page.id);
+
+      headerBox.innerHTML = `
+        <div>
+          <h2 class="text-base font-extrabold text-slate-900">${keyword ? `Hasil Pencarian: "${escapeHtml(keyword)}"` : escapeHtml(page.nama)}</h2>
+          <p class="text-xs text-slate-500">${keyword ? `Ditemukan ${filtered.length} dokumen` : escapeHtml(page.deskripsi || '')}</p>
+        </div>
+        <span class="text-xs font-bold text-pink-600">${filtered.length} item</span>
+      `;
+
+      if (filtered.length === 0) {
+        gridBox.innerHTML = `
+          <div class="col-span-full bg-white p-10 rounded-3xl border border-dashed border-slate-200 text-center text-xs text-slate-400">
+            Belum ada tautan dokumen pada bagian ini.
+          </div>
+        `;
+        return;
+      }
+
+      gridBox.innerHTML = filtered.map(item => {
+        const hasUrl = item.url && item.url.trim() !== "";
+        return `
+          <div class="bg-white rounded-2xl p-5 border ${hasUrl ? 'border-blue-100 hover:border-pink-300 shadow-2xs hover:shadow-md' : 'border-slate-200/80'} flex flex-col justify-between gap-4 transition">
+            <div>
+              <h3 class="text-sm font-bold text-slate-900 leading-snug mb-1.5">${escapeHtml(item.judul)}</h3>
+              <p class="text-xs text-slate-500 leading-relaxed">${escapeHtml(item.ket || '')}</p>
+            </div>
+            <div>
+              ${hasUrl
+                ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer"
+                     class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl pink-blue-grad text-white text-xs font-bold shadow-xs hover:opacity-95 transition">
+                    Buka Tautan ↗
+                  </a>`
+                : `<span class="w-full inline-flex items-center justify-center px-3 py-2 rounded-xl bg-slate-100 text-slate-400 text-[11px] font-semibold">
+                    Belum Tersedia
+                  </span>`
+              }
+            </div>
+          </div>
+        `;
+      }).join("");
     }
 
     function renderFlowDropdown() {
@@ -416,138 +465,35 @@
       const box = document.getElementById("flow-detail-box");
       if (!sel || !box) return;
       const flow = portalData.flows.find(f => f.id === sel.value) || portalData.flows[0];
-      if (!flow) {
-        box.innerHTML = `<p class="text-xs text-slate-400">Belum ada data alur peminjaman.</p>`;
-        return;
-      }
+      if (!flow) return;
 
       const stepsHtml = (flow.langkah || []).map((step, idx) => `
-        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-gradient-to-r from-blue-50/70 via-white to-pink-50/70 border border-blue-100/80 shadow-2xs">
-          <span class="w-7 h-7 rounded-full btn-gradient text-white text-xs font-extrabold flex items-center justify-center shrink-0 mt-0.5 shadow-xs">
+        <div class="flex items-start gap-3.5 p-3.5 rounded-2xl bg-slate-50/80 border border-slate-100">
+          <span class="w-6 h-6 rounded-full pink-blue-grad text-white text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
             ${idx + 1}
           </span>
-          <p class="text-xs sm:text-sm text-slate-800 leading-relaxed">${escapeHtml(step)}</p>
+          <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${escapeHtml(step)}</p>
         </div>
       `).join("");
 
       box.innerHTML = `
-        <div class="flex flex-wrap items-center justify-between gap-2 mb-3.5">
+        <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
           <h3 class="text-sm sm:text-base font-extrabold text-slate-900">${escapeHtml(flow.judul)}</h3>
-          <span class="px-3.5 py-1 rounded-full bg-pink-100 text-pink-700 border border-pink-200 text-xs font-extrabold">
-            ⏱ Batas Pengajuan: ${escapeHtml(flow.estimasi || '-')}
+          <span class="px-3 py-1 rounded-full bg-pink-50 text-pink-600 text-xs font-bold">
+            ⏱ ${escapeHtml(flow.estimasi || '-')}
           </span>
         </div>
-        <div class="space-y-2.5 mb-3.5">${stepsHtml}</div>
+        <div class="space-y-2.5 mb-4">${stepsHtml}</div>
         ${flow.catatan ? `
-          <div class="p-3.5 rounded-2xl bg-blue-50/80 border border-blue-200 text-xs text-blue-900 flex items-start gap-2">
-            <span class="text-sm">💡</span>
-            <div><strong>Catatan Penting:</strong> ${escapeHtml(flow.catatan)}</div>
+          <div class="p-3.5 rounded-2xl pink-blue-soft border border-pink-100 text-xs text-slate-700">
+            <strong class="text-pink-600">Catatan:</strong> ${escapeHtml(flow.catatan)}
           </div>
         ` : ''}
       `;
     }
 
-    function renderPublicPagesTabs() {
-      const container = document.getElementById("public-pages-tabs");
-      if (!container) return;
-      container.innerHTML = portalData.pages.map(pg => {
-        const isActive = pg.id === activePageId;
-        return `
-          <button onclick="selectPublicPage('${escapeAttr(pg.id)}')" class="px-4 py-2.5 rounded-2xl text-xs font-extrabold transition cursor-pointer ${
-            isActive
-              ? 'btn-gradient text-white shadow-md shadow-pink-200/70'
-              : 'bg-white/90 text-slate-700 border border-pink-100 hover:border-blue-300 hover:bg-blue-50/50'
-          }">
-            ${escapeHtml(pg.nama)}
-          </button>
-        `;
-      }).join("");
-    }
-
-    function selectPublicPage(pageId) {
-      activePageId = pageId;
-      renderPublicPagesTabs();
-      renderPublicLinks();
-    }
-
-    function renderPublicLinks() {
-      const page = portalData.pages.find(p => p.id === activePageId) || portalData.pages[0];
-      const headerBox = document.getElementById("active-page-header");
-      const gridBox = document.getElementById("public-links-grid");
-      const keyword = (document.getElementById("search-link-input").value || "").toLowerCase().trim();
-
-      if (!page) {
-        headerBox.innerHTML = `<span class="text-xs text-slate-400">Belum ada halaman.</span>`;
-        gridBox.innerHTML = "";
-        return;
-      }
-
-      let filtered = keyword
-        ? portalData.links.filter(l =>
-            (l.judul || "").toLowerCase().includes(keyword) ||
-            (l.ket || "").toLowerCase().includes(keyword)
-          )
-        : portalData.links.filter(l => l.pageId === page.id);
-
-      headerBox.innerHTML = `
-        <div>
-          <h3 class="text-base font-extrabold text-slate-900">${keyword ? `Hasil Pencarian: "${escapeHtml(keyword)}"` : escapeHtml(page.nama)}</h3>
-          <p class="text-xs text-slate-500">${keyword ? `Ditemukan ${filtered.length} dokumen di seluruh halaman.` : escapeHtml(page.deskripsi || '')}</p>
-        </div>
-        <span class="px-3.5 py-1 rounded-full bg-gradient-to-r from-blue-100 to-pink-100 text-pink-700 text-xs font-extrabold">
-          ${filtered.length} Dokumen
-        </span>
-      `;
-
-      if (filtered.length === 0) {
-        gridBox.innerHTML = `
-          <div class="col-span-full glass-card p-8 rounded-3xl border border-dashed border-pink-300 text-center text-xs text-slate-500">
-            Belum ada tautan dokumen pada bagian ini.
-          </div>
-        `;
-        return;
-      }
-
-      gridBox.innerHTML = filtered.map((item, idx) => {
-        const hasUrl = item.url && item.url.trim() !== "";
-        const parentPage = portalData.pages.find(p => p.id === item.pageId);
-        const isEven = idx % 2 === 0;
-        const accentBar = isEven ? "from-blue-500 to-cyan-400" : "from-pink-500 to-rose-400";
-        const iconBg = isEven ? "bg-blue-50 text-blue-600" : "bg-pink-50 text-pink-600";
-
-        return `
-          <div class="glass-card rounded-3xl p-5 border ${hasUrl ? 'border-blue-100 shadow-md shadow-blue-100/40 hover:-translate-y-1 hover:border-pink-300' : 'border-dashed border-pink-200 bg-white/60'} flex flex-col justify-between gap-4 transition-all duration-200 relative overflow-hidden">
-            <div class="h-1 w-full bg-gradient-to-r ${accentBar} absolute top-0 left-0"></div>
-            <div class="pt-1">
-              <div class="flex items-center justify-between gap-2 mb-2.5">
-                <span class="w-8 h-8 rounded-xl ${iconBg} flex items-center justify-center text-sm font-bold">
-                  ${hasUrl ? '📄' : '⏳'}
-                </span>
-                ${keyword && parentPage
-                  ? `<span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold">${escapeHtml(parentPage.nama)}</span>`
-                  : `<span class="px-2.5 py-0.5 rounded-full ${hasUrl ? 'bg-emerald-50 text-emerald-700' : 'bg-pink-50 text-pink-600'} text-[10px] font-bold">${hasUrl ? 'Tersedia' : 'Menunggu Update'}</span>`
-                }
-              </div>
-              <h4 class="text-sm font-extrabold text-slate-900 leading-snug mb-1.5">${escapeHtml(item.judul)}</h4>
-              <p class="text-xs text-slate-500 leading-relaxed">${escapeHtml(item.ket || 'Dokumen resmi Kabinet Zain HIMASIKA ITS.')}</p>
-            </div>
-            <div>
-              ${hasUrl
-                ? `<a href="${escapeAttr(item.url)}" target="_blank" rel="noopener noreferrer" class="w-full inline-flex items-center justify-center px-4 py-2.5 rounded-xl btn-gradient text-white text-xs font-extrabold transition shadow-sm shadow-pink-200">
-                    Buka Template / Tautan ↗
-                  </a>`
-                : `<div class="w-full text-center px-3 py-2.5 rounded-xl bg-gradient-to-r from-blue-50 to-pink-50 border border-pink-100 text-slate-500 text-[11px] font-semibold">
-                    Link Kosong • Menunggu Update Admin
-                  </div>`
-              }
-            </div>
-          </div>
-        `;
-      }).join("");
-    }
-
     // =========================================================================
-    // LOGIN & DASHBOARD ADMIN (SEKRE / BENDAHARA)
+    // LOGIN & ADMIN
     // =========================================================================
     function openLoginModal() {
       if (auth.isLoggedIn) {
@@ -581,40 +527,36 @@
           return;
         }
         auth = { isLoggedIn: true, username, password };
-        if (res.data && Array.isArray(res.data.pages)) {
-          portalData = res.data;
-        }
+        if (res.data && Array.isArray(res.data.pages)) portalData = res.data;
         activateAdminSession();
       } catch (e) {
         if (username.toLowerCase() === "admin" && password === "himasika2026") {
           auth = { isLoggedIn: true, username, password };
           activateAdminSession();
-          showToast("Login berhasil (pastikan Kode.gs sudah di-deploy Versi Baru).");
         } else {
           showToast("Gagal terhubung ke server Apps Script.", true);
         }
       } finally {
         btn.disabled = false;
-        btn.textContent = "Masuk Dashboard Admin ✨";
+        btn.textContent = "Masuk Dashboard";
       }
     }
 
     function activateAdminSession() {
       closeLoginModal();
-      document.getElementById("btn-nav-admin").textContent = "⚙️ Dashboard Admin";
+      document.getElementById("btn-nav-admin").textContent = "Dashboard Admin";
       document.getElementById("btn-nav-logout").classList.remove("hidden");
       switchModeView("admin");
       renderAllAdmin();
-      showToast("✨ Selamat datang di Dashboard Admin Sekum & Bendahara.");
+      showToast("Berhasil masuk Dashboard Admin.");
     }
 
     function logoutAdmin() {
       auth = { isLoggedIn: false, username: "", password: "" };
       document.getElementById("login-password").value = "";
-      document.getElementById("btn-nav-admin").textContent = "🔐 Login Admin (Sekre / Bendahara)";
+      document.getElementById("btn-nav-admin").textContent = "Admin Sekre/Bendahara";
       document.getElementById("btn-nav-logout").classList.add("hidden");
       switchModeView("public");
-      showToast("Berhasil keluar dari mode Admin.");
     }
 
     function switchModeView(mode) {
@@ -627,11 +569,9 @@
       ["links", "pages", "flows"].forEach(t => {
         document.getElementById("adm-panel-" + t).classList.toggle("hidden", t !== tab);
         const btn = document.getElementById("adm-tab-" + t);
-        if (t === tab) {
-          btn.className = "px-4 py-2.5 rounded-2xl btn-gradient text-white shadow-sm cursor-pointer";
-        } else {
-          btn.className = "px-4 py-2.5 rounded-2xl bg-white border border-pink-200 text-slate-700 hover:bg-pink-50 cursor-pointer";
-        }
+        btn.className = t === tab
+          ? "px-4 py-2 rounded-xl pink-blue-grad text-white cursor-pointer"
+          : "px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 cursor-pointer";
       });
     }
 
@@ -642,54 +582,48 @@
       renderAdminFlows();
     }
 
-    // --- 1. Admin: Kelola Link ---
     function renderAdminFilterPages() {
       const sel = document.getElementById("adm-filter-page");
       if (!sel) return;
       const prev = sel.value;
-      sel.innerHTML = `<option value="ALL">Semua Halaman (${portalData.links.length} Link)</option>` +
+      sel.innerHTML = `<option value="ALL">Semua Halaman (${portalData.links.length})</option>` +
         portalData.pages.map(p => `<option value="${escapeAttr(p.id)}">${escapeHtml(p.nama)}</option>`).join("");
-      if (prev && (prev === "ALL" || portalData.pages.some(p => p.id === prev))) {
-        sel.value = prev;
-      }
+      if (prev && (prev === "ALL" || portalData.pages.some(p => p.id === prev))) sel.value = prev;
     }
 
     function renderAdminLinks() {
       const container = document.getElementById("adm-links-container");
       const filterPage = document.getElementById("adm-filter-page").value || "ALL";
-
       const list = portalData.links
         .map((item, realIdx) => ({ item, realIdx }))
         .filter(({ item }) => filterPage === "ALL" || item.pageId === filterPage);
 
       container.innerHTML = list.map(({ item, realIdx }) => `
-        <div class="p-4 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 grid md:grid-cols-12 gap-3 items-start">
+        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/70 grid md:grid-cols-12 gap-3 items-start">
           <div class="md:col-span-3">
-            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Halaman</label>
-            <select onchange="updateLinkField(${realIdx}, 'pageId', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-semibold">
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Halaman</label>
+            <select onchange="updateLinkField(${realIdx}, 'pageId', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-semibold">
               ${portalData.pages.map(p => `<option value="${escapeAttr(p.id)}" ${p.id === item.pageId ? 'selected' : ''}>${escapeHtml(p.nama)}</option>`).join("")}
             </select>
           </div>
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Judul Template / Dokumen</label>
-            <input type="text" value="${escapeAttr(item.judul)}" onchange="updateLinkField(${realIdx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs font-bold mb-1.5" />
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Judul & Keterangan</label>
+            <input type="text" value="${escapeAttr(item.judul)}" onchange="updateLinkField(${realIdx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold mb-1.5" />
             <input type="text" value="${escapeAttr(item.ket || '')}" placeholder="Keterangan singkat..." onchange="updateLinkField(${realIdx}, 'ket', this.value)" class="w-full px-3 py-1.5 rounded-xl border border-slate-200 bg-white text-[11px]" />
           </div>
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">URL Link (Kosongkan jika belum ada)</label>
-            <input type="url" value="${escapeAttr(item.url || '')}" placeholder="https://docs.google.com/..." onchange="updateLinkField(${realIdx}, 'url', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs" />
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">URL Link</label>
+            <input type="url" value="${escapeAttr(item.url || '')}" placeholder="https://..." onchange="updateLinkField(${realIdx}, 'url', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs" />
           </div>
           <div class="md:col-span-1 flex md:justify-end pt-4">
-            <button onclick="deleteLinkItem(${realIdx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
+            <button onclick="deleteLinkItem(${realIdx})" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 text-xs font-bold cursor-pointer">Hapus</button>
           </div>
         </div>
       `).join("");
     }
 
     function updateLinkField(idx, field, val) {
-      if (portalData.links[idx]) {
-        portalData.links[idx][field] = val.trim();
-      }
+      if (portalData.links[idx]) portalData.links[idx][field] = val.trim();
     }
 
     function addNewLinkItem() {
@@ -699,12 +633,12 @@
         id: "l-" + Date.now(),
         pageId: targetPageId,
         judul: "Template / Dokumen Baru",
-        ket: "Keterangan singkat dokumen...",
+        ket: "Keterangan singkat...",
         url: ""
       });
       renderAdminFilterPages();
       renderAdminLinks();
-      showToast("Item link baru ditambahkan di baris paling atas.");
+      showToast("Item link baru ditambahkan.");
     }
 
     function deleteLinkItem(idx) {
@@ -714,21 +648,20 @@
       renderAdminLinks();
     }
 
-    // --- 2. Admin: Kelola Halaman ---
     function renderAdminPages() {
       const container = document.getElementById("adm-pages-container");
       container.innerHTML = portalData.pages.map((pg, idx) => `
-        <div class="p-4 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 grid md:grid-cols-12 gap-3 items-center">
+        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/70 grid md:grid-cols-12 gap-3 items-center">
           <div class="md:col-span-4">
-            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Nama Halaman / Tab</label>
-            <input type="text" value="${escapeAttr(pg.nama)}" onchange="updatePageField(${idx}, 'nama', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-bold" />
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nama Halaman</label>
+            <input type="text" value="${escapeAttr(pg.nama)}" onchange="updatePageField(${idx}, 'nama', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold" />
           </div>
           <div class="md:col-span-7">
-            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Deskripsi Halaman</label>
-            <input type="text" value="${escapeAttr(pg.deskripsi || '')}" onchange="updatePageField(${idx}, 'deskripsi', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Deskripsi Halaman</label>
+            <input type="text" value="${escapeAttr(pg.deskripsi || '')}" onchange="updatePageField(${idx}, 'deskripsi', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs" />
           </div>
           <div class="md:col-span-1 flex md:justify-end pt-4">
-            <button onclick="deletePageItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
+            <button onclick="deletePageItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 text-xs font-bold cursor-pointer">Hapus</button>
           </div>
         </div>
       `).join("");
@@ -748,7 +681,7 @@
         deskripsi: "Deskripsi singkat kategori dokumen..."
       });
       renderAllAdmin();
-      showToast("Halaman baru berhasil ditambahkan.");
+      showToast("Halaman baru ditambahkan.");
     }
 
     function deletePageItem(idx) {
@@ -756,41 +689,38 @@
         showToast("Minimal harus ada 1 halaman.", true);
         return;
       }
-      if (!confirm("Hapus halaman ini? Link di dalamnya akan dipindah ke halaman pertama.")) return;
+      if (!confirm("Hapus halaman ini?")) return;
       const removedId = portalData.pages[idx].id;
       portalData.pages.splice(idx, 1);
       const fallbackId = portalData.pages[0].id;
-      portalData.links.forEach(l => {
-        if (l.pageId === removedId) l.pageId = fallbackId;
-      });
+      portalData.links.forEach(l => { if (l.pageId === removedId) l.pageId = fallbackId; });
       renderAllAdmin();
     }
 
-    // --- 3. Admin: Kelola Dropdown Alur Peminjaman ---
     function renderAdminFlows() {
       const container = document.getElementById("adm-flows-container");
       container.innerHTML = portalData.flows.map((fl, idx) => `
-        <div class="p-5 rounded-2xl border border-pink-100 bg-gradient-to-r from-blue-50/40 to-pink-50/40 space-y-3">
+        <div class="p-4 rounded-2xl border border-slate-200 bg-slate-50/70 space-y-3">
           <div class="grid md:grid-cols-12 gap-3 items-center">
             <div class="md:col-span-7">
-              <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Judul Pilihan Dropdown (Jenis Peminjaman / Pengajuan)</label>
-              <input type="text" value="${escapeAttr(fl.judul)}" onchange="updateFlowField(${idx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs font-bold" />
+              <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Judul Dropdown Alur</label>
+              <input type="text" value="${escapeAttr(fl.judul)}" onchange="updateFlowField(${idx}, 'judul', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs font-bold" />
             </div>
             <div class="md:col-span-4">
-              <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Batas Waktu / Estimasi</label>
-              <input type="text" value="${escapeAttr(fl.estimasi || '')}" onchange="updateFlowField(${idx}, 'estimasi', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
+              <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Batas Waktu</label>
+              <input type="text" value="${escapeAttr(fl.estimasi || '')}" onchange="updateFlowField(${idx}, 'estimasi', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs" />
             </div>
             <div class="md:col-span-1 flex md:justify-end pt-4">
-              <button onclick="deleteFlowItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 hover:bg-rose-200 text-rose-700 text-xs font-bold cursor-pointer">Hapus</button>
+              <button onclick="deleteFlowItem(${idx})" class="px-3 py-2 rounded-xl bg-rose-100 text-rose-600 text-xs font-bold cursor-pointer">Hapus</button>
             </div>
           </div>
           <div>
-            <label class="block text-[10px] font-extrabold text-blue-700 uppercase mb-1">Tahapan Alur A → B → C (Pisahkan tiap tahap dengan Enter / baris baru)</label>
-            <textarea rows="4" onchange="updateFlowSteps(${idx}, this.value)" class="w-full px-3 py-2 rounded-xl border border-blue-200 bg-white text-xs leading-relaxed">${escapeHtml((fl.langkah || []).join('\n'))}</textarea>
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Tahapan A → B → C (1 baris = 1 tahap)</label>
+            <textarea rows="4" onchange="updateFlowSteps(${idx}, this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs leading-relaxed">${escapeHtml((fl.langkah || []).join('\n'))}</textarea>
           </div>
           <div>
-            <label class="block text-[10px] font-extrabold text-pink-600 uppercase mb-1">Catatan Penting</label>
-            <input type="text" value="${escapeAttr(fl.catatan || '')}" onchange="updateFlowField(${idx}, 'catatan', this.value)" class="w-full px-3 py-2 rounded-xl border border-pink-200 bg-white text-xs" />
+            <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Catatan</label>
+            <input type="text" value="${escapeAttr(fl.catatan || '')}" onchange="updateFlowField(${idx}, 'catatan', this.value)" class="w-full px-3 py-2 rounded-xl border border-slate-200 bg-white text-xs" />
           </div>
         </div>
       `).join("");
@@ -802,10 +732,7 @@
 
     function updateFlowSteps(idx, textVal) {
       if (portalData.flows[idx]) {
-        portalData.flows[idx].langkah = textVal
-          .split("\n")
-          .map(s => s.trim())
-          .filter(Boolean);
+        portalData.flows[idx].langkah = textVal.split("\n").map(s => s.trim()).filter(Boolean);
       }
     }
 
@@ -814,29 +741,23 @@
         id: "fl-" + Date.now(),
         judul: "Alur Peminjaman / Pengajuan Baru",
         estimasi: "Minimal H-5",
-        langkah: [
-          "A. Langkah pertama dari pemohon...",
-          "B. Verifikasi ke Sekretaris Umum / Bendahara...",
-          "C. Pengajuan ke pihak tujuan..."
-        ],
-        catatan: "Catatan tambahan..."
+        langkah: ["A. Langkah pertama...", "B. Verifikasi Sekum/Bendahara...", "C. Pengajuan ke pihak tujuan..."],
+        catatan: ""
       });
       renderAdminFlows();
       showToast("Dropdown alur baru ditambahkan.");
     }
 
     function deleteFlowItem(idx) {
-      if (!confirm("Hapus jenis alur ini?")) return;
+      if (!confirm("Hapus alur ini?")) return;
       portalData.flows.splice(idx, 1);
       renderAdminFlows();
     }
 
-    // --- SIMPAN SEMUA KE SERVER ---
     async function saveAllPortalChanges() {
       const btn = document.getElementById("btn-save-all");
       btn.disabled = true;
       btn.textContent = "Menyimpan...";
-
       try {
         const res = await postApi({
           action: "savePortalData",
@@ -846,33 +767,28 @@
         });
         if (res.ok) {
           renderAllPublic();
-          showToast("✅ Semua halaman, link, dan alur berhasil disimpan!");
+          showToast("Semua perubahan berhasil disimpan!");
         } else {
-          showToast(res.error || "Gagal menyimpan perubahan.", true);
+          showToast(res.error || "Gagal menyimpan.", true);
         }
       } catch (e) {
-        showToast("Gagal terhubung ke server Apps Script.", true);
+        showToast("Gagal terhubung ke server.", true);
       } finally {
         btn.disabled = false;
-        btn.textContent = "💾 Simpan Semua Perubahan";
+        btn.textContent = "Simpan Perubahan";
       }
     }
 
     function escapeHtml(s) {
-      return String(s || "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+      return String(s || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
-
     function escapeAttr(s) {
       return escapeHtml(s).replace(/'/g, "&#39;");
     }
 
     window.addEventListener("DOMContentLoaded", () => {
       renderAllPublic();
-      loadPortalData(false);
+      loadPortalData();
     });
   </script>
 </body>
