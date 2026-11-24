@@ -19,22 +19,6 @@
       background-color: #FEFFE0;
       color: #103738;
     }
-    .bg-cherry { background-color: #B5185F; }
-    .text-cherry { color: #B5185F; }
-    .border-cherry { border-color: #B5185F; }
-
-    .bg-light-yellow { background-color: #FEFFE0; }
-    .text-light-yellow { color: #FEFFE0; }
-
-    .bg-lime-cream { background-color: #D0E86E; }
-    .text-lime-cream { color: #D0E86E; }
-
-    .bg-strong-cyan { background-color: #35C1C2; }
-    .text-strong-cyan { color: #35C1C2; }
-    .border-strong-cyan { border-color: #35C1C2; }
-
-    .bg-deep-teal { background-color: #103738; }
-    .text-deep-teal { color: #103738; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col selection:bg-[#B5185F] selection:text-[#FEFFE0]">
@@ -50,12 +34,12 @@
   </a>
 
   <!-- MODAL LOGIN ADMIN -->
-  <div id="modal-login" class="fixed inset-0 z-50 hidden bg-[#103738]/70 backdrop-blur-xs flex items-center justify-center p-4">
+  <div id="modal-login" class="fixed inset-0 z-50 hidden bg-[#103738]/70 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-[#FEFFE0] rounded-3xl max-w-sm w-full p-7 shadow-2xl border-2 border-[#103738]">
       <div class="flex items-center justify-between mb-5">
         <div>
           <span class="inline-block px-2.5 py-0.5 rounded-full bg-[#D0E86E] text-[#103738] text-[10px] font-extrabold uppercase tracking-wider mb-1">
-            Sekum & Bendahara
+            Sekum • Sekre 2 • Bendahara
           </span>
           <h3 class="text-lg font-extrabold text-[#103738]">Login Dashboard Admin</h3>
         </div>
@@ -78,7 +62,7 @@
   </div>
 
   <!-- MODAL KODE VBA 1000+ SURAT -->
-  <div id="modal-vba" class="fixed inset-0 z-50 hidden bg-[#103738]/70 backdrop-blur-xs flex items-center justify-center p-4">
+  <div id="modal-vba" class="fixed inset-0 z-50 hidden bg-[#103738]/70 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="bg-[#FEFFE0] rounded-3xl max-w-2xl w-full p-6 shadow-2xl border-2 border-[#103738] space-y-4">
       <div class="flex items-center justify-between">
         <div>
@@ -123,10 +107,9 @@ End Sub</pre>
     </div>
   </div>
 
-  <!-- HEADER RINGKAS & LEGA (PALET CHERRY ROSE, LIGHT YELLOW, LIME CREAM, STRONG CYAN) -->
+  <!-- HEADER -->
   <header class="max-w-5xl mx-auto w-full px-4 sm:px-6 pt-6 pb-2">
     <div class="bg-[#103738] text-[#FEFFE0] rounded-3xl p-6 sm:p-8 shadow-lg relative overflow-hidden">
-      <!-- Aksen Dekorasi Bunga Palet -->
       <div class="pointer-events-none absolute -right-8 -bottom-10 w-44 h-44 rounded-full bg-[#35C1C2]/20"></div>
       <div class="pointer-events-none absolute right-24 -top-10 w-28 h-28 rounded-full bg-[#B5185F]/30"></div>
 
@@ -138,9 +121,9 @@ End Sub</pre>
         </div>
 
         <div class="flex flex-wrap items-center gap-2">
-          <a href="https://wa.me/6281362192288?text=Halo%20Salwa%2C%20izin%20koordinasi%20terkait%20administrasi%20HIMASIKA%20ITS" target="_blank" rel="noopener noreferrer"
+          <a href="https://wa.me/6281362192288?text=Halo%20Salwa%2C%20izin%20asistensi%20administrasi%20HIMASIKA%20ITS" target="_blank" rel="noopener noreferrer"
              class="px-3.5 py-2 rounded-xl bg-[#35C1C2] text-[#103738] hover:opacity-90 text-xs font-extrabold transition">
-            CP: Salwa (081362192288)
+            CP Sekum: Salwa (081362192288)
           </a>
           <button id="btn-nav-admin" onclick="openLoginModal()" class="px-4 py-2 rounded-xl bg-[#D0E86E] text-[#103738] hover:opacity-90 text-xs font-extrabold transition cursor-pointer">
             Admin Sekre / Bendahara
@@ -153,17 +136,17 @@ End Sub</pre>
 
       <div class="max-w-2xl relative z-10">
         <h1 class="text-2xl sm:text-3xl font-extrabold text-[#FEFFE0] tracking-tight mb-2">
-          Portal Template & SOP Administrasi
+          Portal Template, Nomor Surat & SOP Administrasi
         </h1>
         <p class="text-[#FEFFE0]/80 text-xs sm:text-sm leading-relaxed">
-          Pusat tautan template surat, proposal, LPJ, keuangan, serta panduan alur birokrasi peminjaman ruang & pengajuan berkas HIMASIKA ITS.
+          Pusat tautan template surat, pengajuan asistensi nomor surat & keterangan TTD Kahima, proposal, LPJ, serta alur birokrasi HIMASIKA ITS.
         </p>
       </div>
     </div>
   </header>
 
   <!-- ===================================================================== -->
-  <!-- VIEW PUBLIK: NAVIGASI TUNGGAL (ANTI-NUMPUK)                           -->
+  <!-- VIEW PUBLIK                                                           -->
   <!-- ===================================================================== -->
   <main id="view-public" class="max-w-5xl mx-auto w-full px-4 sm:px-6 py-5 flex-1 space-y-6">
 
@@ -179,13 +162,118 @@ End Sub</pre>
 
     <!-- KONTEN A: HALAMAN DOKUMEN & TEMPLATE -->
     <div id="section-docs" class="space-y-5">
-      <div id="active-page-header" class="flex flex-wrap items-center justify-between gap-3 bg-white/80 px-5 py-4 rounded-2xl border border-[#103738]/10"></div>
+      <div id="active-page-header" class="flex flex-wrap items-center justify-between gap-3 bg-white/90 px-5 py-4 rounded-2xl border border-[#103738]/10"></div>
       <div id="public-links-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </div>
 
-    <!-- KONTEN B: ALUR SOP PEMINJAMAN & BIROKRASI (DROPDOWN) -->
+    <!-- KONTEN B: PENGAJUAN & CEK STATUS NOMOR SURAT -->
+    <div id="section-surat" class="hidden space-y-6">
+      <!-- Form Pengajuan Nomor Surat -->
+      <div class="bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#103738]/10 shadow-sm space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#103738]/10 pb-4">
+          <div>
+            <span class="inline-block px-3 py-0.5 rounded-full bg-[#D0E86E] text-[#103738] text-[10px] font-extrabold uppercase tracking-wider mb-1">
+              Wajib Asis Sekum / Sekre 2 Maks. H-2
+            </span>
+            <h2 class="text-lg font-extrabold text-[#103738]">Form Pengajuan Asistensi & Nomor Surat Keluar</h2>
+            <p class="text-xs text-[#103738]/70">Isi data surat + link Google Docs draf. Setelah di-ACC Sekum/Sekre 2, nomor surat & info TTD Kahima akan di-drop di tabel bawah.</p>
+          </div>
+          <a href="https://wa.me/6281362192288?text=Halo%20Salwa%2C%20aku%20sudah%20isi%20form%20pengajuan%20nomor%20surat%20di%20portal%2C%20izin%20minta%20asis%20drafnya%20ya" target="_blank" rel="noopener noreferrer"
+             class="px-4 py-2 rounded-xl bg-[#35C1C2] text-[#103738] text-xs font-extrabold hover:opacity-90">
+            Kabari Sekum via WA ↗
+          </a>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Nama Pemohon *</label>
+            <input id="srt-pemohon" type="text" placeholder="Contoh: Rista (Sekre Acara)" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Proker / Departemen *</label>
+            <input id="srt-proker" type="text" placeholder="Contoh: Upgrading / Dept. Dagri" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Kode Jenis Surat *</label>
+            <select id="srt-jenis" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-bold focus:outline-none focus:border-[#B5185F]">
+              <option value="A (Ekstra Institut)">A — Ekstra Institut (Luar ITS)</option>
+              <option value="B (Ekstra Dept / Intra Institut)" selected>B — Ekstra Dept / Intra ITS (Kadep/BMA/Ditmawa)</option>
+              <option value="C (Intra Departemen)">C — Intra Dept (Kaprodi / Warga Fisika)</option>
+              <option value="D (Khusus: KET/REK/KPTS)">D — Khusus (KET / REK / KPTS)</option>
+              <option value="E (Mandat: TGS/JLN)">E — Mandat (TGS / REK / JLN)</option>
+              <option value="F (Umum)">F — Umum (UMUM)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Perihal Surat *</label>
+            <input id="srt-perihal" type="text" placeholder="Contoh: Peminjaman Ruang Teater C" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Tujuan Surat *</label>
+            <input id="srt-tujuan" type="text" placeholder="Contoh: Kepala BMA ITS" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Tanggal Surat *</label>
+            <input id="srt-tanggal" type="date" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Link Google Docs Draf Surat (Akses Commenter/Editor) *</label>
+            <input id="srt-link" type="url" placeholder="https://docs.google.com/document/d/..." class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+          </div>
+          <div>
+            <label class="block text-xs font-extrabold text-[#103738] mb-1">Kebutuhan TTD Kahima *</label>
+            <select id="srt-ttd-req" class="w-full px-3.5 py-2.5 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-bold focus:outline-none focus:border-[#B5185F]">
+              <option value="TTD Offline (Basah)">TTD Offline (Basah — Cetak Fisik)</option>
+              <option value="TTD Online (Digital)">TTD Online (Digital / PDF)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <span class="text-[11px] text-[#103738]/70 font-medium">* Pastikan akses Google Docs sudah dibuka agar Sekum / Sekre 2 bisa langsung mengoreksi.</span>
+          <button onclick="submitPengajuanSurat()" id="btn-submit-surat" class="px-5 py-2.5 rounded-xl bg-[#B5185F] text-[#FEFFE0] text-xs font-extrabold hover:opacity-90 cursor-pointer shadow-sm">
+            Kirim Pengajuan Asis & Nomor Surat →
+          </button>
+        </div>
+      </div>
+
+      <!-- Tabel Live Status & Nomor Surat -->
+      <div class="bg-white rounded-3xl p-6 border-2 border-[#103738]/10 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div>
+            <h3 class="text-base font-extrabold text-[#103738]">Rekap & Status Nomor Surat Keluar</h3>
+            <p class="text-xs text-[#103738]/70">Nomor surat & keterangan TTD Kahima muncul setelah draf di-ACC oleh Sekum / Sekre 2.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <input id="search-surat-input" type="text" oninput="renderPublicSuratTable()" placeholder="Cari proker / perihal..."
+                   class="px-3.5 py-2 rounded-xl border border-[#103738]/20 bg-[#FEFFE0]/50 text-xs font-semibold focus:outline-none focus:border-[#B5185F]" />
+            <button onclick="loadPortalData(true)" class="px-3 py-2 rounded-xl bg-[#D0E86E] text-[#103738] text-xs font-extrabold cursor-pointer">
+              ↻ Refresh
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-[#103738] text-[#FEFFE0]">
+                <th class="p-3 rounded-tl-xl font-extrabold">Proker & Pemohon</th>
+                <th class="p-3 font-extrabold">Perihal & Tujuan</th>
+                <th class="p-3 font-extrabold">Draf</th>
+                <th class="p-3 font-extrabold">Status Asis</th>
+                <th class="p-3 font-extrabold">Nomor Surat Resmi</th>
+                <th class="p-3 rounded-tr-xl font-extrabold">Keterangan TTD Kahima</th>
+              </tr>
+            </thead>
+            <tbody id="public-surat-tbody" class="divide-y divide-[#103738]/10"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- KONTEN C: ALUR SOP PEMINJAMAN & BIROKRASI (DROPDOWN) -->
     <div id="section-flows" class="hidden space-y-5">
-      <div class="bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#103738]/10 shadow-xs space-y-5">
+      <div class="bg-white rounded-3xl p-6 sm:p-7 border-2 border-[#103738]/10 shadow-sm space-y-5">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-[#103738]/10">
           <div>
             <span class="inline-block px-3 py-0.5 rounded-full bg-[#D0E86E] text-[#103738] text-[10px] font-extrabold uppercase tracking-wider mb-1">
@@ -205,13 +293,13 @@ End Sub</pre>
   </main>
 
   <!-- ===================================================================== -->
-  <!-- VIEW ADMIN: KELOLA HALAMAN, LINK TEMPLATE & DROPDOWN ALUR             -->
+  <!-- VIEW ADMIN: KELOLA LINK, HALAMAN, ALUR SOP & DROP NOMOR SURAT         -->
   <!-- ===================================================================== -->
   <main id="view-admin" class="hidden max-w-5xl mx-auto w-full px-4 sm:px-6 py-5 flex-1 space-y-6">
     <div class="bg-[#103738] text-[#FEFFE0] rounded-3xl p-5 flex flex-wrap items-center justify-between gap-3">
       <div>
-        <div class="text-xs font-extrabold text-[#D0E86E] uppercase tracking-wider">Mode Editor Admin (Sekum & Bendahara)</div>
-        <p class="text-xs text-[#FEFFE0]/80 mt-0.5">Ubah link, halaman, atau alur SOP lalu klik <strong>Simpan Perubahan</strong>.</p>
+        <div class="text-xs font-extrabold text-[#D0E86E] uppercase tracking-wider">Mode Editor Admin (Sekum • Sekre 2 • Bendahara)</div>
+        <p class="text-xs text-[#FEFFE0]/80 mt-0.5">Kelola link template, alur SOP, atau ACC & drop nomor surat keluar.</p>
       </div>
       <div class="flex flex-wrap gap-2">
         <button onclick="resetToOfficialSop()" class="px-3.5 py-2 rounded-xl bg-white/15 hover:bg-white/25 text-[#FEFFE0] text-xs font-bold cursor-pointer">
@@ -228,19 +316,36 @@ End Sub</pre>
 
     <!-- Sub-Tab Admin -->
     <div class="flex flex-wrap gap-2 text-xs font-extrabold">
-      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2.5 rounded-full bg-[#B5185F] text-[#FEFFE0] cursor-pointer">
-        1. Kelola Link Template
+      <button onclick="switchAdminSubTab('surat')" id="adm-tab-surat" class="px-4 py-2.5 rounded-full bg-[#B5185F] text-[#FEFFE0] cursor-pointer">
+        1. Asis & Drop Nomor Surat
+      </button>
+      <button onclick="switchAdminSubTab('links')" id="adm-tab-links" class="px-4 py-2.5 rounded-full bg-white border border-[#103738]/15 text-[#103738] cursor-pointer">
+        2. Kelola Link Template
       </button>
       <button onclick="switchAdminSubTab('pages')" id="adm-tab-pages" class="px-4 py-2.5 rounded-full bg-white border border-[#103738]/15 text-[#103738] cursor-pointer">
-        2. Tambah / Edit Halaman
+        3. Tambah / Edit Halaman
       </button>
       <button onclick="switchAdminSubTab('flows')" id="adm-tab-flows" class="px-4 py-2.5 rounded-full bg-white border border-[#103738]/15 text-[#103738] cursor-pointer">
-        3. Edit Dropdown Alur SOP
+        4. Edit Dropdown Alur SOP
       </button>
     </div>
 
-    <!-- ADMIN SUB-TAB 1: KELOLA LINK -->
-    <div id="adm-panel-links" class="bg-white p-6 rounded-3xl border border-[#103738]/10 space-y-4">
+    <!-- ADMIN SUB-TAB 1: ASIS & DROP NOMOR SURAT -->
+    <div id="adm-panel-surat" class="bg-white p-6 rounded-3xl border border-[#103738]/10 space-y-4">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#103738]/10 pb-3">
+        <div>
+          <h2 class="text-sm font-extrabold text-[#103738]">Asistensi Draf & Drop Nomor Surat Keluar</h2>
+          <p class="text-[11px] text-[#103738]/70">Cek draf Google Docs → Ubah status jadi ACC → Isi Nomor Surat & Keterangan TTD Kahima → Klik Simpan Perubahan.</p>
+        </div>
+        <button onclick="addManualSuratAdmin()" class="px-3.5 py-2 rounded-xl bg-[#35C1C2] text-[#103738] text-xs font-extrabold cursor-pointer">
+          + Catat Surat Manual
+        </button>
+      </div>
+      <div id="adm-surat-container" class="space-y-3"></div>
+    </div>
+
+    <!-- ADMIN SUB-TAB 2: KELOLA LINK -->
+    <div id="adm-panel-links" class="hidden bg-white p-6 rounded-3xl border border-[#103738]/10 space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#103738]/10 pb-3">
         <h2 class="text-sm font-extrabold text-[#103738]">Daftar Link Template & Dokumen</h2>
         <div class="flex items-center gap-2">
@@ -253,7 +358,7 @@ End Sub</pre>
       <div id="adm-links-container" class="space-y-3"></div>
     </div>
 
-    <!-- ADMIN SUB-TAB 2: KELOLA HALAMAN -->
+    <!-- ADMIN SUB-TAB 3: KELOLA HALAMAN -->
     <div id="adm-panel-pages" class="hidden bg-white p-6 rounded-3xl border border-[#103738]/10 space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#103738]/10 pb-3">
         <h2 class="text-sm font-extrabold text-[#103738]">Kelola Halaman / Tab Kategori</h2>
@@ -264,7 +369,7 @@ End Sub</pre>
       <div id="adm-pages-container" class="space-y-3"></div>
     </div>
 
-    <!-- ADMIN SUB-TAB 3: KELOLA DROPDOWN ALUR -->
+    <!-- ADMIN SUB-TAB 4: KELOLA DROPDOWN ALUR -->
     <div id="adm-panel-flows" class="hidden bg-white p-6 rounded-3xl border border-[#103738]/10 space-y-4">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#103738]/10 pb-3">
         <h2 class="text-sm font-extrabold text-[#103738]">Kelola Dropdown Alur SOP (1 baris = 1 langkah)</h2>
@@ -290,7 +395,7 @@ End Sub</pre>
     let portalData = {
       pages: [
         { id: 'pg-surat', nama: '10 Template Surat & Massal', deskripsi: 'Template tata naskah dinas HIMASIKA ITS & panduan generate 1000+ surat otomatis.' },
-        { id: 'pg-proplpj', nama: 'Proposal, LPJ & Berkas', deskripsi: 'Form nomor surat keluar, template proposal kegiatan, format LPJ, dan link pengumpulan scan.' },
+        { id: 'pg-proplpj', nama: 'Proposal, LPJ & Berkas', deskripsi: 'Template proposal kegiatan, format LPJ, buku pegangan, dan link pengumpulan scan.' },
         { id: 'pg-pinjam', nama: 'Peminjaman Ruang & Sarpras', deskripsi: 'Form booking BMA/Sarpras ITS, jadwal ruang Departemen Fisika, dan peminjaman inventaris.' },
         { id: 'pg-keuangan', nama: 'Keuangan & SPJ', deskripsi: 'Format RAB, format LPJ/SPJ keuangan, panduan ITS Food, dan rekap kas kabinet.' }
       ],
@@ -306,7 +411,7 @@ End Sub</pre>
         { id: 'l-9', pageId: 'pg-surat', judul: '09. Surat Pemberitahuan / Edaran', ket: 'Informasi resmi kabinet kepada warga Departemen Fisika ITS.', url: '' },
         { id: 'l-10', pageId: 'pg-surat', judul: '10. Surat Ucapan Terima Kasih & Pengantar Sertifikat', ket: 'Dikirim pasca-kegiatan atau pengantar TTD sertifikat ke Pak Luthfi.', url: '' },
 
-        { id: 'l-11', pageId: 'pg-proplpj', judul: 'Form Pengajuan Nomor Surat Keluar', ket: 'Wajib diajukan ke Sekum maksimal H-2 sebelum surat dikirim.', url: '' },
+        { id: 'l-11', pageId: 'pg-proplpj', judul: 'Spreadsheet (SPS) Rekap Surat Keluar', ket: 'Rekap resmi penomoran surat HIMASIKA ITS (dikelola Sekum & Sekre 2).', url: '' },
         { id: 'l-12', pageId: 'pg-proplpj', judul: 'Template Proposal Kegiatan & Lembar Pengesahan', ket: 'Format baku Cover, Bab I–XI, Lembar Pengesahan, Susunan Acara, Panitia & RAB.', url: '' },
         { id: 'l-13', pageId: 'pg-proplpj', judul: 'Template Laporan Pertanggungjawaban (LPJ)', ket: 'Maksimal H+14 (dana Dept) atau H+2 asistensi Sekum / H+7 (dana IKOMA/Ditmawa).', url: '' },
         { id: 'l-14', pageId: 'pg-proplpj', judul: 'Link Pengumpulan Scan Full Proposal, LPJ & SPJ', ket: 'Wajib scan seluruh halaman setelah TTD & stempel lengkap.', url: '' },
@@ -323,37 +428,50 @@ End Sub</pre>
       flows: [
         {
           id: 'fl-1',
-          judul: '1. Peminjaman Ruang Kuliah / Departemen Fisika ITS',
-          estimasi: 'Ajukan ke Sekum Maks. H-2',
+          judul: '1. Pengajuan Asistensi & Nomor Surat Keluar (Wajib Asis Sekum / Sekre 2)',
+          estimasi: 'Asis Maks. H-2 Sebelum Surat Dikirim',
           langkah: [
-            '1. Sekretaris Kegiatan menyusun Surat Peminjaman Ruang yang ditujukan kepada Ketua Program Studi Sarjana Departemen Fisika ITS (untuk ruang kelas departemen) atau Kepala Departemen Fisika ITS (jika diteruskan TU ke eksternal).',
-            '2. Pengecekan draf surat oleh Sekretaris Departemen, lalu pengecekan kelayakan administrasi oleh Sekretaris Umum HIMASIKA ITS (CP Salwa: 081362192288).',
-            '3. Pemberian Nomor Surat dan Stempel HIMASIKA ITS oleh Sekretaris Umum, dilanjutkan persetujuan/TTD Ketua HIMASIKA ITS.',
+            '1. Pemohon menyusun draf surat di Google Docs (pastikan akses link diubah ke Commenter/Editor) sesuai format baku & kode jenis surat: A (Ekstra Institut), B (Ekstra Dept/Intra Institut), C (Intra Dept), D (Khusus: KET/REK/KPTS), E (Mandat: TGS/JLN), F (Umum).',
+            '2. Pemohon mengisi Form Pengajuan di tab "Ajukan & Cek No. Surat" (memasukkan perihal, tujuan, tanggal, link Google Docs draf, dan kebutuhan TTD Kahima) lalu mengabari Sekum (Salwa: 081362192288) atau Sekre 2 maksimal H-2.',
+            '3. Sekum / Sekre 2 memeriksa kelayakan tata naskah dan redaksi draf surat (jika ada perbaikan, status ditandai "Perlu Revisi" beserta catatannya).',
+            '4. Setelah draf dinyatakan ACC, Sekum / Sekre 2 akan men-drop Nomor Surat resmi di rekap sekaligus mencantumkan keterangan alur TTD Kahima (apakah TTD Online/Digital atau TTD Offline/Basah di Sekre) agar Kahima juga terinfo.',
+            '5. Khusus Sertifikat Kepanitiaan (No/SRTF/KODE-KEGIATAN/KODE-DEPT/HIMASIKA-ITS/Bulan/Tahun): ajukan maksimal H+7 pasca-kegiatan (urutan TTD dari kanan: Ketua Pelaksana → Ketua HIMASIKA → Kepala Departemen Fisika via surat pengantar Pak Luthfi).'
+          ],
+          catatan: 'Dilarang mengambil nomor surat sendiri sebelum draf di-ACC oleh Sekum atau Sekre 2. Surat keluar tidak sah tanpa Nomor Surat, TTD Ketua HIMASIKA ITS, dan Stempel HIMASIKA ITS.'
+        },
+        {
+          id: 'fl-2',
+          judul: '2. Peminjaman Ruang Kuliah / Departemen Fisika ITS',
+          estimasi: 'Ajukan Asis ke Sekum Maks. H-2',
+          langkah: [
+            '1. Sekretaris Kegiatan menyusun draf Google Docs Surat Peminjaman Ruang yang ditujukan kepada Ketua Program Studi Sarjana Departemen Fisika ITS (untuk ruang kelas departemen) atau Kepala Departemen Fisika ITS (jika diteruskan TU ke eksternal).',
+            '2. Ajukan asistensi draf & nomor surat ke Sekum (Salwa: 081362192288) atau Sekre 2 maksimal H-2 untuk pengecekan format, pemberian nomor surat, dan info TTD Kahima.',
+            '3. Pembubuhan TTD Ketua HIMASIKA ITS (sesuai arahan Online/Offline dari Sekre) dan Stempel HIMASIKA ITS.',
             '4. Pengajuan kepada Kepala Sub Bagian (Kasubag) Departemen Fisika untuk pengecekan ketersediaan ruang dan pembubuhan paraf.',
             '5. Pengajuan tanda tangan kepada Ketua Program Studi Sarjana Departemen Fisika ITS.',
             '6. Penyerahan surat final yang telah disahkan kepada Kasubag / TU Departemen Fisika untuk pencatatan jadwal ruangan.'
           ],
-          catatan: 'Pengajuan nomor & cek administrasi ke Sekum maksimal H-2. Pastikan ruangan kembali bersih dan rapi setelah dipakai.'
+          catatan: 'Pastikan ruangan kembali bersih, rapi, dan AC/lampu dimatikan setelah pemakaian.'
         },
         {
-          id: 'fl-2',
-          judul: '2. Peminjaman Ruang & Gedung BMA / Sarpras ITS (Teater A/B/C, Hall TW-1, Pascasarjana, TW-2)',
+          id: 'fl-3',
+          judul: '3. Peminjaman Ruang & Gedung BMA / Sarpras ITS (Teater A/B/C, Hall TW-1, Pascasarjana, TW-2)',
           estimasi: 'Wajib Masuk BMA Maks. H-5',
           langkah: [
             '1. Menanyakan ketersediaan tempat, tanggal, dan jam ruangan ke Kantor Biro Manajemen Aset (BMA) atau via WhatsApp ke Mbak Putri Sarpras ITS (0858-5525-2276).',
-            '2. Melakukan booking ruangan via WA BMA (format: Hari, Tanggal, Jam, Ruang/Gedung, Kegiatan, Peminjam Fakultas/Dept/UKM, CP) sekaligus mengurus nomor surat & stempel ke Sekretaris Umum HIMASIKA ITS.',
+            '2. Melakukan booking ruangan via WA BMA (format: Hari, Tanggal, Jam, Ruang/Gedung, Kegiatan, Peminjam Fakultas/Dept/UKM, CP) sekaligus mengajukan asistensi draf surat ke Sekum / Sekre 2.',
             '3. Membuat Surat Permohonan Peminjaman Ruang ditujukan kepada Kepala Biro Manajemen Aset ITS dengan TTD berjenjang: Ketua Pelaksana → Ketua HIMASIKA ITS → Kepala Departemen Fisika ITS (wajib mengetahui Kadep).',
             '4. Menyerahkan surat permohonan fisik ke Kantor BMA ITS maksimal H-5 sebelum kegiatan (peminjaman mendadak tidak dilayani).',
-            '5. Proses disposisi pimpinan BMA memakan waktu ± 2–3 hari kerja. Konfirmasi ACC/Tidak ACC dikirim via WA ke nomor CP di surat (jika sampai H-1 belum ada konfirmasi, wajib konfirmasi langsung ke kantor Sarpras/BMA).'
+            '5. Proses disposisi pimpinan BMA memakan waktu ± 2–3 hari kerja. Konfirmasi ACC dikirim via WA ke nomor CP di surat (jika sampai H-1 belum ada konfirmasi, wajib konfirmasi langsung ke kantor Sarpras/BMA).'
           ],
           catatan: 'Hari kerja (Senin–Jumat 07.00–16.00) GRATIS. Di luar jam kerja / weekend dikenakan ketentuan petugas lembur (THL Rp12.500/jam; Non-PNS Rp17.000/jam weekday & Rp37.500/jam weekend — DILARANG memberi uang langsung ke petugas, wajib via dana DIPA/Ditmawa). Hall TW-1 & TW-2 hanya ruang kosong + AC (tambahan LCD/Mic sewa di Kopma/Ikoma).'
         },
         {
-          id: 'fl-3',
-          judul: '3. Mekanisme Pengajuan Proposal ke Departemen Fisika ITS (Dana SPP/DPP)',
+          id: 'fl-4',
+          judul: '4. Mekanisme Pengajuan Proposal ke Departemen Fisika ITS (Dana SPP/DPP)',
           estimasi: 'Asistensi Maks. 2 Minggu – 1 Bulan Pra-Acara',
           langkah: [
-            '1. Penyusunan proposal kegiatan oleh PJ / Sekretaris Kegiatan beserta surat pengantar dari Sekum (Permohonan Dana, Rekomendasi Kegiatan, Disposisi).',
+            '1. Penyusunan proposal kegiatan oleh PJ / Sekretaris Kegiatan beserta pengajuan surat pengantar ke Sekum / Sekre 2 (Permohonan Dana, Rekomendasi Kegiatan, Disposisi).',
             '2. Asistensi kelayakan administrasi ke Sekretaris Umum HIMASIKA ITS (melalui Sekretaris Departemen) dan asistensi RAB ke Bendahara Umum HIMASIKA ITS.',
             '3. Asistensi dan persetujuan awal oleh Ketua HIMASIKA ITS.',
             '4. Asistensi RAB kepada Birokrasi (Keuangan Departemen Fisika) untuk verifikasi pos anggaran.',
@@ -364,8 +482,8 @@ End Sub</pre>
           catatan: 'Batas pencairan dana maksimal 3 bulan setelah proposal di-ACC.'
         },
         {
-          id: 'fl-4',
-          judul: '4. Mekanisme Pengajuan Proposal & Pencairan Dana ke Ditmawa / IKOMA ITS',
+          id: 'fl-5',
+          judul: '5. Mekanisme Pengajuan Proposal & Pencairan Dana ke Ditmawa / IKOMA ITS',
           estimasi: 'Siapkan Lebih Awal (Alur Fakultas & Rektorat)',
           langkah: [
             '1. Penyusunan proposal & asistensi administrasi ke Sekretaris Umum serta asistensi RAB ke Bendahara Umum HIMASIKA ITS.',
@@ -378,8 +496,8 @@ End Sub</pre>
           catatan: 'Untuk dana Institut/IKOMA, asistensi LPJ ke Sekum maksimal H+2 dan pengajuan ke Institut/IKOMA maksimal H+7 setelah kegiatan berakhir.'
         },
         {
-          id: 'fl-5',
-          judul: '5. Mekanisme Pengajuan LPJ & SPJ Keuangan (Nota & Konsumsi)',
+          id: 'fl-6',
+          judul: '6. Mekanisme Pengajuan LPJ & SPJ Keuangan (Nota & Konsumsi)',
           estimasi: 'LPJ Dept Maks. H+14 • IKOMA Maks. H+2 (Sekum)',
           langkah: [
             '1. Penyusunan LPJ oleh PJ / Sekretaris Kegiatan dan pemisahan nota asli untuk berkas SPJ (nota asli tidak disatukan dengan jilid LPJ).',
@@ -390,19 +508,6 @@ End Sub</pre>
             '6. Hardfile dikumpulkan ke Birokrasi Keuangan Departemen untuk proses pencairan (BPP → Kadep → PPK → Bendahara Keuangan → Audit KAI → Dana Cair).'
           ],
           catatan: 'Aturan Nota: < Rp499.000 tanpa TTD/stempel toko (cetak kuitansi SIM Keuangan via Bendahara Fisika); Rp500.000–Rp999.000 wajib TTD + nama terang + stempel toko; > Rp1.000.000 wajib TTD + stempel toko + Faktur Pajak, SIUP, NPWP, & materai Rp10.000. Konsumsi area Surabaya WAJIB via ITS Food (itsfood.id) + foto menu, foto jumlah box keseluruhan, absensi konsumsi, & daftar hadir.'
-        },
-        {
-          id: 'fl-6',
-          judul: '6. Pengajuan Nomor Surat Keluar & Sertifikat Kepanitiaan',
-          estimasi: 'Surat Maks. H-2 • Sertifikat Maks. H+7',
-          langkah: [
-            '1. Cek kode jenis surat sesuai kebutuhan: A (Ekstra Institut), B (Ekstra Dept/Intra Institut), C (Intra Dept), D (Khusus: KEPRES/KPTS/KET/REK), E (Mandat: TGS/REK/JLN), F (Umum: UMUM). Format: No/Jenis/Klasifikasi/HIMASIKA-ITS/Bulan(Romawi)/Tahun.',
-            '2. Ajukan ke Sekretaris Umum HIMASIKA ITS (Salwa: 081362192288) maksimal H-2 dengan menyebutkan nama proker/agenda, perihal, tujuan surat, dan waktu pelaksanaan.',
-            '3. Setelah dicek formatnya oleh Sekum, nomor surat diterbitkan, distempel HIMASIKA ITS, dan ditandatangani Ketua HIMASIKA ITS.',
-            '4. Khusus Sertifikat Kepanitiaan (format: No/SRTF/KODE-KEGIATAN/KODE-DEPT/HIMASIKA-ITS/Bulan/Tahun): ajukan ke Sekum maksimal H+7 pasca-kegiatan dengan melampirkan daftar penerima & desain kasar (urutan TTD dari kanan: Ketua Pelaksana → Ketua HIMASIKA → Kepala Departemen Fisika).',
-            '5. Pengajuan TTD sertifikat ke Kepala Departemen Fisika menggunakan surat pengantar melalui Pak Luthfi, lalu arsipkan sertifikat di Drive departemen.'
-          ],
-          catatan: 'Surat keluar tidak sah tanpa Kop Surat, Nomor Surat, TTD Ketua HIMASIKA ITS, dan Stempel HIMASIKA ITS.'
         },
         {
           id: 'fl-7',
@@ -417,7 +522,8 @@ End Sub</pre>
           ],
           catatan: 'Pastikan folder tujuan pada kolom DocFolderPath dan PdfFolderPath sudah dibuat terlebih dahulu di laptop/PC sebelum menjalankan Macro.'
         }
-      ]
+      ],
+      suratList: []
     };
 
     function showToast(msg) {
@@ -428,23 +534,32 @@ End Sub</pre>
       window._toastTimer = setTimeout(() => t.classList.add("hidden"), 3600);
     }
 
-    function copyVbaCode() {
-      const code = document.getElementById("vba-code-box").textContent;
-      navigator.clipboard.writeText(code);
-      showToast("Kode Macro VBA berhasil disalin!");
+    function copyText(text, label) {
+      navigator.clipboard.writeText(text);
+      showToast(label || "Berhasil disalin!");
     }
 
-    async function loadPortalData() {
+    function copyVbaCode() {
+      const code = document.getElementById("vba-code-box").textContent;
+      copyText(code, "Kode Macro VBA berhasil disalin!");
+    }
+
+    async function loadPortalData(manualRefresh = false) {
       try {
         const res = await fetch(SCRIPT_URL + "?t=" + Date.now());
         const json = await res.json();
         if (json && json.ok && json.data && Array.isArray(json.data.pages)) {
           portalData = json.data;
-          if (activeTab !== "TAB_ALUR" && !portalData.pages.some(p => p.id === activeTab) && portalData.pages.length > 0) {
+          if (!Array.isArray(portalData.suratList)) portalData.suratList = [];
+          if (Array.isArray(json.suratList) && json.suratList.length > 0) {
+            portalData.suratList = json.suratList;
+          }
+          if (activeTab !== "TAB_ALUR" && activeTab !== "TAB_SURAT" && !portalData.pages.some(p => p.id === activeTab) && portalData.pages.length > 0) {
             activeTab = portalData.pages[0].id;
           }
           renderAllPublic();
           if (auth.isLoggedIn) renderAllAdmin();
+          if (manualRefresh) showToast("Data berhasil diperbarui.");
         }
       } catch (e) {
         renderAllPublic();
@@ -467,6 +582,7 @@ End Sub</pre>
       renderPublicTabs();
       renderFlowDropdown();
       renderPublicLinks();
+      renderPublicSuratTable();
     }
 
     function renderPublicTabs() {
@@ -486,6 +602,17 @@ End Sub</pre>
         `;
       }).join("");
 
+      const isSuratActive = activeTab === "TAB_SURAT";
+      const suratButton = `
+        <button onclick="selectPublicTab('TAB_SURAT')" class="px-4 py-2 rounded-full text-xs font-extrabold transition cursor-pointer ${
+          isSuratActive
+            ? 'bg-[#D0E86E] text-[#103738] border-2 border-[#103738] shadow-xs'
+            : 'bg-[#D0E86E]/55 text-[#103738] border border-[#103738]/25 hover:bg-[#D0E86E]'
+        }">
+          📨 Ajukan & Cek No. Surat
+        </button>
+      `;
+
       const isAlurActive = activeTab === "TAB_ALUR";
       const alurButton = `
         <button onclick="selectPublicTab('TAB_ALUR')" class="px-4 py-2 rounded-full text-xs font-extrabold transition cursor-pointer ${
@@ -497,17 +624,19 @@ End Sub</pre>
         </button>
       `;
 
-      container.innerHTML = pageButtons + alurButton;
+      container.innerHTML = pageButtons + suratButton + alurButton;
 
-      document.getElementById("section-docs").classList.toggle("hidden", isAlurActive);
-      document.getElementById("search-wrapper").classList.toggle("hidden", isAlurActive);
+      document.getElementById("section-docs").classList.toggle("hidden", isAlurActive || isSuratActive);
+      document.getElementById("search-wrapper").classList.toggle("hidden", isAlurActive || isSuratActive);
+      document.getElementById("section-surat").classList.toggle("hidden", !isSuratActive);
       document.getElementById("section-flows").classList.toggle("hidden", !isAlurActive);
     }
 
     function selectPublicTab(tabId) {
       activeTab = tabId;
       renderPublicTabs();
-      if (tabId !== "TAB_ALUR") renderPublicLinks();
+      if (tabId === "TAB_SURAT") renderPublicSuratTable();
+      else if (tabId !== "TAB_ALUR") renderPublicLinks();
     }
 
     function renderPublicLinks() {
@@ -532,6 +661,9 @@ End Sub</pre>
         </div>
         <div class="flex items-center gap-2">
           ${page.id === 'pg-surat' ? `
+            <button onclick="selectPublicTab('TAB_SURAT')" class="px-3 py-1.5 rounded-full bg-[#B5185F] text-[#FEFFE0] text-[11px] font-extrabold cursor-pointer hover:opacity-90">
+              📨 Ajukan No. Surat
+            </button>
             <button onclick="document.getElementById('modal-vba').classList.remove('hidden')" class="px-3 py-1.5 rounded-full bg-[#D0E86E] text-[#103738] text-[11px] font-extrabold cursor-pointer hover:opacity-90">
               ⚡ Kode VBA 1000+ Surat
             </button>
@@ -553,7 +685,7 @@ End Sub</pre>
         const hasUrl = item.url && item.url.trim() !== "";
         const isCyan = idx % 2 === 1;
         return `
-          <div class="bg-white rounded-3xl p-5 border-2 ${hasUrl ? 'border-[#103738]/15 hover:border-[#B5185F] shadow-2xs' : 'border-[#103738]/10'} flex flex-col justify-between gap-4 transition">
+          <div class="bg-white rounded-3xl p-5 border-2 ${hasUrl ? 'border-[#103738]/15 hover:border-[#B5185F] shadow-sm' : 'border-[#103738]/10'} flex flex-col justify-between gap-4 transition">
             <div>
               <div class="flex items-center justify-between gap-2 mb-2.5">
                 <span class="w-7 h-7 rounded-full ${isCyan ? 'bg-[#35C1C2] text-[#103738]' : 'bg-[#B5185F] text-[#FEFFE0]'} flex items-center justify-center text-xs font-extrabold">
@@ -578,6 +710,144 @@ End Sub</pre>
               }
             </div>
           </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // PENGAJUAN & REKAP SURAT KELUAR (PUBLIK)
+    // =========================================================================
+    async function submitPengajuanSurat() {
+      const pemohon = document.getElementById("srt-pemohon").value.trim();
+      const proker = document.getElementById("srt-proker").value.trim();
+      const jenis = document.getElementById("srt-jenis").value;
+      const perihal = document.getElementById("srt-perihal").value.trim();
+      const tujuan = document.getElementById("srt-tujuan").value.trim();
+      const tanggal = document.getElementById("srt-tanggal").value;
+      const linkDraf = document.getElementById("srt-link").value.trim();
+      const ttdReq = document.getElementById("srt-ttd-req").value;
+
+      if (!pemohon || !proker || !perihal || !tujuan || !tanggal || !linkDraf) {
+        showToast("Lengkapi semua kolom wajib (*) termasuk link Google Docs draf.");
+        return;
+      }
+
+      const btn = document.getElementById("btn-submit-surat");
+      btn.disabled = true;
+      btn.textContent = "Mengirim...";
+
+      const newItem = {
+        id: "srt-" + Date.now(),
+        createdAt: new Date().toLocaleDateString("id-ID", { day: "2-digit", month: "short", year: "numeric" }),
+        pemohon,
+        proker,
+        jenis,
+        perihal,
+        tujuan,
+        tanggal,
+        linkDraf,
+        ttdReq,
+        status: "Menunggu Asis",
+        nomorSurat: "",
+        ketTtdKahima: "Menunggu konfirmasi Sekum / Sekre 2 (" + ttdReq + ")",
+        catatanSekre: ""
+      };
+
+      try {
+        const res = await postApi({ action: "submitSurat", item: newItem });
+        if (res && res.ok) {
+          if (Array.isArray(res.suratList)) portalData.suratList = res.suratList;
+          else portalData.suratList.unshift(newItem);
+          resetFormSurat();
+          renderPublicSuratTable();
+          showToast("Pengajuan terkirim! Silakan kabari Sekum/Sekre 2 untuk asis draf.");
+        } else {
+          showToast((res && res.error) || "Gagal mengirim pengajuan.");
+        }
+      } catch (e) {
+        portalData.suratList.unshift(newItem);
+        resetFormSurat();
+        renderPublicSuratTable();
+        showToast("Tercatat di tampilan. Jangan lupa kabari Sekum via WA!");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Kirim Pengajuan Asis & Nomor Surat →";
+      }
+    }
+
+    function resetFormSurat() {
+      ["srt-pemohon", "srt-proker", "srt-perihal", "srt-tujuan", "srt-link"].forEach(id => {
+        document.getElementById(id).value = "";
+      });
+    }
+
+    function renderPublicSuratTable() {
+      const tbody = document.getElementById("public-surat-tbody");
+      if (!tbody) return;
+      const list = Array.isArray(portalData.suratList) ? portalData.suratList : [];
+      const kw = (document.getElementById("search-surat-input")?.value || "").toLowerCase().trim();
+
+      const filtered = kw
+        ? list.filter(s =>
+            (s.proker || "").toLowerCase().includes(kw) ||
+            (s.pemohon || "").toLowerCase().includes(kw) ||
+            (s.perihal || "").toLowerCase().includes(kw) ||
+            (s.nomorSurat || "").toLowerCase().includes(kw)
+          )
+        : list;
+
+      if (filtered.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="6" class="p-8 text-center text-[#103738]/60 font-medium">
+              Belum ada data pengajuan nomor surat. Silakan isi form di atas untuk mengajukan asistensi draf.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(s => {
+        let badgeCls = "bg-[#FEFFE0] text-[#103738] border border-[#103738]/20";
+        if (s.status === "ACC") badgeCls = "bg-[#D0E86E] text-[#103738]";
+        else if (s.status === "Perlu Revisi") badgeCls = "bg-[#B5185F] text-[#FEFFE0]";
+
+        const hasNo = s.nomorSurat && s.nomorSurat.trim() !== "";
+        return `
+          <tr class="hover:bg-[#FEFFE0]/60 align-top">
+            <td class="p-3">
+              <div class="font-extrabold text-[#103738]">${escapeHtml(s.proker)}</div>
+              <div class="text-[11px] text-[#103738]/70">${escapeHtml(s.pemohon)} • ${escapeHtml(s.tanggal || s.createdAt || '')}</div>
+            </td>
+            <td class="p-3">
+              <div class="font-bold text-[#103738]">${escapeHtml(s.perihal)}</div>
+              <div class="text-[11px] text-[#103738]/70">Kpd: ${escapeHtml(s.tujuan)} (${escapeHtml(s.jenis || '')})</div>
+              ${s.catatanSekre ? `<div class="mt-1 text-[11px] font-bold text-[#B5185F]">Catatan Sekre: ${escapeHtml(s.catatanSekre)}</div>` : ''}
+            </td>
+            <td class="p-3">
+              ${s.linkDraf
+                ? `<a href="${escapeAttr(s.linkDraf)}" target="_blank" rel="noopener noreferrer" class="inline-block px-2.5 py-1 rounded-lg bg-[#35C1C2]/25 text-[#103738] font-extrabold hover:bg-[#35C1C2]/45">Draf ↗</a>`
+                : `<span class="text-[#103738]/40">-</span>`
+              }
+            </td>
+            <td class="p-3">
+              <span class="inline-block px-2.5 py-1 rounded-full text-[11px] font-extrabold ${badgeCls}">
+                ${escapeHtml(s.status || 'Menunggu Asis')}
+              </span>
+            </td>
+            <td class="p-3">
+              ${hasNo
+                ? `<div class="flex items-center gap-1.5">
+                     <code class="px-2 py-1 rounded-lg bg-[#103738] text-[#D0E86E] font-bold text-[11px]">${escapeHtml(s.nomorSurat)}</code>
+                     <button onclick="copyText('${escapeAttr(s.nomorSurat)}', 'Nomor surat disalin!')" class="px-2 py-1 rounded-lg bg-[#D0E86E] text-[#103738] text-[10px] font-extrabold cursor-pointer">Salin</button>
+                   </div>`
+                : `<span class="text-[11px] text-[#103738]/50 italic">Menunggu ACC Sekre</span>`
+              }
+            </td>
+            <td class="p-3">
+              <span class="text-[11px] font-bold text-[#103738]">${escapeHtml(s.ketTtdKahima || s.ttdReq || '-')}</span>
+            </td>
+          </tr>
         `;
       }).join("");
     }
@@ -666,6 +936,8 @@ End Sub</pre>
         }
         auth = { isLoggedIn: true, username, password };
         if (res.data && Array.isArray(res.data.pages)) portalData = res.data;
+        if (!Array.isArray(portalData.suratList)) portalData.suratList = [];
+        if (Array.isArray(res.suratList) && res.suratList.length > 0) portalData.suratList = res.suratList;
         activateAdminSession();
       } catch (e) {
         if (username.toLowerCase() === "admin" && password === "himasika2026") {
@@ -704,7 +976,7 @@ End Sub</pre>
     }
 
     function switchAdminSubTab(tab) {
-      ["links", "pages", "flows"].forEach(t => {
+      ["surat", "links", "pages", "flows"].forEach(t => {
         document.getElementById("adm-panel-" + t).classList.toggle("hidden", t !== tab);
         const btn = document.getElementById("adm-tab-" + t);
         btn.className = t === tab
@@ -714,10 +986,116 @@ End Sub</pre>
     }
 
     function renderAllAdmin() {
+      renderAdminSurat();
       renderAdminFilterPages();
       renderAdminLinks();
       renderAdminPages();
       renderAdminFlows();
+    }
+
+    // ADMIN: KELOLA PENGAJUAN & DROP NOMOR SURAT
+    function renderAdminSurat() {
+      const container = document.getElementById("adm-surat-container");
+      if (!container) return;
+      const list = Array.isArray(portalData.suratList) ? portalData.suratList : [];
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="p-6 text-center text-xs text-[#103738]/60 bg-[#FEFFE0]/50 rounded-2xl">Belum ada pengajuan surat masuk.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map((s, idx) => `
+        <div class="p-4 rounded-2xl border border-[#103738]/15 bg-[#FEFFE0]/50 space-y-3">
+          <div class="flex flex-wrap items-start justify-between gap-2">
+            <div>
+              <span class="px-2 py-0.5 rounded-md bg-[#103738] text-[#D0E86E] text-[10px] font-extrabold">${escapeHtml(s.jenis || 'Surat')}</span>
+              <span class="text-xs font-extrabold text-[#103738] ml-1.5">${escapeHtml(s.proker)} — ${escapeHtml(s.perihal)}</span>
+              <div class="text-[11px] text-[#103738]/75 mt-0.5">Pemohon: <strong>${escapeHtml(s.pemohon)}</strong> • Tujuan: <strong>${escapeHtml(s.tujuan)}</strong> • Tgl Surat: ${escapeHtml(s.tanggal || '-')}</div>
+            </div>
+            <div class="flex items-center gap-1.5">
+              ${s.linkDraf ? `<a href="${escapeAttr(s.linkDraf)}" target="_blank" class="px-3 py-1.5 rounded-xl bg-[#35C1C2] text-[#103738] text-xs font-extrabold">Buka Draf Docs ↗</a>` : ''}
+              <button onclick="copyWaReplySurat(${idx})" class="px-3 py-1.5 rounded-xl bg-[#D0E86E] text-[#103738] text-xs font-extrabold cursor-pointer">Salin Balasan WA</button>
+              <button onclick="deleteSuratItem(${idx})" class="px-2.5 py-1.5 rounded-xl bg-[#B5185F] text-[#FEFFE0] text-xs font-bold cursor-pointer">Hapus</button>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div>
+              <label class="block text-[10px] font-extrabold text-[#103738] uppercase mb-1">Status Asistensi</label>
+              <select onchange="updateSuratField(${idx}, 'status', this.value)" class="w-full px-3 py-2 rounded-xl border border-[#103738]/20 bg-white text-xs font-extrabold">
+                <option value="Menunggu Asis" ${s.status === 'Menunggu Asis' ? 'selected' : ''}>Menunggu Asis</option>
+                <option value="Perlu Revisi" ${s.status === 'Perlu Revisi' ? 'selected' : ''}>Perlu Revisi</option>
+                <option value="ACC" ${s.status === 'ACC' ? 'selected' : ''}>ACC (Turun Nomor)</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-[10px] font-extrabold text-[#B5185F] uppercase mb-1">Drop Nomor Surat</label>
+              <input type="text" value="${escapeAttr(s.nomorSurat || '')}" placeholder="001/B/UND/HIMASIKA-ITS/XI/2026" onchange="updateSuratField(${idx}, 'nomorSurat', this.value)"
+                     class="w-full px-3 py-2 rounded-xl border border-[#103738]/20 bg-white text-xs font-bold" />
+            </div>
+            <div>
+              <label class="block text-[10px] font-extrabold text-[#103738] uppercase mb-1">Keterangan TTD Kahima</label>
+              <input type="text" list="ttd-presets" value="${escapeAttr(s.ketTtdKahima || '')}" placeholder="TTD Online / TTD Offline (Basah)" onchange="updateSuratField(${idx}, 'ketTtdKahima', this.value)"
+                     class="w-full px-3 py-2 rounded-xl border border-[#103738]/20 bg-white text-xs font-semibold" />
+            </div>
+            <div>
+              <label class="block text-[10px] font-extrabold text-[#103738] uppercase mb-1">Catatan Revisi / Info</label>
+              <input type="text" value="${escapeAttr(s.catatanSekre || '')}" placeholder="Opsional..." onchange="updateSuratField(${idx}, 'catatanSekre', this.value)"
+                     class="w-full px-3 py-2 rounded-xl border border-[#103738]/20 bg-white text-xs" />
+            </div>
+          </div>
+        </div>
+      `).join("") + `
+        <datalist id="ttd-presets">
+          <option value="TTD Online (Digital) — Menunggu Kahima">
+          <option value="TTD Online (Digital) — Sudah Di-TTD & Stempel Digital">
+          <option value="TTD Offline (Basah) — Silakan Cetak & Bawa ke Sekre">
+          <option value="TTD Offline (Basah) — Sudah Di-TTD & Stempel Basah">
+        </datalist>
+      `;
+    }
+
+    function updateSuratField(idx, field, val) {
+      if (portalData.suratList[idx]) {
+        portalData.suratList[idx][field] = val.trim();
+      }
+    }
+
+    function addManualSuratAdmin() {
+      if (!Array.isArray(portalData.suratList)) portalData.suratList = [];
+      portalData.suratList.unshift({
+        id: "srt-" + Date.now(),
+        createdAt: new Date().toLocaleDateString("id-ID", { day: "2-digit", month: "short", year: "numeric" }),
+        pemohon: "Sekretaris Kegiatan",
+        proker: "Nama Proker",
+        jenis: "B (Ekstra Dept / Intra Institut)",
+        perihal: "Perihal Surat",
+        tujuan: "Tujuan Surat",
+        tanggal: new Date().toISOString().slice(0, 10),
+        linkDraf: "",
+        ttdReq: "TTD Offline (Basah)",
+        status: "ACC",
+        nomorSurat: "",
+        ketTtdKahima: "TTD Offline (Basah) — Silakan Cetak & Bawa ke Sekre",
+        catatanSekre: ""
+      });
+      renderAdminSurat();
+      showToast("Baris surat baru ditambahkan.");
+    }
+
+    function deleteSuratItem(idx) {
+      if (!confirm("Hapus data pengajuan surat ini?")) return;
+      portalData.suratList.splice(idx, 1);
+      renderAdminSurat();
+    }
+
+    function copyWaReplySurat(idx) {
+      const s = portalData.suratList[idx];
+      if (!s) return;
+      const msg = s.status === "ACC"
+        ? `Halo ${s.pemohon}, draf surat *${s.perihal}* (${s.proker}) sudah *ACC* ya.\n\n• *Nomor Surat:* ${s.nomorSurat || '-'}\n• *Keterangan TTD Kahima:* ${s.ketTtdKahima || '-'}\n\nSilakan dipasang nomornya dan lanjut proses TTD sesuai keterangan di atas ya!`
+        : `Halo ${s.pemohon}, untuk draf surat *${s.perihal}* (${s.proker}) statusnya *${s.status}*.\nCatatan: ${s.catatanSekre || 'Silakan cek komentar di Google Docs draf ya.'}`;
+      copyText(msg, "Format balasan WA disalin! Tinggal paste ke chat pemohon.");
     }
 
     function renderAdminFilterPages() {
@@ -926,7 +1304,9 @@ End Sub</pre>
           password: auth.password
         });
         if (res.ok && res.data) {
+          const existingSurat = portalData.suratList || [];
           portalData = res.data;
+          portalData.suratList = existingSurat;
           renderAllAdmin();
           renderAllPublic();
           showToast("Data berhasil di-reset ke SOP resmi terbaru!");
